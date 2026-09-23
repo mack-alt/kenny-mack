@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-body), "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), Fraunces, ui-serif, Georgia, serif;
+  --color-linen: #f7f3ea;
+  --color-paper: #fffdf8;
+  --color-ink: #1c2b24;
+  --color-forest: #1b4332;
+  --color-moss: #245c40;
+  --color-sage: #3d6249;
+  --color-mist: #e7efe0;
+  --color-clay: #7a3e24;
+  --color-gold: #f0e0b8;
+  --color-straw: #8d6a32;
+  --color-bark: #5c4a3a;
+  --color-line: #e6dccb;
+  --color-foam: #f4efe4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  background-color: #e4eedd;
+  background-image:
+    radial-gradient(900px 420px at 50% -8%, rgba(255, 253, 248, 0.95), transparent 60%),
+    radial-gradient(520px 320px at 100% 100%, rgba(168, 140, 90, 0.16), transparent 55%),
+    radial-gradient(480px 280px at 0% 85%, rgba(36, 92, 64, 0.12), transparent 50%),
+    linear-gradient(180deg, #f6f1e6 0%, #e5f0dc 48%, #d5e3c9 100%);
+}
+
+::selection {
+  background: #d5e6c8;
+  color: #1b4332;
+}
+
+:focus-visible {
+  outline: 2px solid #a68556;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
