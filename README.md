@@ -26,4 +26,6 @@ npm run lint
 
 ## Deploy
 
-Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it with GitHub Actions as the Pages source.
+Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it to GitHub Pages.
+
+The repository Pages source needs to be GitHub Actions. That setting is at [https://github.com/mack-alt/kenny-mack/settings/pages](https://github.com/mack-alt/kenny-mack/settings/pages). After it is selected, re-run the Deploy to GitHub Pages workflow. The site is published at [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/).

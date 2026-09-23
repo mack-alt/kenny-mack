@@ -41,17 +41,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Enable GitHub Pages with Actions as the source
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api --method POST -H "Accept: application/vnd.github+json" \
-            "/repos/${{ github.repository }}/pages" \
-            -f build_type=workflow \
-          || gh api --method PUT -H "Accept: application/vnd.github+json" \
-            "/repos/${{ github.repository }}/pages" \
-            -f build_type=workflow
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
