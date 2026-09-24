@@ -34,7 +34,7 @@ export function Chooser() {
         >
           <FamilyPhoto
             alt=""
-            className="aspect-[16/10] w-full object-cover object-[center_30%] transition duration-300 group-hover:scale-[1.02]"
+            className="aspect-[16/10] w-full object-cover object-top transition duration-300 group-hover:scale-[1.02]"
           />
           <div className="px-4 py-4">
             <p className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-straw">Look A</p>
@@ -51,7 +51,7 @@ export function Chooser() {
         >
           <FamilyPhoto
             alt=""
-            className="aspect-[16/10] w-full object-cover object-[center_30%] opacity-95 transition duration-300 group-hover:scale-[1.02]"
+            className="aspect-[16/10] w-full object-cover object-top opacity-95 transition duration-300 group-hover:scale-[1.02]"
           />
           <div className="px-4 py-4">
             <p className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-[#f0e0b8]">

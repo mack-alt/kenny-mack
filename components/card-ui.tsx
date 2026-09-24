@@ -59,6 +59,24 @@ export function FamilyPhoto({
   );
 }
 
+/** Kenny stands on the right of the family photo. This circle keeps his face. */
+export function KennyPortrait() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-full ring-2 ring-[#f0e0b8] sm:h-20 sm:w-20"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={PHOTO_SRC}
+        alt=""
+        className="absolute h-auto max-w-none"
+        style={{ width: "350.625%", left: "-237.5%", top: "-43.75%" }}
+      />
+    </div>
+  );
+}
+
 export function LanguageChips({ className = "" }: { className?: string }) {
   const { lang, t } = useLang();
 

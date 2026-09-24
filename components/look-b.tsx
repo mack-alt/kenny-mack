@@ -25,6 +25,7 @@ import {
   ContactRow,
   EnglishNote,
   FamilyPhoto,
+  KennyPortrait,
   LanguageChips,
   LookSwitch,
 } from "@/components/card-ui";
@@ -60,7 +61,7 @@ export function LookB() {
         <FamilyPhoto
           alt={t.photoAlt}
           priority
-          className="aspect-[5/4] w-full rounded-[1.25rem] object-cover object-[center_28%] shadow-[0_20px_50px_-28px_rgba(27,67,50,0.65)] lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:aspect-[4/5] lg:rounded-[1.75rem]"
+          className="aspect-[5/4] w-full rounded-[1.25rem] object-cover object-top shadow-[0_20px_50px_-28px_rgba(27,67,50,0.65)] lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:aspect-[4/5] lg:object-[center_42%] lg:rounded-[1.75rem]"
         />
         <div lang="en" translate="no" className="max-w-xl lg:col-start-1 lg:row-start-3">
           <p className="text-pretty text-base leading-snug sm:text-lg">{HERO_FRICTION}</p>
@@ -107,10 +108,7 @@ export function LookB() {
 
       <section className="bg-forest text-paper" aria-labelledby="language-heading">
         <div lang="en" translate="no" className="mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:px-8 lg:py-5">
-          <h2
-            id="language-heading"
-            className="text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[#f0e0b8]"
-          >
+          <h2 id="language-heading" className="font-serif text-lg font-medium text-[#f0e0b8]">
             {LANGUAGE_HEADING}
           </h2>
           <p className="mt-1 max-w-4xl font-serif text-xl font-medium leading-snug sm:text-2xl">
@@ -124,15 +122,9 @@ export function LookB() {
         className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:gap-5 sm:px-6 lg:px-8 lg:py-6"
         aria-labelledby="meet-heading"
       >
-        <FamilyPhoto
-          alt=""
-          className="h-[4.5rem] w-[4.5rem] shrink-0 rounded-full object-cover object-[70%_18%] ring-2 ring-[#f0e0b8] sm:h-20 sm:w-20"
-        />
+        <KennyPortrait />
         <div lang="en" translate="no" className="min-w-0 flex-1">
-          <h2
-            id="meet-heading"
-            className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-straw"
-          >
+          <h2 id="meet-heading" className="font-serif text-lg font-medium text-forest">
             {MEET_HEADING}
           </h2>
           <p className="mt-1 font-serif text-lg font-medium leading-snug text-forest">{MEET[0]}</p>

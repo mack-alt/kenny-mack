@@ -95,10 +95,7 @@ export function LookA() {
           <ContactRow t={t} className="mt-1" />
 
           <section className="mt-5" aria-labelledby="help-heading">
-            <h2
-              id="help-heading"
-              className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-sage"
-            >
+            <h2 id="help-heading" className="font-serif text-lg font-medium leading-tight text-forest">
               {HELP_HEADING}
             </h2>
             <ul className="mt-2 grid gap-2">
@@ -136,10 +133,7 @@ export function LookA() {
           </section>
 
           <section className="mt-4 border-t border-line pt-3" aria-labelledby="meet-heading">
-            <h2
-              id="meet-heading"
-              className="text-[0.72rem] font-bold uppercase tracking-[0.16em] text-sage"
-            >
+            <h2 id="meet-heading" className="font-serif text-lg font-medium leading-tight text-forest">
               {MEET_HEADING}
             </h2>
             <p className="mt-1.5 font-serif text-[1.2rem] font-medium leading-snug text-forest">
@@ -173,9 +167,13 @@ export function LookA() {
       {showDock ? (
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 px-3 pt-2 shadow-[0_-12px_40px_-24px_rgba(27,67,50,0.55)] backdrop-blur-md pb-[max(0.55rem,env(safe-area-inset-bottom))]">
           <div className="mx-auto max-w-md">
-            <p lang="en" translate="no" className="text-center text-[0.78rem] font-semibold leading-snug text-forest">
-              {CLOSE.join(" · ")}
-            </p>
+            <ul lang="en" translate="no" className="space-y-0.5 text-center">
+              {CLOSE.map((line) => (
+                <li key={line} className="text-[0.78rem] font-semibold leading-tight text-forest">
+                  {line}
+                </li>
+              ))}
+            </ul>
             <BookingLink className="mt-1.5 w-full bg-forest text-paper">{CTA_LOOK}</BookingLink>
           </div>
         </div>
