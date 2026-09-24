@@ -1,12 +1,12 @@
 # Kenny Mack · Blades of Grass
 
-Digital business card for Kenneth “Kenny” Mack of Blades of Grass (BoG), Seattle area.
+Digital business card for Kenny Mack, founder of Blades of Grass (BoG).
 
 Live site: [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/)
 
-The page is a mobile-first calling card: who Kenny is, how Blades of Grass helps local beauty and service businesses be found, contacted, and booked, and how to call, text, email, book a conversation, or open the directory.
+The page is a mobile-first calling card: a family photo, Kenny’s own words, what Blades of Grass is for, three outcomes, and ways to text him or book a conversation.
 
-Interface labels are available in English, Tiếng Việt, and Español. The language choice is saved in this browser. Kenny’s note stays in his English on every language.
+Interface labels are available in English, Tiếng Việt, and Español. The language choice is saved in this browser. Kenny’s story stays in his English on every language.
 
 ## Develop
 

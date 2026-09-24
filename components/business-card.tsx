@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
-  BIO,
+  ABOUT_BOG,
   BOOK_URL,
   copy,
   DIRECTORY_URL,
   EMAIL,
+  HERO,
   LANG_OPTIONS,
+  OUTCOMES,
   PHONE_DISPLAY,
   PHONE_TEL,
   STORAGE_KEY,
+  STORY,
   type Lang,
 } from "@/lib/content";
 
@@ -67,20 +70,9 @@ function GrassMark({ className }: { className?: string }) {
   );
 }
 
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M7.4 3.8h2.1c.4 0 .8.3.9.7l.8 2.6c.1.4 0 .8-.3 1.1l-1.3 1.1a12.4 12.4 0 0 0 5.7 5.7l1.1-1.3c.3-.3.7-.4 1.1-.3l2.6.8c.4.1.7.5.7.9v2.1c0 .5-.4.9-.9 1A15.2 15.2 0 0 1 3.5 4.7c.1-.5.5-.9.9-.9Z"
-      />
-    </svg>
-  );
-}
-
 function TextIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" aria-hidden="true">
       <path
         fill="currentColor"
         d="M5 5.5h14A1.5 1.5 0 0 1 20.5 7v8a1.5 1.5 0 0 1-1.5 1.5H9.2L5 20.2V5.5Z"
@@ -89,32 +81,78 @@ function TextIcon() {
   );
 }
 
-function MailIcon() {
+function Actions({
+  textLabel,
+  bookLabel,
+  stacked = false,
+}: {
+  textLabel: string;
+  bookLabel: string;
+  stacked?: boolean;
+}) {
+  const shared =
+    "inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-3 text-center text-[0.95rem] font-semibold leading-tight";
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M4.5 6.5h15a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Zm.7 1.6 6.8 4.4 6.8-4.4H5.2Z"
-      />
-    </svg>
+    <div className={stacked ? "grid gap-2" : "grid grid-cols-2 gap-2"}>
+      <a
+        href={`sms:${PHONE_TEL}`}
+        className={`${shared} bg-forest text-paper`}
+        aria-label={`${textLabel}, ${PHONE_DISPLAY}`}
+      >
+        <TextIcon />
+        {textLabel}
+      </a>
+      <a
+        href={BOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${shared} bg-clay text-paper`}
+      >
+        {bookLabel}
+      </a>
+    </div>
   );
 }
 
 export function BusinessCard() {
   const lang = useSyncExternalStore(subscribeLang, readLang, () => "en" as Lang);
   const t = copy[lang];
+  const heroActions = useRef<HTMLDivElement>(null);
+  const footerActions = useRef<HTMLDivElement>(null);
+  const [heroOnScreen, setHeroOnScreen] = useState(true);
+  const [footerOnScreen, setFooterOnScreen] = useState(false);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  useEffect(() => {
+    const watch = (el: HTMLElement | null, set: (visible: boolean) => void) => {
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => set(entry.isIntersecting),
+        { rootMargin: "0px 0px -72px 0px", threshold: 0.2 },
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    };
+    const stopHero = watch(heroActions.current, setHeroOnScreen);
+    const stopFooter = watch(footerActions.current, setFooterOnScreen);
+    return () => {
+      stopHero?.();
+      stopFooter?.();
+    };
+  }, []);
+
+  const showDock = !heroOnScreen && !footerOnScreen;
+
   return (
-    <div className="relative mx-auto flex min-h-dvh w-full max-w-lg justify-center px-4 py-6 sm:py-14">
+    <div className="relative mx-auto flex min-h-dvh w-full max-w-lg justify-center px-3 py-4 sm:px-4 sm:py-12">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 opacity-70"
+        className="pointer-events-none absolute inset-x-0 top-0 h-48 opacity-60"
         aria-hidden="true"
       >
-        <svg viewBox="0 0 400 160" className="h-full w-full text-moss/25">
+        <svg viewBox="0 0 400 160" className="h-full w-full text-moss/20">
           <path
             d="M40 150c8-40 4-70-8-110"
             fill="none"
@@ -146,162 +184,183 @@ export function BusinessCard() {
         </svg>
       </div>
 
-      <main className="relative z-10 w-full max-w-md">
+      <main className={`relative z-10 w-full max-w-md ${showDock ? "pb-24" : ""}`}>
+        <div
+          role="group"
+          aria-label={t.language}
+          className="mb-3 grid grid-cols-3 gap-1 rounded-full bg-paper/80 p-1 shadow-sm"
+        >
+          {LANG_OPTIONS.map((option) => {
+            const selected = lang === option.id;
+            const name = option.id === "en" ? "English" : option.label;
+            return (
+              <button
+                key={option.id}
+                type="button"
+                aria-pressed={selected}
+                aria-label={name}
+                onClick={() => chooseLang(option.id)}
+                className={`min-h-11 rounded-full px-2 text-[0.8rem] leading-tight transition sm:text-sm ${
+                  selected
+                    ? "bg-forest font-semibold text-paper shadow-sm"
+                    : "font-medium text-ink hover:bg-linen"
+                }`}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+
         <article className="overflow-hidden rounded-[1.75rem] border border-line/80 bg-paper shadow-[0_24px_60px_-32px_rgba(27,67,50,0.55)]">
-          <div className="relative aspect-[4/3] w-full">
-            {/* Native img keeps /kenny-mack on the URL; next/image dropped basePath in the export. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/kenny-mack/kenny-family.jpg"
-              alt="Kenny Mack with his kids near the Seattle waterfront"
-              width={1122}
-              height={1402}
-              decoding="async"
-              fetchPriority="high"
-              className="absolute inset-0 h-full w-full object-cover object-[center_22%]"
-            />
-            <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#245c40]"
-              aria-hidden="true"
-            />
-          </div>
-          <header className="relative bg-gradient-to-b from-[#245c40] to-forest px-6 pb-8 pt-6 text-foam">
-            <div className="flex items-center gap-2.5">
-              <GrassMark className="h-9 w-9 text-foam" />
-              <div>
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-foam/90">
-                  Blades of Grass
-                </p>
-                <p className="text-xs font-medium tracking-[0.16em] text-gold">BoG</p>
-              </div>
+          {/* Native img keeps /kenny-mack on the URL; next/image dropped basePath in the export. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/kenny-mack/kenny-family.jpg"
+            alt={t.photoAlt}
+            width={1122}
+            height={1402}
+            decoding="async"
+            fetchPriority="high"
+            className="block h-auto w-full"
+          />
+
+          <div className="px-5 pb-8 pt-6 sm:px-6">
+            <header>
+              <h1 className="font-serif text-[2.85rem] font-medium leading-[0.95] tracking-tight text-forest">
+                Kenny Mack
+              </h1>
+              <p className="mt-2.5 flex items-center gap-2 text-sm font-semibold text-sage">
+                <GrassMark className="h-5 w-5 text-forest" />
+                {t.role}
+              </p>
+            </header>
+
+            <div lang="en" className="mt-5 space-y-3.5">
+              <p className="text-pretty font-serif text-[1.35rem] font-medium leading-snug text-ink">
+                {HERO.lead}
+              </p>
+              <p className="text-pretty text-[1.02rem] leading-relaxed text-ink">{HERO.body}</p>
+              <p className="text-pretty font-serif text-[1.15rem] font-medium leading-snug text-forest">
+                {HERO.close}
+              </p>
             </div>
 
-            <h1 className="mt-6 text-balance font-serif text-[2.35rem] font-medium leading-[1.05] tracking-tight text-paper">
-              Kenneth “Kenny” Mack
-            </h1>
-            <p className="mt-3 text-sm font-medium text-gold">{t.area}</p>
-            <p className="mt-3 max-w-[34ch] text-pretty text-base leading-relaxed text-foam/95">
-              {t.tagline}
-            </p>
-          </header>
-
-          <div className="px-5 py-5 sm:px-6">
-            <div
-              role="group"
-              aria-label={t.language}
-              className="grid grid-cols-3 gap-1 rounded-full bg-mist p-1"
-            >
-              {LANG_OPTIONS.map((option) => {
-                const selected = lang === option.id;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => chooseLang(option.id)}
-                    className={`min-h-11 rounded-full px-2 text-[0.8rem] leading-tight transition sm:text-sm ${
-                      selected
-                        ? "bg-forest font-semibold text-paper shadow-sm"
-                        : "font-medium text-ink hover:bg-paper"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                );
-              })}
+            <div ref={heroActions} className="mt-5">
+              <Actions textLabel={t.textKenny} bookLabel={t.book} stacked />
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              <a
-                href={`tel:${PHONE_TEL}`}
-                className="flex min-h-12 items-center justify-center gap-1.5 rounded-2xl bg-forest px-2 text-sm font-semibold text-paper"
+            <section className="mt-8 border-t border-line pt-7" aria-labelledby="what-heading">
+              <h2
+                id="what-heading"
+                className="font-serif text-[1.65rem] font-medium leading-tight text-forest"
               >
-                <PhoneIcon />
-                {t.call}
-              </a>
-              <a
-                href={`sms:${PHONE_TEL}`}
-                className="flex min-h-12 items-center justify-center gap-1.5 rounded-2xl bg-moss px-2 text-sm font-semibold text-paper"
-              >
-                <TextIcon />
-                {t.text}
-              </a>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="flex min-h-12 items-center justify-center gap-1.5 rounded-2xl border border-forest/20 bg-linen px-2 text-sm font-semibold text-forest"
-              >
-                <MailIcon />
-                {t.email}
-              </a>
-            </div>
-
-            <a
-              href={BOOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 flex min-h-12 items-center justify-center rounded-2xl bg-clay px-4 text-center text-sm font-semibold text-paper"
-            >
-              {t.book}
-            </a>
-            <a
-              href={DIRECTORY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 flex min-h-11 items-center justify-center text-sm font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-            >
-              {t.directory}
-            </a>
-
-            <section className="mt-7 border-t border-line pt-6" aria-labelledby="how-heading">
-              <h2 id="how-heading" className="text-xs font-bold uppercase tracking-[0.16em] text-sage">
-                {t.howHeading}
+                {t.whatHeading}
               </h2>
-              <ul className="mt-3 space-y-2.5">
-                {t.howItems.map((item) => (
-                  <li key={item} className="flex gap-3 text-[0.95rem] leading-snug">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-moss" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mt-7 border-t border-line pt-6" aria-labelledby="story-heading">
-              <h2 id="story-heading" className="text-xs font-bold uppercase tracking-[0.16em] text-sage">
-                {t.storyHeading}
-              </h2>
-              {t.storyNote ? (
-                <p className="mt-3 rounded-2xl bg-mist px-3.5 py-2.5 text-sm leading-relaxed text-ink">
-                  {t.storyNote}
-                </p>
-              ) : null}
-              <div lang="en" translate="no" className="mt-3 space-y-3">
-                {BIO.map((paragraph) => (
-                  <p key={paragraph} className="font-serif text-[1.05rem] font-medium leading-relaxed text-ink">
+              <div lang="en" className="mt-4 space-y-3.5">
+                {ABOUT_BOG.map((paragraph) => (
+                  <p key={paragraph} className="text-pretty text-[1.02rem] leading-relaxed text-ink">
                     {paragraph}
                   </p>
                 ))}
               </div>
             </section>
 
-            <section className="mt-7 border-t border-line pt-6 text-center" aria-labelledby="contact-heading">
-              <h2 id="contact-heading" className="text-xs font-bold uppercase tracking-[0.16em] text-sage">
+            <section className="mt-8 border-t border-line pt-7" aria-label="Get found, stay responsive, grow">
+              <ul className="space-y-6">
+                {OUTCOMES.map((outcome) => (
+                  <li key={outcome.id} lang="en">
+                    <h3 className="font-serif text-[1.35rem] font-medium leading-tight text-forest">
+                      {outcome.title}
+                    </h3>
+                    <p className="mt-1.5 text-pretty text-[1.02rem] leading-relaxed text-ink">
+                      {outcome.body}
+                    </p>
+                    {outcome.id === "found" ? (
+                      <a
+                        href={DIRECTORY_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
+                      >
+                        {t.listings}
+                      </a>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="mt-8 border-t border-line pt-7" aria-labelledby="about-heading">
+              <h2 id="about-heading" className="sr-only">
+                {t.aboutHeading}
+              </h2>
+              {t.storyNote ? (
+                <p className="mb-4 rounded-2xl bg-mist px-3.5 py-2.5 text-sm leading-relaxed text-ink">
+                  {t.storyNote}
+                </p>
+              ) : null}
+              <div lang="en" translate="no" className="space-y-3.5">
+                {STORY.map((paragraph, index) => (
+                  <p
+                    key={paragraph}
+                    className={
+                      index === 0
+                        ? "font-serif text-[1.85rem] font-medium leading-tight text-forest"
+                        : "text-pretty font-serif text-[1.12rem] font-medium leading-relaxed text-ink"
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-8 border-t border-line pt-7" aria-labelledby="contact-heading">
+              <h2
+                id="contact-heading"
+                className="font-serif text-[1.65rem] font-medium leading-tight text-forest"
+              >
                 {t.contactHeading}
               </h2>
+              <a
+                href={`sms:${PHONE_TEL}`}
+                className="mt-3 block font-serif text-[2rem] font-medium leading-none text-forest"
+              >
+                {PHONE_DISPLAY}
+              </a>
               <p className="mt-3 text-sm leading-relaxed text-ink">
                 <a className="font-semibold text-forest" href={`tel:${PHONE_TEL}`}>
-                  {t.callOrText} {PHONE_DISPLAY}
+                  {t.call}
                 </a>
                 <span aria-hidden="true"> · </span>
                 <a className="font-semibold text-forest" href={`mailto:${EMAIL}`}>
-                  {t.emailWord} {EMAIL}
+                  {EMAIL}
                 </a>
               </p>
-              <p className="mt-4 text-xs leading-relaxed text-bark">{t.family}</p>
+              <a
+                href={DIRECTORY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
+              >
+                {t.directory}
+              </a>
+              <div ref={footerActions} className="mt-4">
+                <Actions textLabel={t.textKenny} bookLabel={t.book} stacked />
+              </div>
             </section>
           </div>
         </article>
       </main>
+
+      {showDock ? (
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 px-3 pt-3 shadow-[0_-12px_40px_-24px_rgba(27,67,50,0.5)] backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="mx-auto max-w-md">
+            <Actions textLabel={t.textKenny} bookLabel={t.book} />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

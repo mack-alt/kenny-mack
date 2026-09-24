@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mack-alt.github.io/kenny-mack"),
   title: "Kenny Mack · Blades of Grass",
   description:
-    "Kenneth “Kenny” Mack of Blades of Grass helps local beauty and service businesses in the Seattle area be found, contacted, and booked.",
+    "Kenny Mack, founder of Blades of Grass, helps local businesses turn more conversations into customers. He meets owners in person.",
   applicationName: "Kenny Mack · Blades of Grass",
 };
 

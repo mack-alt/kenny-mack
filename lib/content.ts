@@ -11,107 +11,111 @@ export const BOOK_URL =
 export const STORAGE_KEY = "kenny-mack-lang";
 
 /**
- * Kenny’s own note. Kept in the English he would say it.
- * Do not translate these paragraphs for vi/es — the UI explains that.
+ * Kenny’s own words. Kept in the English he would say them.
+ * Do not translate these for vi/es — the UI says so.
  */
-export const BIO = [
-  "I’m Kenneth “Kenny” Mack. I work with Blades of Grass in the Seattle area. I help local beauty and service businesses be found, contacted, and booked — through conversations and personal support. Our team builds tools for that work.",
-  "The first step is a free listing the owner approves. An SMS front desk is in development.",
+export const HERO = {
+  lead: "I help local businesses turn more conversations into customers.",
+  body: "When you're busy doing the work, somebody still needs to answer the text, follow up with the missed call, help the customer understand what you offer, and make it easy to book.",
+  close: "That’s what we’re building at B-O-G.",
+} as const;
+
+export const ABOUT_BOG = [
+  "Small businesses deserve powerful tools without becoming tech companies.",
+  "Blades of Grass helps local businesses get discovered, communicate with customers, follow up consistently, and make booking easier.",
+  "We combine AI and automation with something I care about even more: real human relationships.",
+  "I meet business owners personally. We learn where customers are slipping through the cracks, then we build around the way that business actually works.",
+] as const;
+
+export const OUTCOMES = [
+  {
+    id: "found",
+    title: "Get found",
+    body: "Free local business listings that make it easier for people — including customers who speak different languages — to understand and contact you.",
+  },
+  {
+    id: "responsive",
+    title: "Stay responsive",
+    body: "Tools that help handle missed calls, texts, questions and follow-up while you're busy serving customers.",
+  },
+  {
+    id: "grow",
+    title: "Grow",
+    body: "Once the foundation works, we can help with reviews, reactivation, advertising and other ways to turn attention into revenue.",
+  },
+] as const;
+
+export const STORY = [
+  "Hi, I’m Kenny.",
+  "I'm a dad, salesman, entrepreneur and founder of Blades of Grass.",
+  "I love meeting people, learning how their businesses work, and finding the little places where something better could make life easier.",
+  "B-O-G started with a simple idea: What if a neighborhood business had access to the kind of technology and follow-up systems that big companies have — without losing the personality that made people love the business in the first place?",
+  "That's the company I'm building.",
+  "And the two most important people in my world are Prana and Sergen. Being their dad has a lot to do with why I'm building something of my own.",
 ] as const;
 
 export type Copy = {
   language: string;
-  area: string;
-  tagline: string;
-  call: string;
-  text: string;
-  email: string;
+  role: string;
+  textKenny: string;
   book: string;
-  directory: string;
-  howHeading: string;
-  howItems: readonly string[];
-  storyHeading: string;
+  whatHeading: string;
+  listings: string;
+  aboutHeading: string;
   storyNote: string | null;
   contactHeading: string;
-  callOrText: string;
-  emailWord: string;
-  family: string;
+  call: string;
+  directory: string;
+  photoAlt: string;
 };
 
 export const copy: Record<Lang, Copy> = {
   en: {
     language: "Language",
-    area: "Seattle area",
-    tagline:
-      "Helping local beauty and service businesses be found, contacted, and booked.",
-    call: "Call",
-    text: "Text",
-    email: "Email",
-    book: "Book a conversation",
-    directory: "Beauty directory",
-    howHeading: "How we help",
-    howItems: [
-      "Conversations and personal support",
-      "A free listing first, approved by the owner",
-      "The team builds tools — an SMS front desk is in development",
-    ],
-    storyHeading: "A note from Kenny",
+    role: "Founder · Blades of Grass",
+    textKenny: "Text Kenny",
+    book: "Book a Conversation",
+    whatHeading: "What is Blades of Grass?",
+    listings: "See the listings",
+    aboutHeading: "About Kenny",
     storyNote: null,
     contactHeading: "Contact",
-    callOrText: "Call or text",
-    emailWord: "email",
-    family: "Dad to Prana (8) and Sergen (7).",
+    call: "Call",
+    directory: "Directory",
+    photoAlt: "Kenny Mack with his kids, Prana and Sergen, near the Seattle waterfront",
   },
   vi: {
     language: "Ngôn ngữ",
-    area: "Khu vực Seattle",
-    tagline:
-      "Giúp các tiệm làm đẹp và dịch vụ địa phương được tìm thấy, liên hệ, và đặt lịch.",
-    call: "Gọi",
-    text: "Nhắn tin",
-    email: "Email",
+    role: "Nhà sáng lập · Blades of Grass",
+    textKenny: "Nhắn Kenny",
     book: "Đặt một cuộc trò chuyện",
-    directory: "Danh bạ làm đẹp",
-    howHeading: "Cách chúng tôi giúp",
-    howItems: [
-      "Trò chuyện và hỗ trợ trực tiếp",
-      "Bắt đầu bằng danh sách miễn phí, được chủ tiệm chấp thuận",
-      "Đội ngũ xây công cụ — quầy lễ tân SMS đang được phát triển",
-    ],
-    storyHeading: "Lời của Kenny",
+    whatHeading: "Blades of Grass là gì?",
+    listings: "Xem danh sách",
+    aboutHeading: "Về Kenny",
     storyNote: "Phần dưới đây là lời Kenny viết, bằng tiếng Anh.",
     contactHeading: "Liên hệ",
-    callOrText: "Gọi hoặc nhắn tin",
-    emailWord: "email",
-    family: "Bố của Prana (8 tuổi) và Sergen (7 tuổi).",
+    call: "Gọi",
+    directory: "Danh bạ",
+    photoAlt: "Kenny Mack cùng các con, Prana và Sergen, gần bờ sông Seattle",
   },
   es: {
     language: "Idioma",
-    area: "Área de Seattle",
-    tagline:
-      "Ayuda a que los negocios locales de belleza y servicios sean encontrados, contactados y reservados.",
-    call: "Llamar",
-    text: "Mensaje",
-    email: "Correo",
+    role: "Fundador · Blades of Grass",
+    textKenny: "Escribe a Kenny",
     book: "Reservar una conversación",
-    directory: "Directorio de belleza",
-    howHeading: "Cómo ayudamos",
-    howItems: [
-      "Conversaciones y apoyo personal",
-      "Primero, un listado gratuito aprobado por el dueño",
-      "El equipo construye herramientas; una recepción por SMS está en desarrollo",
-    ],
-    storyHeading: "En palabras de Kenny",
+    whatHeading: "¿Qué es Blades of Grass?",
+    listings: "Ver los listados",
+    aboutHeading: "Sobre Kenny",
     storyNote: "El texto que sigue está en palabras de Kenny, en inglés.",
     contactHeading: "Contacto",
-    callOrText: "Llamar o enviar mensaje",
-    emailWord: "correo",
-    family: "Papá de Prana (8) y Sergen (7).",
+    call: "Llamar",
+    directory: "Directorio",
+    photoAlt: "Kenny Mack con sus hijos, Prana y Sergen, cerca del paseo marítimo de Seattle",
   },
 };
 
 export const LANG_OPTIONS: { id: Lang; label: string }[] = [
-  { id: "en", label: "English" },
+  { id: "en", label: "EN" },
   { id: "vi", label: "Tiếng Việt" },
   { id: "es", label: "Español" },
 ];
