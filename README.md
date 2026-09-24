@@ -9,6 +9,8 @@ This branch is a preview. `/` is a chooser between two short looks built from th
 - Look A, card: `/preview-a/`
 - Look B, poster: `/preview-b/`
 
+Both looks open on the customer problem, then how B-O-G helps, then language, then Meet Kenny with the family photo at the end.
+
 The shared wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language.
 
 ## Develop

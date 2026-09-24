@@ -25,7 +25,6 @@ import {
   ContactRow,
   EnglishNote,
   FamilyPhoto,
-  KennyPortrait,
   LanguageChips,
   LookSwitch,
 } from "@/components/card-ui";
@@ -43,27 +42,22 @@ export function LookB() {
         <EnglishNote note={t.storyNote} />
       </div>
 
-      <section className="mx-auto grid w-full max-w-6xl items-start gap-4 px-4 pb-8 sm:px-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)] lg:items-center lg:gap-x-12 lg:px-8 lg:pb-10">
+      <section className="mx-auto w-full max-w-6xl px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10">
         <h1
           lang="en"
           translate="no"
-          className="font-serif text-[3.15rem] font-bold leading-[0.86] tracking-[-0.03em] text-forest sm:text-7xl lg:col-start-1 lg:row-start-1 lg:text-[5.35rem]"
+          className="max-w-5xl font-serif text-[3.15rem] font-bold leading-[0.86] tracking-[-0.03em] text-forest sm:text-7xl lg:text-[5.35rem]"
         >
           {HERO_KICKER}
         </h1>
         <p
           lang="en"
           translate="no"
-          className="max-w-xl font-serif text-[1.55rem] font-medium leading-[1.12] text-ink sm:text-[1.85rem] lg:col-start-1 lg:row-start-2 lg:text-[2rem]"
+          className="mt-4 max-w-2xl font-serif text-[1.55rem] font-medium leading-[1.12] text-ink sm:text-[1.85rem] lg:text-[2rem]"
         >
           {HERO_LEAD}
         </p>
-        <FamilyPhoto
-          alt={t.photoAlt}
-          priority
-          className="aspect-[5/4] w-full rounded-[1.25rem] object-cover object-top shadow-[0_20px_50px_-28px_rgba(27,67,50,0.65)] lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:aspect-[4/5] lg:object-[center_42%] lg:rounded-[1.75rem]"
-        />
-        <div lang="en" translate="no" className="max-w-xl lg:col-start-1 lg:row-start-3">
+        <div lang="en" translate="no" className="mt-4 max-w-2xl">
           <p className="text-pretty text-base leading-snug sm:text-lg">{HERO_FRICTION}</p>
           <p className="mt-2 text-pretty text-base leading-snug sm:text-lg">{HERO_BODY}</p>
           <BookingLink className="mt-4 bg-forest px-6 text-paper">{CTA_TALK}</BookingLink>
@@ -72,9 +66,11 @@ export function LookB() {
       </section>
 
       <section className="border-y border-forest/10 bg-paper" aria-labelledby="help-heading">
-        <h2 id="help-heading" className="sr-only">
-          {HELP_HEADING}
-        </h2>
+        <div className="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
+          <h2 id="help-heading" className="font-serif text-lg font-medium text-forest">
+            {HELP_HEADING}
+          </h2>
+        </div>
         <ul className="mx-auto grid w-full max-w-6xl md:grid-cols-3">
           {HELP.map((line) => {
             const { name, detail } = splitHelp(line);
@@ -111,19 +107,16 @@ export function LookB() {
           <h2 id="language-heading" className="font-serif text-lg font-medium text-[#f0e0b8]">
             {LANGUAGE_HEADING}
           </h2>
-          <p className="mt-1 max-w-4xl font-serif text-xl font-medium leading-snug sm:text-2xl">
-            {LANGUAGE_LINE}
-          </p>
+          <p className="mt-1 max-w-4xl font-serif text-xl font-medium leading-snug sm:text-2xl">{LANGUAGE_LINE}</p>
           <p className="mt-1 max-w-3xl text-sm leading-snug text-[#f0e0b8] sm:text-base">{LANGUAGE_MORE}</p>
         </div>
       </section>
 
       <section
-        className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:gap-5 sm:px-6 lg:px-8 lg:py-6"
+        className="mx-auto grid w-full max-w-6xl items-center gap-4 px-4 py-5 sm:px-6 lg:grid-cols-[minmax(220px,0.8fr)_minmax(0,1.2fr)] lg:gap-8 lg:px-8 lg:py-6"
         aria-labelledby="meet-heading"
       >
-        <KennyPortrait />
-        <div lang="en" translate="no" className="min-w-0 flex-1">
+        <div lang="en" translate="no" className="order-1 min-w-0 lg:order-2">
           <h2 id="meet-heading" className="font-serif text-lg font-medium text-forest">
             {MEET_HEADING}
           </h2>
@@ -135,13 +128,15 @@ export function LookB() {
               </p>
             ))}
           </div>
+          <BookingLink className="mt-3 border border-forest/15 bg-paper px-5 text-forest">{CTA_HI}</BookingLink>
         </div>
-        <BookingLink className="shrink-0 border border-forest/15 bg-paper px-5 text-forest sm:self-center">
-          {CTA_HI}
-        </BookingLink>
+        <FamilyPhoto
+          alt={t.photoAlt}
+          className="order-2 aspect-[3/2] w-full rounded-[1.25rem] object-cover object-top lg:order-1"
+        />
       </section>
 
-      <section className="bg-[#1b4332] px-4 py-7 text-center text-paper sm:px-6 lg:py-9">
+      <section className="bg-[#1b4332] px-4 py-7 text-center text-paper sm:px-6 lg:py-8">
         <ul
           lang="en"
           translate="no"

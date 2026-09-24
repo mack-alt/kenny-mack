@@ -39,7 +39,7 @@ export function LookA() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 280);
+    const onScroll = () => setScrolled(window.scrollY > 160);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -74,18 +74,12 @@ export function LookA() {
       </div>
 
       <article className="overflow-hidden rounded-[1.75rem] border border-line/80 bg-paper shadow-[0_24px_60px_-32px_rgba(27,67,50,0.55)]">
-        <FamilyPhoto
-          alt={t.photoAlt}
-          priority
-          className="block aspect-[4/5] w-full object-cover object-[center_42%]"
-        />
-
-        <div lang="en" translate="no" className="px-5 pb-6 pt-5">
+        <div lang="en" translate="no" className="px-5 pb-5 pt-6">
           <header>
-            <p className="text-[0.72rem] font-bold tracking-[0.16em] text-straw">{HERO_KICKER}</p>
-            <h1 className="mt-2 font-serif text-[1.85rem] font-medium leading-[1.05] text-forest">
-              {HERO_LEAD}
+            <h1 className="font-serif text-[2.15rem] font-medium leading-[0.95] tracking-tight text-forest">
+              {HERO_KICKER}
             </h1>
+            <p className="mt-3 font-serif text-[1.35rem] font-medium leading-snug text-ink">{HERO_LEAD}</p>
           </header>
           <p className="mt-3 text-pretty text-base leading-snug text-ink">{HERO_FRICTION}</p>
           <p className="mt-2 text-pretty text-base leading-snug text-ink">{HERO_BODY}</p>
@@ -94,7 +88,7 @@ export function LookA() {
           </div>
           <ContactRow t={t} className="mt-1" />
 
-          <section className="mt-5" aria-labelledby="help-heading">
+          <section className="mt-6" aria-labelledby="help-heading">
             <h2 id="help-heading" className="font-serif text-lg font-medium leading-tight text-forest">
               {HELP_HEADING}
             </h2>
@@ -104,9 +98,7 @@ export function LookA() {
                 const isDoor = name === "THE OPEN DOOR™";
                 return (
                   <li key={line} className="rounded-2xl bg-mist px-3.5 py-3">
-                    <h3 className="font-serif text-[1.05rem] font-medium leading-tight text-forest">
-                      {name}
-                    </h3>
+                    <h3 className="font-serif text-[1.05rem] font-medium leading-tight text-forest">{name}</h3>
                     <p className="mt-1 text-pretty text-[0.95rem] leading-snug text-ink">{detail}</p>
                     {isDoor ? (
                       <a
@@ -131,14 +123,14 @@ export function LookA() {
             <p className="mt-1 text-pretty text-[0.95rem] leading-snug text-ink">{LANGUAGE_LINE}</p>
             <p className="mt-1 text-pretty text-[0.95rem] leading-snug text-sage">{LANGUAGE_MORE}</p>
           </section>
+        </div>
 
-          <section className="mt-4 border-t border-line pt-3" aria-labelledby="meet-heading">
+        <section className="border-t border-line" aria-labelledby="meet-heading">
+          <div lang="en" translate="no" className="px-5 py-4">
             <h2 id="meet-heading" className="font-serif text-lg font-medium leading-tight text-forest">
               {MEET_HEADING}
             </h2>
-            <p className="mt-1.5 font-serif text-[1.2rem] font-medium leading-snug text-forest">
-              {MEET[0]}
-            </p>
+            <p className="mt-1.5 font-serif text-[1.15rem] font-medium leading-snug text-forest">{MEET[0]}</p>
             <div className="mt-1.5 space-y-1.5">
               {MEET.slice(1).map((paragraph) => (
                 <p key={paragraph} className="text-pretty text-[0.95rem] leading-snug text-ink">
@@ -146,11 +138,13 @@ export function LookA() {
                 </p>
               ))}
             </div>
-            <BookingLink className="mt-3 w-full border border-forest/20 bg-foam text-forest">
-              {CTA_HI}
-            </BookingLink>
-          </section>
-        </div>
+            <BookingLink className="mt-3 w-full border border-forest/20 bg-foam text-forest">{CTA_HI}</BookingLink>
+          </div>
+          <FamilyPhoto
+            alt={t.photoAlt}
+            className="block aspect-[3/2] w-full object-cover object-top"
+          />
+        </section>
 
         <footer ref={closeStrip} className="bg-forest px-5 py-4 text-paper">
           <ul lang="en" translate="no" className="space-y-1">
