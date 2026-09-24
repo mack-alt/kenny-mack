@@ -4,7 +4,7 @@ import "./globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["500", "600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mack-alt.github.io/kenny-mack"),
   title: "Kenny Mack · Blades of Grass",
   description:
-    "Kenny Mack, founder of Blades of Grass, helps local businesses turn more conversations into customers. He meets owners in person.",
+    "B-O-G helps local businesses make it easier for customers to find you, understand you, reach you, and book your service.",
   applicationName: "Kenny Mack · Blades of Grass",
 };
 
