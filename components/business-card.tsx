@@ -148,6 +148,23 @@ export function BusinessCard() {
 
       <main className="relative z-10 w-full max-w-md">
         <article className="overflow-hidden rounded-[1.75rem] border border-line/80 bg-paper shadow-[0_24px_60px_-32px_rgba(27,67,50,0.55)]">
+          <div className="relative aspect-[4/3] w-full">
+            {/* Native img keeps /kenny-mack on the URL; next/image dropped basePath in the export. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/kenny-mack/kenny-family.jpg"
+              alt="Kenny Mack with his kids near the Seattle waterfront"
+              width={1122}
+              height={1402}
+              decoding="async"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover object-[center_22%]"
+            />
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#245c40]"
+              aria-hidden="true"
+            />
+          </div>
           <header className="relative bg-gradient-to-b from-[#245c40] to-forest px-6 pb-8 pt-6 text-foam">
             <div className="flex items-center gap-2.5">
               <GrassMark className="h-9 w-9 text-foam" />
