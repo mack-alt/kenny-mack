@@ -26,7 +26,6 @@ import {
   EnglishNote,
   FamilyPhoto,
   LanguageChips,
-  LookSwitch,
 } from "@/components/card-ui";
 
 export function LookB() {
@@ -35,10 +34,7 @@ export function LookB() {
   return (
     <div className="min-h-dvh bg-[#f3ecdf] text-ink">
       <div className="mx-auto grid w-full max-w-6xl gap-2 px-4 pb-2 pt-3 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <LookSwitch current="b" />
-          <LanguageChips className="sm:max-w-sm sm:flex-1" />
-        </div>
+        <LanguageChips className="w-full sm:ml-auto sm:max-w-sm" />
         <EnglishNote note={t.storyNote} />
       </div>
 

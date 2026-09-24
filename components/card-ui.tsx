@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   BOOK_URL,
   DIRECTORY_URL,
@@ -59,24 +58,6 @@ export function FamilyPhoto({
   );
 }
 
-/** Kenny stands on the right of the family photo. This circle keeps his face. */
-export function KennyPortrait() {
-  return (
-    <div
-      aria-hidden="true"
-      className="relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-full ring-2 ring-[#f0e0b8] sm:h-20 sm:w-20"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={PHOTO_SRC}
-        alt=""
-        className="absolute h-auto max-w-none"
-        style={{ width: "350.625%", left: "-237.5%", top: "-43.75%" }}
-      />
-    </div>
-  );
-}
-
 export function LanguageChips({ className = "" }: { className?: string }) {
   const { lang, t } = useLang();
 
@@ -107,34 +88,6 @@ export function LanguageChips({ className = "" }: { className?: string }) {
         );
       })}
     </div>
-  );
-}
-
-export function LookSwitch({ current }: { current: "home" | "a" | "b" }) {
-  const items = [
-    { id: "home" as const, href: "/", label: "Pick" },
-    { id: "a" as const, href: "/preview-a", label: "Look A" },
-    { id: "b" as const, href: "/preview-b", label: "Look B" },
-  ];
-
-  return (
-    <nav aria-label="Looks" className="grid grid-cols-3 gap-1 rounded-full bg-paper/85 p-1 shadow-sm">
-      {items.map((item) => {
-        const selected = current === item.id;
-        return (
-          <Link
-            key={item.id}
-            href={item.href}
-            aria-current={selected ? "page" : undefined}
-            className={`inline-flex min-h-11 items-center justify-center rounded-full px-2 text-center text-[0.8rem] leading-tight sm:text-sm ${
-              selected ? "bg-forest font-semibold text-paper" : "font-medium text-ink hover:bg-linen"
-            }`}
-          >
-            {item.label}
-          </Link>
-        );
-      })}
-    </nav>
   );
 }
 

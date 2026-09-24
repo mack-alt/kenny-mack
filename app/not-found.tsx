@@ -10,7 +10,7 @@ export default function NotFound() {
         href="/"
         className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-forest px-5 text-sm font-semibold text-paper"
       >
-        Back to the looks
+        Back to the card
       </Link>
     </main>
   );

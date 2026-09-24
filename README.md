@@ -2,16 +2,11 @@
 
 Digital handshake for Kenny Mack, founder of Blades of Grass (B-O-G).
 
-Live site (production `main` only): [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/)
+Live site: [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/)
 
-This branch is a preview. `/` is a chooser between two short looks built from the same words. It does not change the live Pages site until a look is chosen and merged.
+The homepage opens on the customer problem, then how B-O-G helps, then language, then Meet Kenny with the family photo, then the close.
 
-- Look A, card: `/preview-a/`
-- Look B, poster: `/preview-b/`
-
-Both looks open on the customer problem, then how B-O-G helps, then language, then Meet Kenny with the family photo at the end.
-
-The shared wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language.
+The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language.
 
 ## Develop
 
@@ -33,7 +28,7 @@ cp -R out .pages-preview/kenny-mack
 npx serve .pages-preview
 ```
 
-Open `http://localhost:3000/kenny-mack/`, then Look A and Look B.
+Open `http://localhost:3000/kenny-mack/`.
 
 ```bash
 npm run lint
@@ -41,6 +36,6 @@ npm run lint
 
 ## Deploy
 
-Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it to GitHub Pages. A pull request does not publish.
+Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it to GitHub Pages. A pull request does not publish until it is merged.
 
 The repository Pages source needs to be GitHub Actions. That setting is at [https://github.com/mack-alt/kenny-mack/settings/pages](https://github.com/mack-alt/kenny-mack/settings/pages). The site is published at [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/).
