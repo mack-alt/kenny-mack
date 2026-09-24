@@ -1,63 +1,109 @@
 /**
- * Founder-card wording from the Nexus organized content (2026-09-23).
- * Both looks render these strings as written. Do not rewrite them.
+ * Founder-card wording from Nexus content v2 (2026-09-23).
+ * Render these strings as written. Do not rewrite them.
  */
 
-export const HERO_KICKER = "YOUR BUSINESS IS BUSY.";
+export const HERO_LINES = ["YOU TAKE CARE OF THEM.", "WE'LL GET THIS ONE READY."] as const;
 
-export const HERO_LEAD = "Make it easy for customers to reach you anyway.";
-
-export const HERO_FRICTION =
-  "Calls get missed. Texts wait. Information gets scattered. Language can add friction.";
+export const HERO_ATTENTION = "Your attention belongs with the customer you're serving.";
 
 export const HERO_BODY =
-  "B-O-G helps local businesses make it easier for customers to find you, understand you, reach you, and book your service.";
+  "B-O-G helps handle the calls, messages, questions, and follow-up happening around you — so your next customer can be ready when you are.";
 
-export const CTA_TALK = "Talk With B-O-G";
+export const HERO_PATH = "Find you. Reach you. Book your service.";
 
-export const HELP_HEADING = "How we help";
+export const CTA_SEE = "See How B-O-G Can Help";
 
-/** Name and detail stay separated only by the source em dash. */
+export const HELP_HEADING = "HOW WE HELP";
+
 export const HELP = [
-  "THE OPEN DOOR™ — free local listing; services/contact/location/booking; multilingual access",
-  "THE OPEN LINE™ — AI front desk when busy; missed ops, FAQ, texts, toward booking",
-  "THE GROWTH LOOP™ — reactivation, reviews, follow-up, promos, local marketing, ads; path first then more people",
+  {
+    name: "FIND ME™",
+    paragraphs: [
+      "Make it easy to find you.",
+      "Your free B-O-G listing brings the important things together:",
+      "Services. Location. Contact. Booking. What you want customers to know.",
+      "Built with multilingual access in mind so more people can understand your business and book your service.",
+      "They're looking. Help them find you.",
+    ],
+  },
+  {
+    name: "ANSWER FOR ME™",
+    paragraphs: [
+      "You stay with your customer. We'll work on the next one.",
+      "Calls come in. Texts arrive. People have questions.",
+      "You shouldn't have to interrupt the person in front of you every time someone else reaches out.",
+      "Answer For Me™ helps respond, answer questions, continue the conversation, and guide customers toward booking while you keep doing your work.",
+      "Think of a great restaurant: When the chef is ready to cook, the host has already welcomed the guest, made them comfortable, and prepared them to be served.",
+      "That's what we do for your next customer.",
+      "You take care of them. We'll get this one ready.",
+    ],
+  },
+  {
+    name: "BRING ME MORE™",
+    paragraphs: [
+      "When the path works, bring more people through it.",
+      "Once customers can find you and get answered, we can help create more opportunities.",
+      "Reactivation. Reviews. Follow-up. Promotions. Loyalty. Local marketing. Advertising.",
+      "We start with the customers already trying to reach you.",
+      "Then we help you bring in more.",
+      "Find Me → Answer For Me → Bring Me More",
+    ],
+  },
 ] as const;
 
-export const LANGUAGE_HEADING = "Language matters";
+export const LANGUAGE_HEADING = "LANGUAGE MATTERS";
 
-export const LANGUAGE_LINE =
-  "A good customer and a good business shouldn't miss each other because communicating is difficult.";
+export const LANGUAGE = [
+  "Sometimes a customer wants exactly what you offer, but communicating gets in the way.",
+  "We want technology to make that easier.",
+  "B-O-G is being built with multilingual communication from the beginning — helping customers understand your business, ask questions, and book your service in the language that feels most comfortable to them.",
+  "Less friction. More understanding. More business together.",
+] as const;
 
-export const LANGUAGE_MORE =
-  "Multilingual from the beginning. Less friction. More understanding. More opportunity.";
+export const LOOK_HEADING = "LET'S LOOK AT YOUR BUSINESS";
 
-export const MEET_HEADING = "Meet Kenny";
+export const LOOK = [
+  "We'll look at how customers currently:",
+  "Find You → Reach You → Get Answered → Book",
+  "Then we'll show you where B-O-G can help.",
+  "You don't need to learn the technology.",
+  "That's our part.",
+] as const;
+
+export const CTA_TALK = "Talk With Kenny";
+
+export const MEET_HEADING = "MEET KENNY";
 
 export const MEET = [
-  "I'm Kenny, founder of Blades of Grass.",
-  "I spend time with local business owners, learn how their businesses actually work, and look for ways technology can make things simpler.",
-  "I believe technology should support the human relationship — not replace it.",
-  "I'm also Dad to Prana and Sergen, which is a big part of why building something meaningful matters to me.",
+  "Hi, I'm Kenny, founder of Blades of Grass.",
+  "I spend time with local business owners and see what actually happens while they're working.",
+  "There's already a real person in front of you who deserves your attention — while another person may be calling, texting, or trying to book.",
+  "I built B-O-G to help those two things work together.",
+  "I believe good technology should support human relationships, not interrupt them.",
+  "I'm also Dad to Prana and Sergen, and building something useful, human, and my own matters deeply to me.",
 ] as const;
 
 export const CTA_HI = "Say Hi to Kenny";
 
-export const CLOSE = [
-  "GET FOUND. The Open Door™",
-  "GET ANSWERED. The Open Line™",
-  "GROW. The Growth Loop™",
+export const WAY_HEADING = "THE B-O-G WAY";
+
+export const WAY = [
+  "FIND ME™ — Help them discover you.",
+  "ANSWER FOR ME™ — Get the next customer ready while you work.",
+  "BRING ME MORE™ — Create more opportunities when you're ready to grow.",
 ] as const;
 
 export const CTA_LOOK = "Let's Look At Your Business";
 
-const HELP_DASH = " — ";
+export const TRUST_HEADING = "TRUST & TERMS";
 
-export function splitHelp(line: string): { name: string; detail: string } {
-  const at = line.indexOf(HELP_DASH);
-  if (at === -1) return { name: line, detail: "" };
-  return {
-    name: line.slice(0, at),
-    detail: line.slice(at + HELP_DASH.length),
-  };
-}
+export const TRUST = [
+  "We believe in clear expectations.",
+  "Listings should be accurate and easy to correct.",
+  "Automated communication should be used responsibly and with appropriate consent.",
+  "Multilingual support should be represented accurately.",
+  "Paid services, guarantees, cancellation terms, and responsibilities should be clear before service begins.",
+] as const;
+
+export const TRUST_LINKS = "Privacy Policy · Terms of Service · Service Agreement · Contact";
