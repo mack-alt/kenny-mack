@@ -1,12 +1,12 @@
 # Kenny Mack · Blades of Grass
 
-Digital business card for Kenny Mack, founder of Blades of Grass (BoG).
+Digital handshake for Kenny Mack, founder of Blades of Grass (B-O-G).
 
 Live site: [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/)
 
-The page is a mobile-first calling card: a family photo, Kenny’s own words, what Blades of Grass is for, three outcomes, and ways to text him or book a conversation.
+The homepage opens on the customer problem, then how B-O-G helps, then language, then Meet Kenny with the family photo, then the close.
 
-Interface labels are available in English, Tiếng Việt, and Español. The language choice is saved in this browser. Kenny’s story stays in his English on every language.
+The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language.
 
 ## Develop
 
@@ -17,15 +17,25 @@ npm run dev
 
 Open [http://localhost:3000/kenny-mack/](http://localhost:3000/kenny-mack/). The `/kenny-mack` base path matches the GitHub Pages project site.
 
+## Static preview
+
+`npm run build` writes a static export to `out/`. Asset URLs include `/kenny-mack`, so serve a parent folder:
+
 ```bash
 npm run build
+rm -rf .pages-preview && mkdir -p .pages-preview
+cp -R out .pages-preview/kenny-mack
+npx serve .pages-preview
+```
+
+Open `http://localhost:3000/kenny-mack/`.
+
+```bash
 npm run lint
 ```
 
-`npm run build` writes a static export to `out/`.
-
 ## Deploy
 
-Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it to GitHub Pages.
+Pushes to `main` run `.github/workflows/pages.yml`, which builds the static export and deploys it to GitHub Pages. A pull request does not publish until it is merged.
 
-The repository Pages source needs to be GitHub Actions. That setting is at [https://github.com/mack-alt/kenny-mack/settings/pages](https://github.com/mack-alt/kenny-mack/settings/pages). After it is selected, re-run the Deploy to GitHub Pages workflow. The site is published at [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/).
+The repository Pages source needs to be GitHub Actions. That setting is at [https://github.com/mack-alt/kenny-mack/settings/pages](https://github.com/mack-alt/kenny-mack/settings/pages). The site is published at [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/kenny-mack/).

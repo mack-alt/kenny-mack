@@ -1,5 +1,9 @@
-import { BusinessCard } from "@/components/business-card";
+import { LookB } from "@/components/look-b";
 
 export default function Home() {
-  return <BusinessCard />;
+  return (
+    <main>
+      <LookB />
+    </main>
+  );
 }
