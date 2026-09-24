@@ -14,6 +14,7 @@ import {
   PHONE_TEL,
   STORAGE_KEY,
   STORY,
+  STORY_BEAT,
   type Lang,
 } from "@/lib/content";
 
@@ -307,7 +308,9 @@ export function BusinessCard() {
                     className={
                       index === 0
                         ? "font-serif text-[1.85rem] font-medium leading-tight text-forest"
-                        : "text-pretty font-serif text-[1.12rem] font-medium leading-relaxed text-ink"
+                        : paragraph === STORY_BEAT
+                          ? "text-pretty font-serif text-[1.28rem] font-medium leading-snug text-forest"
+                          : "text-pretty font-serif text-[1.12rem] font-medium leading-relaxed text-ink"
                     }
                   >
                     {paragraph}

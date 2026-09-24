@@ -45,13 +45,22 @@ export const OUTCOMES = [
   },
 ] as const;
 
+/** Kenny likes this line. Keep it. */
+export const STORY_BEAT = "I don’t think that should be a big deal anymore.";
+
 export const STORY = [
   "Hi, I’m Kenny.",
-  "I'm a dad, salesman, entrepreneur and founder of Blades of Grass.",
+  "I’m a dad, salesman, entrepreneur, and founder of Blades of Grass.",
   "I love meeting people, learning how their businesses work, and finding the little places where something better could make life easier.",
-  "B-O-G started with a simple idea: What if a neighborhood business had access to the kind of technology and follow-up systems that big companies have — without losing the personality that made people love the business in the first place?",
-  "That's the company I'm building.",
-  "And the two most important people in my world are Prana and Sergen. Being their dad has a lot to do with why I'm building something of my own.",
+  "A big part of that for me is language.",
+  "Walking into local businesses, I’ve seen how quickly language can become unnecessary friction. A great business can be standing ten feet from a customer who would love what they do — and the only thing getting in the way is understanding each other.",
+  STORY_BEAT,
+  "That’s why multilingual support is being built naturally into B-O-G. I want customers to be able to discover a business, understand what it offers, ask questions, and take the next step in the language that feels most comfortable to them.",
+  "And I want that to make things easier for the business owner too — not give them another complicated system to manage.",
+  "Blades of Grass started with a simple idea:",
+  "What if neighborhood businesses could have access to powerful technology, communication, and follow-up — while keeping the personality and human connection that made people love them in the first place?",
+  "That’s the company I’m building.",
+  "And the two most important people in my world are Prana and Sergen. Being their dad has a lot to do with why I’m building something of my own — and why I care about creating something useful, welcoming, and human.",
 ] as const;
 
 export type Copy = {
