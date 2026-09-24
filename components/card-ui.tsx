@@ -13,7 +13,7 @@ import {
 import { chooseLang, useLang } from "@/lib/use-lang";
 
 const bookingClass =
-  "inline-flex min-h-12 items-center justify-center rounded-2xl px-4 text-center text-[0.98rem] font-semibold leading-tight";
+  "inline-flex min-h-14 items-center justify-center rounded-2xl px-5 text-center text-lg font-semibold leading-tight";
 
 export function BookingLink({
   children,
@@ -77,7 +77,7 @@ export function LanguageChips({ className = "" }: { className?: string }) {
             aria-pressed={selected}
             aria-label={name}
             onClick={() => chooseLang(option.id)}
-            className={`min-h-11 rounded-full px-2 text-[0.8rem] leading-tight transition sm:text-sm ${
+            className={`min-h-12 rounded-full px-2 text-base leading-tight transition ${
               selected
                 ? "bg-forest font-semibold text-paper shadow-sm"
                 : "font-medium text-ink hover:bg-linen"
@@ -92,9 +92,9 @@ export function LanguageChips({ className = "" }: { className?: string }) {
 }
 
 export function ContactRow({ t, className = "" }: { t: Copy; className?: string }) {
-  const link = "inline-flex min-h-11 items-center font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4";
+  const link = "inline-flex min-h-12 items-center text-lg font-semibold leading-snug text-forest underline decoration-straw decoration-2 underline-offset-4";
   return (
-    <p className={`flex flex-wrap items-center gap-x-3.5 gap-y-0 text-sm ${className}`}>
+    <p className={`flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 ${className}`}>
       <a className={link} href={`tel:${PHONE_TEL}`}>
         {t.callText} {PHONE_DISPLAY}
       </a>
@@ -111,7 +111,7 @@ export function ContactRow({ t, className = "" }: { t: Copy; className?: string 
 export function EnglishNote({ note }: { note: string | null }) {
   if (!note) return null;
   return (
-    <p className="rounded-2xl bg-paper/80 px-3.5 py-2.5 text-sm leading-snug text-ink shadow-sm">
+    <p className="rounded-2xl bg-paper/80 px-3.5 py-2.5 text-lg leading-relaxed text-ink shadow-sm">
       {note}
     </p>
   );
