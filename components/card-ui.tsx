@@ -13,7 +13,7 @@ import {
 import { chooseLang, useLang } from "@/lib/use-lang";
 
 const bookingClass =
-  "inline-flex min-h-14 items-center justify-center rounded-2xl px-5 text-center text-lg font-semibold leading-tight";
+  "inline-flex min-h-14 w-full max-w-full items-center justify-center rounded-2xl px-5 text-center text-lg font-semibold leading-snug sm:w-auto";
 
 export function BookingLink({
   children,
@@ -65,7 +65,7 @@ export function LanguageChips({ className = "" }: { className?: string }) {
     <div
       role="group"
       aria-label={t.language}
-      className={`grid grid-cols-3 gap-1 rounded-full bg-paper/85 p-1 shadow-sm ${className}`}
+      className={`grid w-full min-w-0 grid-cols-3 gap-1.5 rounded-2xl bg-paper/85 p-1.5 shadow-sm ${className}`}
     >
       {LANG_OPTIONS.map((option) => {
         const selected = lang === option.id;
@@ -77,10 +77,10 @@ export function LanguageChips({ className = "" }: { className?: string }) {
             aria-pressed={selected}
             aria-label={name}
             onClick={() => chooseLang(option.id)}
-            className={`min-h-12 rounded-full px-2 text-base leading-tight transition ${
+            className={`min-h-12 min-w-0 rounded-xl px-1 text-center text-[0.95rem] font-semibold leading-tight transition ${
               selected
-                ? "bg-forest font-semibold text-paper shadow-sm"
-                : "font-medium text-ink hover:bg-linen"
+                ? "bg-forest text-paper shadow-sm"
+                : "text-ink hover:bg-linen"
             }`}
           >
             {option.label}
@@ -92,9 +92,10 @@ export function LanguageChips({ className = "" }: { className?: string }) {
 }
 
 export function ContactRow({ t, className = "" }: { t: Copy; className?: string }) {
-  const link = "inline-flex min-h-12 items-center text-lg font-semibold leading-snug text-forest underline decoration-straw decoration-2 underline-offset-4";
+  const link =
+    "flex min-h-12 w-full items-center text-lg font-semibold leading-snug text-forest underline decoration-straw decoration-2 underline-offset-4 sm:w-auto";
   return (
-    <p className={`flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 ${className}`}>
+    <div className={`flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 ${className}`}>
       <a className={link} href={`tel:${PHONE_TEL}`}>
         {t.callText} {PHONE_DISPLAY}
       </a>
@@ -104,7 +105,7 @@ export function ContactRow({ t, className = "" }: { t: Copy; className?: string 
       <a className={link} href={DIRECTORY_URL} target="_blank" rel="noopener noreferrer">
         {t.directory}
       </a>
-    </p>
+    </div>
   );
 }
 
