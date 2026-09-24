@@ -59,9 +59,9 @@ function DotList({ text }: { text: string }) {
 function ArrowLine({ text, className }: { text: string; className: string }) {
   const parts = text.split(" → ");
   return (
-    <p className={`flex max-w-full flex-wrap items-baseline gap-x-2 gap-y-2 ${className}`}>
+    <p className={`flex max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 ${className}`}>
       {parts.map((part, index) => (
-        <span key={`${part}-${index}`} className="inline-flex max-w-full items-baseline gap-2">
+        <span key={`${part}-${index}`} className="inline-flex whitespace-nowrap items-baseline gap-2">
           {index > 0 ? <span>→</span> : null}
           <span>{part}</span>
         </span>
@@ -92,10 +92,10 @@ export function LookB() {
         <h1
           lang="en"
           translate="no"
-          className="max-w-full text-balance font-serif text-[2.65rem] font-bold leading-[1.05] tracking-[-0.02em] text-forest sm:text-6xl lg:text-[4.6rem] lg:leading-[0.98]"
+          className="max-w-full font-serif text-[2.2rem] font-bold leading-[0.98] tracking-[-0.02em] text-forest sm:text-balance sm:text-6xl lg:text-[4.6rem] lg:leading-[0.98]"
         >
           {HERO_LINES[0]}
-          <span className="mt-3 block">{HERO_LINES[1]}</span>
+          <span className="mt-1 block sm:mt-3">{HERO_LINES[1]}</span>
         </h1>
         <div lang="en" translate="no" className="mt-5 max-w-2xl space-y-4">
           <p className="font-serif text-[1.45rem] font-medium leading-snug text-ink sm:text-[1.7rem]">
