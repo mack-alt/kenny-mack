@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   CTA_HI,
   CTA_LOOK,
@@ -18,8 +19,8 @@ import {
   MEET,
   MEET_HEADING,
   TRUST,
+  TRUST_FOOTER,
   TRUST_HEADING,
-  TRUST_LINKS,
   WAY,
   WAY_HEADING,
 } from "@/lib/card-copy";
@@ -236,20 +237,29 @@ export function LookB() {
             </p>
           ))}
           <ul className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
-            {TRUST_LINKS.split(" · ").map((part) => (
-              <li key={part} className="text-lg leading-snug">
-                {part === "Contact" ? (
-                  <a
-                    className="inline-flex min-h-12 items-center font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-                    href={`mailto:${EMAIL}`}
-                  >
-                    {part}
-                  </a>
-                ) : (
-                  <span className="inline-flex min-h-12 items-center">{part}</span>
-                )}
-              </li>
-            ))}
+            {TRUST_FOOTER.map((part) => {
+              const item =
+                "inline-flex min-h-12 items-center text-base leading-snug font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4";
+              return (
+                <li key={part}>
+                  {part === "Privacy" ? (
+                    <Link className={item} href="/privacy">
+                      {part}
+                    </Link>
+                  ) : part === "SMS Terms" ? (
+                    <Link className={item} href="/sms-terms">
+                      {part}
+                    </Link>
+                  ) : part === "Contact" ? (
+                    <a className={item} href={`mailto:${EMAIL}`}>
+                      {part}
+                    </a>
+                  ) : (
+                    <span className="inline-flex min-h-12 items-center text-base leading-snug">{part}</span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
