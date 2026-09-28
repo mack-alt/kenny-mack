@@ -6,7 +6,7 @@ Live site: [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/k
 
 The homepage opens on the customer, then FIND ME™, ANSWER FOR ME™, and BRING ME MORE™, then language, a look at the business, Meet Kenny with the family photo, The B-O-G Way, and trust.
 
-The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language.
+The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language. Privacy is at `/privacy/` and SMS terms are at `/sms-terms/`. Those pages are English only.
 
 ## Develop
 
