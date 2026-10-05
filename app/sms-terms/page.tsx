@@ -27,6 +27,7 @@ export default function SmsTermsPage() {
       <p>Reply STOP to opt out at any time. Reply HELP for help.</p>
       <p>Carriers are not liable for delayed or undelivered messages.</p>
       <LegalHeading>Help</LegalHeading>
+      <p>Kenneth Mack, doing business as Blades of Grass · 10411 SE 174th St, Renton, WA 98055 · 206-743-6296</p>
       <p>
         Email{" "}
         <a

@@ -28,6 +28,7 @@ export default function PrivacyPage() {
         excluding aggregators and providers of the text message services.
       </p>
       <LegalHeading>Contact us or ask us to delete it</LegalHeading>
+      <p>Kenneth Mack, doing business as Blades of Grass · 10411 SE 174th St, Renton, WA 98055 · 206-743-6296</p>
       <p>
         Email{" "}
         <a
