@@ -9,8 +9,8 @@ export function LegalPage({
   children: ReactNode;
 }) {
   return (
-    <main className="min-h-dvh bg-[#f3ecdf] text-ink">
-      <article className="mx-auto w-full max-w-2xl px-5 py-8 sm:px-6 sm:py-12">
+    <main className="min-h-dvh px-4 py-6 text-ink sm:px-6 sm:py-12">
+      <article className="mx-auto w-full max-w-2xl rounded-[1.5rem] border border-forest/10 bg-paper px-5 py-8 shadow-[0_24px_60px_-36px_rgba(27,67,50,0.55)] sm:px-8">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sage">Blades of Grass</p>
         <h1 className="mt-3 max-w-full text-balance font-serif text-[2rem] font-medium leading-tight text-forest sm:text-4xl">
           {title}
