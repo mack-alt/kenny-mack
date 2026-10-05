@@ -24,20 +24,34 @@ import {
   WAY,
   WAY_HEADING,
 } from "@/lib/card-copy";
-import { DIRECTORY_URL, EMAIL } from "@/lib/content";
+import {
+  BOOK_URL,
+  DIRECTORY_URL,
+  EMAIL,
+  FOUNDING_DETAIL,
+  FOUNDING_LABEL,
+  FOUNDING_PRICE,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  ROLE_LINE,
+  VCARD_HREF,
+} from "@/lib/content";
 import { useLang } from "@/lib/use-lang";
 import {
   BookingLink,
+  ContactQr,
   ContactRow,
   EnglishNote,
   FamilyPhoto,
+  GrassMark,
   LanguageChips,
+  SaveContact,
 } from "@/components/card-ui";
+import { Motion } from "@/components/motion";
 
 const body = "max-w-full text-pretty text-lg leading-relaxed [overflow-wrap:break-word]";
-const heading = "max-w-full text-balance font-serif text-[1.7rem] font-medium leading-tight sm:text-3xl";
-const headingInk = `${heading} text-forest`;
-const headingGold = `${heading} text-[#f0e0b8]`;
+const link =
+  "inline-flex min-h-12 items-center text-lg font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4";
 
 const DOT_LISTS = new Set([
   "Services. Location. Contact. Booking. What you want customers to know.",
@@ -62,7 +76,7 @@ function ArrowLine({ text, className }: { text: string; className: string }) {
   return (
     <p className={`flex max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 ${className}`}>
       {parts.map((part, index) => (
-        <span key={`${part}-${index}`} className="inline-flex whitespace-nowrap items-baseline gap-2">
+        <span key={`${part}-${index}`} className="inline-flex items-baseline gap-2 whitespace-nowrap">
           {index > 0 ? <span>→</span> : null}
           <span>{part}</span>
         </span>
@@ -77,192 +91,313 @@ function Prose({ text, className = body }: { text: string; className?: string })
   return <p className={className}>{text}</p>;
 }
 
+function Rule({ gold = false }: { gold?: boolean }) {
+  return <span className={gold ? "rule rule-gold" : "rule"} aria-hidden="true" />;
+}
+
+function HeroField() {
+  return (
+    <div className="hero-stage" aria-hidden="true">
+      <div className="orb orb-a" />
+      <div className="orb orb-b" />
+      <div className="orb orb-c" />
+      <svg className="hero-grass" viewBox="0 0 400 130" preserveAspectRatio="none">
+        <path d="M18 130c8-42 2-74-10-112" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M48 130c6-50 12-82 2-118" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M78 130c4-36 1-70-8-104" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        <path d="M318 130c-2-46 8-78 16-116" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M352 130c-8-40-2-74 10-110" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+        <path d="M382 130c-4-32 2-66 12-98" fill="none" stroke="#c4a36a" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
+
 export function LookB() {
   const { t } = useLang();
 
   return (
-    <div className="min-h-dvh bg-[#f3ecdf] text-ink">
-      <div className="mx-auto w-full max-w-6xl px-4 pb-1 pt-4 sm:px-6 lg:px-8">
-        <LanguageChips className="sm:ml-auto sm:max-w-md" />
+    <div className="min-h-dvh pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-ink">
+      <Motion />
+      <a className="skip" href="#content">
+        {t.skip}
+      </a>
+
+      <header className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-forest/10 bg-[#f7f3ea] px-4 py-2.5 sm:px-6">
+        <div className="scroll-progress" aria-hidden="true" />
+        <div className="flex min-w-0 items-center gap-2.5">
+          <GrassMark className="h-9 w-9 shrink-0 text-forest" />
+          <div className="min-w-0" translate="no">
+            <p className="truncate font-serif text-xl leading-none text-forest">Kenny Mack</p>
+            <p className="mt-1 truncate text-[0.68rem] font-bold tracking-[0.16em] text-sage uppercase">
+              Blades of Grass
+            </p>
+          </div>
+        </div>
+        <a
+          href={`tel:${PHONE_TEL}`}
+          className="inline-flex min-h-12 shrink-0 flex-col items-end justify-center rounded-2xl bg-forest px-3.5 py-1.5 text-right text-paper"
+        >
+          <span className="text-[0.68rem] font-semibold tracking-[0.12em] text-[#f0e0b8] uppercase">{t.callText}</span>
+          <span className="text-base leading-none font-bold">{PHONE_DISPLAY}</span>
+        </a>
+      </header>
+
+      <div className="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
+        <LanguageChips />
         <div className="mt-3">
           <EnglishNote note={t.storyNote} />
         </div>
       </div>
 
-      <section className="mx-auto w-full max-w-6xl px-5 pb-8 pt-6 sm:px-6 lg:px-8 lg:pb-12 lg:pt-8">
-        <h1
-          lang="en"
-          translate="no"
-          className="max-w-full font-serif text-[2.2rem] font-bold leading-[0.98] tracking-[-0.02em] text-forest sm:text-balance sm:text-6xl lg:text-[4.6rem] lg:leading-[0.98]"
-        >
-          {HERO_LINES[0]}
-          <span className="mt-1 block sm:mt-3">{HERO_LINES[1]}</span>
-        </h1>
-        <div lang="en" translate="no" className="mt-5 max-w-2xl space-y-4">
-          <p className="font-serif text-[1.45rem] font-medium leading-snug text-ink sm:text-[1.7rem]">
-            {HERO_ATTENTION}
-          </p>
-          <p className={body}>{HERO_BODY}</p>
-          <p className="font-serif text-xl font-medium leading-snug text-forest sm:text-2xl">{HERO_PATH}</p>
-        </div>
-        <BookingLink className="mt-6 bg-forest px-6 text-paper">{CTA_SEE}</BookingLink>
-        <ContactRow t={t} className="mt-4" />
-      </section>
-
-      <section className="border-y border-forest/10 bg-paper" aria-labelledby="help-heading">
-        <div className="mx-auto w-full max-w-6xl px-5 pt-8 sm:px-6 lg:px-8">
-          <h2 id="help-heading" className={headingInk}>
-            {HELP_HEADING}
-          </h2>
-        </div>
-        <ul className="mx-auto grid w-full max-w-6xl lg:grid-cols-3">
-          {HELP.map((offer) => (
-            <li
-              key={offer.name}
-              lang="en"
-              translate="no"
-              className="min-w-0 border-b border-line px-5 py-6 last:border-b-0 sm:px-6 lg:border-b-0 lg:border-r lg:px-6 lg:py-8 lg:last:border-r-0"
-            >
-              <h3 className="text-balance font-serif text-[1.55rem] font-semibold leading-tight text-forest sm:text-[1.7rem]">
-                {offer.name}
-              </h3>
-              <div className="mt-4 space-y-4">
-                {offer.paragraphs.map((paragraph) => (
-                  <Prose key={paragraph} text={paragraph} />
-                ))}
-              </div>
-              {offer.name === "FIND ME™" ? (
-                <a
-                  href={DIRECTORY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex min-h-12 items-center text-lg font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-                >
-                  {t.directory}
-                </a>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="bg-forest text-paper" aria-labelledby="language-heading">
-        <div lang="en" translate="no" className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-6 lg:px-8 lg:py-10">
-          <h2 id="language-heading" className={headingGold}>
-            {LANGUAGE_HEADING}
-          </h2>
-          <div className="mt-4 max-w-4xl space-y-4">
-            {LANGUAGE.map((paragraph) => (
-              <p key={paragraph} className={`${body} text-paper`}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-6 lg:px-8 lg:py-10" aria-labelledby="look-heading">
-        <h2 id="look-heading" className={headingInk}>
-          {LOOK_HEADING}
-        </h2>
-        <div lang="en" translate="no" className="mt-4 max-w-2xl space-y-4">
-          {LOOK.map((paragraph) => (
-            <Prose
-              key={paragraph}
-              text={paragraph}
-              className={
-                paragraph.includes("→")
-                  ? "font-serif text-xl font-medium leading-snug text-forest"
-                  : body
-              }
-            />
-          ))}
-        </div>
-        <BookingLink className="mt-6 bg-forest px-6 text-paper">{CTA_TALK}</BookingLink>
-      </section>
-
-      <section
-        className="border-t border-forest/10 bg-paper"
-        aria-labelledby="meet-heading"
-      >
-        <div className="mx-auto grid w-full max-w-6xl items-start gap-8 px-5 py-8 sm:px-6 lg:grid-cols-[minmax(240px,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-10 lg:px-8 lg:py-10">
-          <div lang="en" translate="no" className="order-1 min-w-0 lg:order-2">
-            <h2 id="meet-heading" className={headingInk}>
-              {MEET_HEADING}
-            </h2>
-            <div className="mt-4 space-y-4">
-              {MEET.map((paragraph) => (
-                <p key={paragraph} className={body}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <BookingLink className="mt-6 border border-forest/15 bg-[#f3ecdf] px-6 text-forest">
-              {CTA_HI}
-            </BookingLink>
-          </div>
-          <FamilyPhoto
-            alt={t.photoAlt}
-            className="order-2 aspect-[4/5] w-full max-w-full rounded-[1.25rem] object-cover object-center lg:order-1"
-          />
-        </div>
-      </section>
-
-      <section className="bg-[#1b4332] px-5 py-8 text-paper sm:px-6 lg:px-8 lg:py-10" aria-labelledby="way-heading">
-        <div className="mx-auto w-full max-w-5xl">
-          <h2 id="way-heading" className={`${headingGold} sm:text-center`}>
-            {WAY_HEADING}
-          </h2>
-          <ul lang="en" translate="no" className="mt-5 space-y-4 sm:text-center">
-            {WAY.map((line) => (
-              <li key={line} className="max-w-full text-balance font-serif text-[1.3rem] font-medium leading-snug sm:text-2xl">
-                {line}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6 sm:text-center">
-            <BookingLink className="bg-[#f0e0b8] px-8 text-forest">{CTA_LOOK}</BookingLink>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-6 lg:px-8 lg:py-10" aria-labelledby="trust-heading">
-        <h2 id="trust-heading" className={headingInk}>
-          {TRUST_HEADING}
-        </h2>
-        <div lang="en" translate="no" className="mt-4 max-w-3xl space-y-4">
-          {TRUST.map((paragraph) => (
-            <p key={paragraph} className={body}>
-              {paragraph}
+      <main id="content">
+        <section className="relative overflow-hidden">
+          <HeroField />
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-5 pb-8 sm:px-6 lg:px-8 lg:pt-10">
+            <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase" translate="no">
+              Blades of Grass
             </p>
-          ))}
-          <ul className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
-            {TRUST_FOOTER.map((part) => {
-              const item =
-                "inline-flex min-h-12 items-center text-base leading-snug font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4";
+            <h1 lang="en" translate="no" className="hero-display mt-2 font-serif font-bold text-forest">
+              <span className="block">{HERO_LINES[0]}</span>
+              <span className="mt-[0.14em] block">{HERO_LINES[1]}</span>
+            </h1>
+            <div lang="en" translate="no" className="mt-4 max-w-2xl space-y-3">
+              <p className="font-serif text-[1.45rem] leading-snug font-medium text-ink sm:text-[1.7rem]">
+                {HERO_ATTENTION}
+              </p>
+              <p className={body}>{HERO_BODY}</p>
+              <p className="font-serif text-xl leading-snug font-medium text-forest sm:text-2xl">{HERO_PATH}</p>
+            </div>
+            <BookingLink className="mt-4 bg-forest px-6 text-paper">{CTA_SEE}</BookingLink>
+            <ContactRow t={t} className="mt-4" />
+            <SaveContact label={t.saveContact} className="mt-2 sm:max-w-sm" />
+          </div>
+        </section>
+
+        <section aria-labelledby="help-heading">
+          <div className="mx-auto w-full max-w-6xl px-5 pt-4 sm:px-6 lg:px-8">
+            <div className="reveal">
+              <Rule />
+              <h2 id="help-heading" className="display-heading font-serif font-medium text-forest">
+                {HELP_HEADING}
+              </h2>
+            </div>
+          </div>
+          <ul className="mx-auto grid w-full max-w-6xl gap-3 px-4 py-5 sm:px-6 lg:grid-cols-3 lg:px-8">
+            {HELP.map((offer) => {
+              const forest = offer.name === "ANSWER FOR ME™";
               return (
-                <li key={part}>
-                  {part === "Privacy" ? (
-                    <Link className={item} href="/privacy">
-                      {part}
-                    </Link>
-                  ) : part === "SMS Terms" ? (
-                    <Link className={item} href="/sms-terms">
-                      {part}
-                    </Link>
-                  ) : part === "Contact" ? (
-                    <a className={item} href={`mailto:${EMAIL}`}>
-                      {part}
+                <li
+                  key={offer.name}
+                  lang="en"
+                  translate="no"
+                  className={`reveal relative min-w-0 overflow-hidden rounded-[1.4rem] border px-5 py-6 ${
+                    forest ? "border-forest bg-forest text-paper" : "border-forest/10 bg-paper text-ink"
+                  }`}
+                >
+                  <h3
+                    className={`font-serif text-[1.7rem] leading-tight font-semibold sm:text-[1.85rem] ${
+                      forest ? "text-[#f0e0b8]" : "text-forest"
+                    }`}
+                  >
+                    {offer.name}
+                  </h3>
+                  <div className="mt-4 space-y-4">
+                    {offer.paragraphs.map((paragraph) => (
+                      <Prose key={paragraph} text={paragraph} />
+                    ))}
+                  </div>
+                  {offer.name === "FIND ME™" ? (
+                    <a
+                      href={DIRECTORY_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex min-h-12 items-center text-lg font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
+                    >
+                      {t.directory}
                     </a>
-                  ) : (
-                    <span className="inline-flex min-h-12 items-center text-base leading-snug">{part}</span>
-                  )}
+                  ) : null}
                 </li>
               );
             })}
           </ul>
+        </section>
+
+        <section className="bg-forest text-paper" aria-labelledby="language-heading">
+          <div lang="en" translate="no" className="reveal mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+            <Rule gold />
+            <h2 id="language-heading" className="display-heading font-serif font-medium text-[#f0e0b8]">
+              {LANGUAGE_HEADING}
+            </h2>
+            <div className="mt-5 max-w-4xl space-y-4">
+              {LANGUAGE.map((paragraph) => (
+                <p key={paragraph} className={`${body} text-paper`}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="look-heading">
+          <div className="reveal max-w-2xl">
+            <Rule />
+            <h2 id="look-heading" className="display-heading font-serif font-medium text-forest">
+              {LOOK_HEADING}
+            </h2>
+            <div lang="en" translate="no" className="mt-5 space-y-4">
+              {LOOK.map((paragraph) => (
+                <Prose
+                  key={paragraph}
+                  text={paragraph}
+                  className={
+                    paragraph.includes("→") ? "font-serif text-xl leading-snug font-medium text-forest" : body
+                  }
+                />
+              ))}
+            </div>
+            <BookingLink className="mt-6 bg-forest px-6 text-paper">{CTA_TALK}</BookingLink>
+          </div>
+        </section>
+
+        <div className="pin-scene">
+          <div className="pin-card mx-auto w-full max-w-xl px-4 sm:px-6">
+            <article
+              className="rounded-[1.6rem] border border-forest/15 bg-paper p-5 shadow-[0_28px_60px_-32px_rgba(27,67,50,0.6)] sm:p-6"
+              aria-label={t.saveContact}
+            >
+              <p
+                className="font-serif text-[2.7rem] leading-[0.9] font-semibold tracking-[-0.03em] text-forest"
+                lang="en"
+                translate="no"
+              >
+                Kenny Mack
+              </p>
+              <p className="mt-2 font-serif text-xl text-sage" lang="en" translate="no">
+                {ROLE_LINE}
+              </p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="w-[7.25rem] shrink-0">
+                  <ContactQr alt={t.qrAlt} />
+                </div>
+                <div className="grid min-w-0 flex-1 gap-2">
+                  <a
+                    className="inline-flex min-h-12 items-center text-lg leading-snug font-bold text-forest underline decoration-straw decoration-2 underline-offset-4"
+                    href={`tel:${PHONE_TEL}`}
+                  >
+                    {PHONE_DISPLAY}
+                  </a>
+                  <SaveContact label={t.saveContact} />
+                </div>
+              </div>
+              <a
+                className="mt-2 inline-flex min-h-12 items-center text-lg leading-snug font-bold text-forest underline decoration-straw decoration-2 underline-offset-4"
+                href={`mailto:${EMAIL}`}
+              >
+                {EMAIL}
+              </a>
+              <div className="mt-4 border-t border-line pt-4" lang="en" translate="no">
+                <p className="text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_LABEL}</p>
+                <p className="mt-1 font-serif text-[1.65rem] leading-tight text-forest">{FOUNDING_PRICE}</p>
+                <p className="mt-2 text-base leading-relaxed text-ink">{FOUNDING_DETAIL}</p>
+              </div>
+            </article>
+          </div>
+
+          <section className="pin-cover" aria-labelledby="meet-heading">
+            <div className="mx-auto grid w-full max-w-6xl items-start gap-8 px-5 py-8 sm:px-6 lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10 lg:px-8 lg:py-12">
+              <figure className="shot">
+                <div className="shot-frame">
+                  <FamilyPhoto alt={t.photoAlt} loading="lazy" className="shot-media" />
+                </div>
+              </figure>
+              <div lang="en" translate="no" className="reveal min-w-0">
+                <Rule />
+                <h2 id="meet-heading" className="display-heading font-serif font-medium text-forest">
+                  {MEET_HEADING}
+                </h2>
+                <div className="mt-4 space-y-4">
+                  {MEET.map((paragraph) => (
+                    <p key={paragraph} className={body}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <BookingLink className="mt-6 border border-forest/15 bg-paper px-6 text-forest">{CTA_HI}</BookingLink>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+
+        <section className="bg-forest px-5 py-10 text-paper sm:px-6 lg:px-8 lg:py-14" aria-labelledby="way-heading">
+          <div className="mx-auto w-full max-w-5xl">
+            <div className="reveal">
+              <Rule gold />
+              <h2 id="way-heading" className="display-heading font-serif font-medium text-[#f0e0b8] sm:text-center">
+                {WAY_HEADING}
+              </h2>
+            </div>
+            <ul lang="en" translate="no" className="mt-6 space-y-4 sm:text-center">
+              {WAY.map((line) => (
+                <li
+                  key={line}
+                  className="reveal max-w-full font-serif text-[1.35rem] leading-snug font-medium text-balance sm:text-2xl"
+                >
+                  {line}
+                </li>
+              ))}
+            </ul>
+            <div className="reveal mt-7 sm:text-center">
+              <BookingLink className="bg-[#f0e0b8] px-8 text-forest">{CTA_LOOK}</BookingLink>
+            </div>
+          </div>
+        </section>
+
+        <footer className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="trust-heading">
+          <div className="reveal max-w-3xl">
+            <Rule />
+            <h2 id="trust-heading" className="display-heading font-serif font-medium text-forest">
+              {TRUST_HEADING}
+            </h2>
+            <div lang="en" translate="no" className="mt-5 space-y-4">
+              {TRUST.map((paragraph) => (
+                <p key={paragraph} className={body}>
+                  {paragraph}
+                </p>
+              ))}
+              <ul className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
+                {TRUST_FOOTER.map((part) => (
+                  <li key={part}>
+                    {part === "Privacy" ? (
+                      <Link className={link} href="/privacy">
+                        {part}
+                      </Link>
+                    ) : part === "SMS Terms" ? (
+                      <Link className={link} href="/sms-terms">
+                        {part}
+                      </Link>
+                    ) : part === "Contact" ? (
+                      <a className={link} href={`mailto:${EMAIL}`}>
+                        {part}
+                      </a>
+                    ) : (
+                      <span className="inline-flex min-h-12 items-center text-base leading-snug">{part}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      <nav className="dock" aria-label={t.dockLabel}>
+        <a href={`tel:${PHONE_TEL}`}>{t.callText}</a>
+        <a href={VCARD_HREF}>{t.saveContact}</a>
+        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer">
+          {CTA_TALK}
+        </a>
+      </nav>
     </div>
   );
 }
