@@ -11,7 +11,7 @@ export default function Home() {
       <script
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-        data-widget-id="6ac408bea323fc9a2e9618fd"
+        data-widget-id="6aadccf5599f010aece4c178"
         data-source="WEB_USER"
       />
     </>
