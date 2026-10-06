@@ -1,8 +1,10 @@
 import { LookB } from "@/components/look-b";
+import { DEMO_POSTER_SRC } from "@/lib/content";
 
 export default function Home() {
   return (
     <>
+      <link rel="preload" as="image" href={DEMO_POSTER_SRC} fetchPriority="high" />
       <main>
         <LookB />
       </main>

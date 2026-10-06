@@ -15,6 +15,11 @@ export const CARD_URL = "https://mack-alt.github.io/kenny-mack/";
 export const PHOTO_SRC = "/kenny-mack/kenny-family.jpg";
 export const VCARD_HREF = "/kenny-mack/kenny-mack.vcf";
 export const QR_SRC = "/kenny-mack/contact-qr.svg";
+export const DEMO_VIDEO_SRC = "/kenny-mack/bog-stylist-demo.mp4";
+export const DEMO_POSTER_SRC = "/kenny-mack/bog-stylist-demo-poster.jpg";
+export const DEMO_CAPTIONS_SRC = "/kenny-mack/bog-stylist-demo.vtt";
+/** Caption taken from the demo’s own words. */
+export const DEMO_CAPTION = "From missed call to booked.";
 
 /** English facts. The story in `lib/card-copy.ts` stays as written. */
 export const ROLE_LINE = "Founder, Blades of Grass";
