@@ -3,6 +3,7 @@
  * Render these strings as written. Do not rewrite them.
  */
 
+/** Original homepage lines, kept as written. The hero now leads with the demo caption. */
 export const HERO_LINES = ["YOU TAKE CARE OF THEM.", "WE'LL GET THIS ONE READY."] as const;
 
 export const HERO_ATTENTION = "Your attention belongs with the customer you're serving.";

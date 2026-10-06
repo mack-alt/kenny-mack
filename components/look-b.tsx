@@ -10,7 +10,6 @@ import {
   HELP_HEADING,
   HERO_ATTENTION,
   HERO_BODY,
-  HERO_LINES,
   HERO_PATH,
   LANGUAGE,
   LANGUAGE_HEADING,
@@ -26,6 +25,7 @@ import {
 } from "@/lib/card-copy";
 import {
   BOOK_URL,
+  DEMO_CAPTION,
   DIRECTORY_URL,
   EMAIL,
   FOUNDING_DETAIL,
@@ -47,6 +47,7 @@ import {
   LanguageChips,
   SaveContact,
 } from "@/components/card-ui";
+import { DemoReel } from "@/components/demo-reel";
 import { Motion } from "@/components/motion";
 
 const body = "max-w-full text-pretty text-lg leading-relaxed [overflow-wrap:break-word]";
@@ -153,24 +154,33 @@ export function LookB() {
       <main id="content">
         <section className="relative overflow-hidden">
           <HeroField />
-          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-5 pb-8 sm:px-6 lg:px-8 lg:pt-10">
-            <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase" translate="no">
-              Blades of Grass
-            </p>
-            <h1 lang="en" translate="no" className="hero-display mt-2 font-serif font-bold text-forest">
-              <span className="block">{HERO_LINES[0]}</span>
-              <span className="mt-[0.14em] block">{HERO_LINES[1]}</span>
-            </h1>
-            <div lang="en" translate="no" className="mt-4 max-w-2xl space-y-3">
-              <p className="font-serif text-[1.45rem] leading-snug font-medium text-ink sm:text-[1.7rem]">
-                {HERO_ATTENTION}
-              </p>
-              <p className={body}>{HERO_BODY}</p>
-              <p className="font-serif text-xl leading-snug font-medium text-forest sm:text-2xl">{HERO_PATH}</p>
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-3 pb-8 sm:px-6 lg:px-8 lg:pt-8">
+            <div className="grid items-start gap-4 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-6">
+              <DemoReel className="lg:row-span-2" />
+              <div className="min-w-0 text-center lg:pt-1 lg:text-left">
+                <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase" translate="no">
+                  Blades of Grass
+                </p>
+                <h1
+                  id="hero-caption"
+                  lang="en"
+                  translate="no"
+                  className="mt-2 text-balance font-serif text-[1.65rem] leading-[1.08] font-semibold tracking-[-0.03em] text-forest sm:text-4xl lg:text-[2.85rem] lg:leading-[0.98]"
+                >
+                  {DEMO_CAPTION}
+                </h1>
+                <SaveContact label={t.saveContact} className="mx-auto mt-4 max-w-md lg:mx-0" />
+              </div>
+              <div lang="en" translate="no" className="min-w-0 max-w-2xl space-y-3 lg:col-start-2">
+                <p className="font-serif text-[1.45rem] leading-snug font-medium text-ink sm:text-[1.7rem]">
+                  {HERO_ATTENTION}
+                </p>
+                <p className={body}>{HERO_BODY}</p>
+                <p className="font-serif text-xl leading-snug font-medium text-forest sm:text-2xl">{HERO_PATH}</p>
+                <BookingLink className="mt-4 bg-forest px-6 text-paper">{CTA_SEE}</BookingLink>
+                <ContactRow t={t} className="mt-4" />
+              </div>
             </div>
-            <BookingLink className="mt-4 bg-forest px-6 text-paper">{CTA_SEE}</BookingLink>
-            <ContactRow t={t} className="mt-4" />
-            <SaveContact label={t.saveContact} className="mt-2 sm:max-w-sm" />
           </div>
         </section>
 

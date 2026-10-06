@@ -171,6 +171,123 @@ body > * {
   color: rgba(27, 67, 50, 0.38);
 }
 
+.hero-phone {
+  width: min(64vw, 14.35rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+  .hero-phone {
+    width: 17.25rem;
+    margin-inline: 0;
+  }
+}
+
+.phone-bezel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.48rem 0.4rem 0.42rem;
+  border-radius: 1.85rem;
+  background:
+    linear-gradient(165deg, rgba(240, 224, 184, 0.42), transparent 30%),
+    linear-gradient(180deg, #2d6249 0%, #1b4332 42%, #12281c 100%);
+  box-shadow:
+    0 26px 46px -30px rgba(27, 67, 50, 0.85),
+    inset 0 0 0 1px rgba(240, 224, 184, 0.38),
+    inset 0 1px 0 rgba(255, 253, 248, 0.22);
+}
+
+.phone-speaker {
+  width: 3rem;
+  height: 0.26rem;
+  border-radius: 999px;
+  background: rgba(247, 243, 234, 0.38);
+}
+
+.phone-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 1.4rem;
+  background: #10241a;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.38);
+}
+
+.phone-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+}
+
+.phone-poster {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.phone-poster-gone {
+  visibility: hidden;
+}
+
+.phone-home {
+  width: 2.15rem;
+  height: 0.2rem;
+  border-radius: 999px;
+  background: rgba(247, 243, 234, 0.42);
+}
+
+.phone-sound,
+.phone-play {
+  z-index: 2;
+  border: 0;
+  background: rgba(255, 253, 248, 0.95);
+  color: #1b4332;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 10px 22px -16px rgba(0, 0, 0, 0.9);
+}
+
+.phone-sound {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+}
+
+.phone-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  min-width: 5.75rem;
+  min-height: 3rem;
+  translate: -50% -50%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .phone-sound:active,
+  .phone-play:active {
+    scale: 0.97;
+  }
+}
+
 .rule {
   display: block;
   width: 4.25rem;
@@ -483,7 +600,9 @@ body > * {
   .link-row,
   .dock a,
   .pin-card,
-  .pin-cover {
+  .pin-cover,
+  .phone-sound,
+  .phone-play {
     animation: none !important;
     transition: none !important;
     transform: none !important;
@@ -510,7 +629,10 @@ body > * {
   .btn,
   .link-row,
   .dock a,
-  .pin-card {
+  .pin-card,
+  .phone-bezel,
+  .phone-sound,
+  .phone-play {
     border: 1px solid ButtonText;
   }
 }
