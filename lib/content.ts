@@ -23,10 +23,10 @@ export const DEMO_CAPTION = "From missed call to booked.";
 
 /** English facts. The story in `lib/card-copy.ts` stays as written. */
 export const ROLE_LINE = "Founder, Blades of Grass";
-export const FOUNDING_LABEL = "Founding shop";
-export const FOUNDING_PRICE = "$297 a month for the first 90 days.";
+export const FOUNDING_LABEL = "Founding shop · first ten";
+export const FOUNDING_PRICE = "$297 a month plus tax, guaranteed for your first year.";
 export const FOUNDING_DETAIL =
-  "The front desk for a shop. Free with it: a directory listing and a one-page shop website.";
+  "The full front desk for a shop, with calls and texts included. Month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
 
 /**
  * Interface chrome only. The card’s story and offers stay in English
