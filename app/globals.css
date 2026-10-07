@@ -525,7 +525,7 @@ body > * {
 @media (prefers-reduced-motion: no-preference) {
   .pin-card {
     position: sticky;
-    top: 4.5rem;
+    top: var(--pin-top, 4.5rem);
     z-index: 1;
   }
 

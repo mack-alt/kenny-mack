@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import {
   CTA_HI,
   CTA_LOOK,
@@ -119,8 +120,40 @@ function HeroField() {
   );
 }
 
+/**
+ * The contact card pins while the next section slides over it. When the card is
+ * taller than the space between the header and the bottom dock (phones), pin it by
+ * its bottom edge instead, so the whole offer can be read before it is covered.
+ */
+function usePinTop() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => {
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const headerGap = 4.5 * rem;
+      const dock = 5.75 * rem;
+      const fitTop = window.innerHeight - dock - el.offsetHeight - 0.75 * rem;
+      el.style.setProperty("--pin-top", `${Math.min(headerGap, fitTop)}px`);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  return ref;
+}
+
 export function LookB() {
   const { t } = useLang();
+  const pinRef = usePinTop();
 
   return (
     <div className="min-h-dvh pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-ink">
@@ -276,7 +309,7 @@ export function LookB() {
         </section>
 
         <div className="pin-scene">
-          <div className="pin-card mx-auto w-full max-w-xl px-4 sm:px-6">
+          <div ref={pinRef} className="pin-card mx-auto w-full max-w-xl px-4 sm:px-6">
             <article
               className="rounded-[1.6rem] border border-forest/15 bg-paper p-5 shadow-[0_28px_60px_-32px_rgba(27,67,50,0.6)] sm:p-6"
               aria-label={t.saveContact}
