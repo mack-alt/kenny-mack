@@ -107,4 +107,4 @@ export const TRUST = [
   "Paid services, guarantees, cancellation terms, and responsibilities should be clear before service begins.",
 ] as const;
 
-export const TRUST_FOOTER = ["Privacy", "SMS Terms", "Service Agreement", "Contact"] as const;
+export const TRUST_FOOTER = ["Privacy", "Terms", "SMS Terms", "Service Agreement", "Contact"] as const;

@@ -1,59 +1,51 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LegalHeading, LegalPage } from "@/components/legal-page";
-import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from "@/lib/content";
+import { LegalHeading, LegalPage, legalLink } from "@/components/legal-page";
+import { LegalContact } from "@/components/legal-contact";
+import { LEGAL_NAME } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy · Blades of Grass",
   description:
-    "How Kenneth Mack, doing business as Blades of Grass, uses the name, phone, email, and messages people share.",
+    "How Kenneth Mack (Blades of Grass) uses the name, phone, email, and messages people share, including text message opt-in data.",
 };
 
 export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
-      <p>
-        Kenneth Mack, doing business as Blades of Grass, in the Seattle area, WA, runs this card and the front
-        desk service.
-      </p>
+      <p>{LEGAL_NAME} runs this card and the Blades of Grass front desk service.</p>
       <LegalHeading>What we collect</LegalHeading>
       <p>We collect your name, phone number, and email, and the messages you send us or give us in person.</p>
       <LegalHeading>How we use it</LegalHeading>
-      <p>We use that information to reply to you, schedule demos, and provide the front desk service.</p>
+      <p>
+        We use that information to reply to you, schedule appointments and demos, send the text messages you
+        agreed to, and provide the front desk service.
+      </p>
       <LegalHeading>We do not sell it</LegalHeading>
       <p>We do not sell your personal information.</p>
+      <LegalHeading>Mobile numbers and text messages</LegalHeading>
       <p>
         No mobile information will be shared with third parties or affiliates for marketing or promotional
-        purposes. Text messaging originator opt-in data and consent will not be shared with any third parties,
-        excluding aggregators and providers of the text message services.
+        purposes. Text messaging originator opt-in data and consent will not be shared with any third parties.
+      </p>
+      <p>
+        <strong>Mobile numbers and SMS opt-in data are not shared or sold.</strong>
+      </p>
+      <p>
+        You can stop texts at any time by replying STOP. Reply HELP for help. The full text message terms are in
+        our{" "}
+        <Link href="/terms#sms" className={legalLink}>
+          Terms
+        </Link>{" "}
+        and on the{" "}
+        <Link href="/sms-terms" className={legalLink}>
+          SMS Terms
+        </Link>{" "}
+        page.
       </p>
       <LegalHeading>Contact us or ask us to delete it</LegalHeading>
-      <p>Kenneth Mack, doing business as Blades of Grass · 10411 SE 174th St, Renton, WA 98055 · 206-743-6296</p>
-      <p>
-        Email{" "}
-        <a
-          className="font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-          href={`mailto:${EMAIL}`}
-        >
-          {EMAIL}
-        </a>{" "}
-        or call or text{" "}
-        <a
-          className="font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-          href={`tel:${PHONE_TEL}`}
-        >
-          {PHONE_DISPLAY}
-        </a>
-        . Tell us you want your information deleted, and we will delete it.
-      </p>
-      <p>
-        <Link
-          href="/sms-terms"
-          className="font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-        >
-          SMS Terms
-        </Link>
-      </p>
+      <p>Tell us you want your information deleted, and we will delete it.</p>
+      <LegalContact />
     </LegalPage>
   );
 }

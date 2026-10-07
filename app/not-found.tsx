@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteFooterLinks } from "@/components/legal-page";
 
 export default function NotFound() {
   return (
@@ -14,6 +15,7 @@ export default function NotFound() {
           Back to the card
         </Link>
       </div>
+      <SiteFooterLinks className="mt-6 flex justify-center" />
     </main>
   );
 }
