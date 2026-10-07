@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LegalHeading, legalLink } from "@/components/legal-page";
 import { LegalContact } from "@/components/legal-contact";
-import { LEGAL_NAME, SMS_PROGRAM } from "@/lib/legal";
+import { LEGAL_NAME, SMS_NUMBER_DISPLAY, SMS_PROGRAM } from "@/lib/legal";
 
 /** The SMS program terms. Shared word for word by /terms/ and /sms-terms/. */
 export function SmsSection({ headingId = "sms" }: { headingId?: string }) {
@@ -15,6 +15,10 @@ export function SmsSection({ headingId = "sms" }: { headingId?: string }) {
         <strong>Purpose:</strong> appointment and customer-service texts from Blades of Grass. That means replies to
         your questions, scheduling, confirming, and changing appointments and demos, and follow-up about Blades of
         Grass services you asked about. These texts may be sent using automated technology.
+      </p>
+      <p>
+        <strong>Sending number:</strong> our texts come from {SMS_NUMBER_DISPLAY}. It is the only number we use for
+        this program.
       </p>
       <p>
         These terms cover texts Blades of Grass sends for its own business. If a shop uses the Blades of Grass front
