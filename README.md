@@ -6,7 +6,7 @@ Live site: [https://mack-alt.github.io/kenny-mack/](https://mack-alt.github.io/k
 
 The homepage opens on Kenny’s name and a 15-second Blades of Grass demo — from a missed call to a booked time — with Save contact beside it, then the customer, then FIND ME™, ANSWER FOR ME™, and BRING ME MORE™, then language, a look at the business, a save-contact card, Meet Kenny with the family photo, The B-O-G Way, and trust.
 
-The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language. Privacy is at `/privacy/` and SMS terms are at `/sms-terms/`. Those pages are English only.
+The wording is in `lib/card-copy.ts`. Language chips and other interface labels (call, email, directory) are in `lib/content.ts`. The story and offers stay in English on every language. Privacy is at `/privacy/`, Terms (with the text message section) are at `/terms/`, and the text message terms alone are at `/sms-terms/`. Those pages are English only. Their business contact lives in `lib/legal.ts` and must match the A2P 10DLC registration; the home address may appear only on those pages.
 
 ## Develop
 

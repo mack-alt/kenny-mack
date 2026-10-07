@@ -425,6 +425,10 @@ export function LookB() {
                       <Link className={link} href="/privacy">
                         {part}
                       </Link>
+                    ) : part === "Terms" ? (
+                      <Link className={link} href="/terms">
+                        {part}
+                      </Link>
                     ) : part === "SMS Terms" ? (
                       <Link className={link} href="/sms-terms">
                         {part}
