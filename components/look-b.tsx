@@ -28,9 +28,14 @@ import {
   DEMO_CAPTION,
   DIRECTORY_URL,
   EMAIL,
+  FOUNDING_ANNUAL,
+  FOUNDING_ANNUAL_LABEL,
   FOUNDING_DETAIL,
+  FOUNDING_GUARANTEE,
+  FOUNDING_GUARANTEE_LABEL,
   FOUNDING_LABEL,
   FOUNDING_PRICE,
+  FOUNDING_RENEWAL,
   PHONE_DISPLAY,
   PHONE_TEL,
   ROLE_LINE,
@@ -310,6 +315,11 @@ export function LookB() {
                 <p className="text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_LABEL}</p>
                 <p className="mt-1 font-serif text-[1.65rem] leading-tight text-forest">{FOUNDING_PRICE}</p>
                 <p className="mt-2 text-base leading-relaxed text-ink">{FOUNDING_DETAIL}</p>
+                <p className="mt-4 text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_ANNUAL_LABEL}</p>
+                <p className="mt-1 text-base leading-relaxed text-ink">{FOUNDING_ANNUAL}</p>
+                <p className="mt-4 text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_GUARANTEE_LABEL}</p>
+                <p className="mt-1 text-base leading-relaxed text-ink">{FOUNDING_GUARANTEE}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/70">{FOUNDING_RENEWAL}</p>
               </div>
             </article>
           </div>
