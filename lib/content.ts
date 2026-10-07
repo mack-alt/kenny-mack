@@ -26,7 +26,16 @@ export const ROLE_LINE = "Founder, Blades of Grass";
 export const FOUNDING_LABEL = "Founding shop · first ten";
 export const FOUNDING_PRICE = "$297 a month plus tax, guaranteed for your first year.";
 export const FOUNDING_DETAIL =
-  "The full front desk for a shop, with calls and texts included. Month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
+  "The full front desk for your shop: your calls get answered as well as your texts, so customers aren't left waiting while your hands are busy. Calls and texts are included, it's month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
+export const FOUNDING_ANNUAL_LABEL = "Annual option";
+export const FOUNDING_ANNUAL =
+  "After your first month, you can choose $2,500 plus tax for the next full year, which saves $1,064 compared with paying monthly.";
+export const FOUNDING_GUARANTEE_LABEL = "First-month satisfaction guarantee";
+export const FOUNDING_GUARANTEE =
+  "If you're not happy in your first month, you get your money back or a credit toward another service. We'll ask for a quick chance to hear your feedback, but it's not required.";
+/** Renewal wording, verbatim from the final terms. */
+export const FOUNDING_RENEWAL =
+  "We'll give you at least 30 days' notice of your renewal rate before your founding monthly rate or prepaid annual term ends.";
 
 /**
  * Interface chrome only. The card’s story and offers stay in English
