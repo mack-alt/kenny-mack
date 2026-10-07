@@ -14,13 +14,13 @@ export default function TermsPage() {
   return (
     <LegalPage title="Terms">
       <p>
-        These terms cover this card and the text messages from {LEGAL_NAME}. By using this card or agreeing to
-        our texts, you agree to these terms.
+        These terms cover this card and the text messages from {LEGAL_NAME}. By using this card or agreeing to our
+        texts, you agree to these terms.
       </p>
       <LegalHeading>Paid services</LegalHeading>
       <p>
-        Prices, guarantees, cancellation terms, and responsibilities for paid Blades of Grass services are set
-        out in writing before service begins.
+        Prices, guarantees, cancellation terms, and responsibilities for paid Blades of Grass services are set out
+        in a separate written agreement before service begins.
       </p>
       <SmsSection headingId="sms" />
       <p>
@@ -40,8 +40,8 @@ export default function TermsPage() {
       </p>
       <LegalHeading>Changes</LegalHeading>
       <p>
-        If we change these terms, we will update this page and the date at the top. Questions about these terms
-        go to the contact listed under SMS support above.
+        If we change these terms, we will update this page and the dates at the top. Questions about these terms go
+        to the contact listed under SMS support above.
       </p>
     </LegalPage>
   );

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { LEGAL_UPDATED } from "@/lib/legal";
+import { LEGAL_EFFECTIVE, LEGAL_UPDATED } from "@/lib/legal";
 
 export const legalLink =
   "font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4";
@@ -19,7 +19,11 @@ export function LegalPage({
         <h1 className="mt-3 max-w-full text-balance font-serif text-[2rem] font-medium leading-tight text-forest sm:text-4xl">
           {title}
         </h1>
-        <p className="mt-3 text-base leading-relaxed text-bark">Last updated {LEGAL_UPDATED}</p>
+        <p className="mt-3 text-base leading-relaxed text-bark">
+          Effective date: {LEGAL_EFFECTIVE}
+          <br />
+          Last updated: {LEGAL_UPDATED}
+        </p>
         <div className="mt-6 space-y-4 text-lg leading-relaxed">{children}</div>
         <p className="mt-8">
           <Link

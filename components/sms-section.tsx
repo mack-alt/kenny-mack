@@ -12,23 +12,37 @@ export function SmsSection({ headingId = "sms" }: { headingId?: string }) {
         <strong>Program name:</strong> {SMS_PROGRAM}, from {LEGAL_NAME}.
       </p>
       <p>
-        <strong>Purpose:</strong> appointment and customer-service texts from Blades of Grass. These are replies
-        to people who call or text Blades of Grass, appointment and demo scheduling, and follow-up about services
-        they asked about.
+        <strong>Purpose:</strong> appointment and customer-service texts from Blades of Grass. That means replies to
+        your questions, scheduling, confirming, and changing appointments and demos, and follow-up about Blades of
+        Grass services you asked about. These texts may be sent using automated technology.
+      </p>
+      <p>
+        These terms cover texts Blades of Grass sends for its own business. If a shop uses the Blades of Grass front
+        desk, texts to that shop&apos;s customers are sent for that shop. Ask the shop about its own text terms.
       </p>
       <LegalHeading>How you opt in</LegalHeading>
+      <p>We text you only after you clearly say yes. You can say yes in either of these ways:</p>
+      <ul className="list-disc space-y-2 pl-6">
+        <li>
+          Check the unchecked box agreeing to texts on the chat form or the demo booking form on this card, and send
+          us your phone number.
+        </li>
+        <li>Text us first. We reply only about what you asked.</li>
+      </ul>
       <p>
-        You opt in by texting or calling us first, by entering your number on a form and checking an unchecked
-        consent box, or by giving your number in person and agreeing to receive texts. Agreeing to texts is not a
-        condition of buying anything.
+        When you check the box, you agree that {LEGAL_NAME} may send you the texts described above, including
+        automated texts, at the number you gave. Calling us does not sign you up for texts. Agreeing to texts is
+        never required to buy anything from Blades of Grass.
       </p>
       <LegalHeading>Frequency, rates, and opting out</LegalHeading>
       <p>Message frequency varies.</p>
       <p>Msg &amp; data rates may apply.</p>
       <p>Reply STOP to opt out, HELP for help.</p>
       <p>
-        After you reply STOP, we will send one text confirming you are opted out and no more texts after that.
-        You can text START to opt back in.
+        You can also opt out by replying QUIT, END, CANCEL, UNSUBSCRIBE, REVOKE, or OPT OUT, or by telling us in any
+        other reasonable way, such as by email or a phone call. We honor every opt-out request promptly, and always
+        within 10 business days. After you opt out, you may get one last text confirming it, and then we stop
+        texting you. To get our texts again later, reply START.
       </p>
       <p>Carriers are not liable for delayed or undelivered messages.</p>
       <LegalHeading>SMS support</LegalHeading>
