@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { DEMO_CAPTIONS_SRC, DEMO_CAPTION, DEMO_POSTER_SRC, DEMO_VIDEO_SRC } from "@/lib/content";
+import { DEMO_CAPTION, DEMO_POSTER_SRC, DEMO_VIDEO_SRC, DEMO_VIDEO_VI_SRC } from "@/lib/content";
 
 const REDUCE_QUERY = "(prefers-reduced-motion: reduce)";
 
 type MotionMode = "unknown" | "ok" | "reduce";
+
+type VideoLang = "en" | "vi";
+
+const VIDEO_OPTIONS: { id: VideoLang; label: string; src: string }[] = [
+  { id: "en", label: "English", src: DEMO_VIDEO_SRC },
+  { id: "vi", label: "Tiếng Việt", src: DEMO_VIDEO_VI_SRC },
+];
 
 function subscribeMotion(onStoreChange: () => void) {
   const media = window.matchMedia(REDUCE_QUERY);
@@ -30,6 +37,8 @@ export function DemoReel({ className = "" }: { className?: string }) {
   const [paused, setPaused] = useState(true);
   const [blocked, setBlocked] = useState(false);
   const [started, setStarted] = useState(false);
+  const [videoLang, setVideoLang] = useState<VideoLang>("en");
+  const resumeRef = useRef<{ time: number; play: boolean } | null>(null);
   const reduce = mode === "reduce";
 
   useEffect(() => {
@@ -119,7 +128,37 @@ export function DemoReel({ className = "" }: { className?: string }) {
     });
   }
 
+  function chooseVideo(next: VideoLang) {
+    const video = videoRef.current;
+    if (next === videoLang || !video) return;
+    resumeRef.current = { time: video.currentTime, play: !video.paused && !video.ended };
+    setVideoLang(next);
+  }
+
+  /** After a language swap, seek to the saved spot and keep playing if it was playing. */
+  function onLoadedMetadata() {
+    const video = videoRef.current;
+    const resume = resumeRef.current;
+    if (!video || !resume) return;
+    resumeRef.current = null;
+    const end = Number.isFinite(video.duration) ? Math.max(video.duration - 0.25, 0) : resume.time;
+    video.currentTime = Math.min(resume.time, end);
+    if (!resume.play) {
+      // Stop the autoplay attribute from restarting a video that was paused.
+      video.pause();
+      return;
+    }
+    const pending = video.play();
+    if (!pending) return;
+    pending.then(() => setBlocked(false)).catch(() => {
+      allowPlayRef.current = false;
+      setBlocked(true);
+      setPaused(true);
+    });
+  }
+
   const showPlay = reduce || blocked;
+  const videoSrc = VIDEO_OPTIONS.find((option) => option.id === videoLang)?.src ?? DEMO_VIDEO_SRC;
   const coverWithPoster = !started || (showPlay && paused);
 
   return (
@@ -139,10 +178,9 @@ export function DemoReel({ className = "" }: { className?: string }) {
             width={720}
             height={1280}
             aria-label={DEMO_CAPTION}
-          >
-            <source src={DEMO_VIDEO_SRC} type="video/mp4" />
-            <track kind="captions" srcLang="en" label="English" src={DEMO_CAPTIONS_SRC} />
-          </video>
+            src={videoSrc}
+            onLoadedMetadata={onLoadedMetadata}
+          />
           {/* Native img keeps /kenny-mack on the URL; next/image dropped basePath in the export. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -164,6 +202,31 @@ export function DemoReel({ className = "" }: { className?: string }) {
           ) : null}
         </div>
         <span className="phone-home" aria-hidden="true" />
+      </div>
+      <div
+        role="group"
+        aria-label="Video language"
+        className="mt-2 grid grid-cols-2 gap-1 rounded-2xl border border-forest/10 bg-paper p-1 shadow-[0_10px_24px_-20px_rgba(27,67,50,0.8)]"
+      >
+        {VIDEO_OPTIONS.map((option) => {
+          const selected = videoLang === option.id;
+          return (
+            <button
+              key={option.id}
+              type="button"
+              lang={option.id}
+              translate="no"
+              aria-pressed={selected}
+              aria-label={`Video: ${option.label}`}
+              onClick={() => chooseVideo(option.id)}
+              className={`min-h-11 min-w-0 rounded-xl px-1 text-center text-[0.85rem] font-semibold leading-tight transition-[background-color,color,scale] duration-200 ${
+                selected ? "bg-forest text-paper" : "text-ink hover:bg-linen"
+              }`}
+            >
+              {option.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
