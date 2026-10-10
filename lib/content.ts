@@ -15,9 +15,10 @@ export const CARD_URL = "https://mack-alt.github.io/kenny-mack/";
 export const PHOTO_SRC = "/kenny-mack/kenny-family.jpg";
 export const VCARD_HREF = "/kenny-mack/kenny-mack.vcf";
 export const QR_SRC = "/kenny-mack/contact-qr.svg";
-export const DEMO_VIDEO_SRC = "/kenny-mack/bog-stylist-demo.mp4";
-export const DEMO_POSTER_SRC = "/kenny-mack/bog-stylist-demo-poster.jpg";
-export const DEMO_CAPTIONS_SRC = "/kenny-mack/bog-stylist-demo.vtt";
+/** Explainer cuts. English is the default. Captions are burned into both. */
+export const DEMO_VIDEO_SRC = "/kenny-mack/bog-explainer-en.mp4";
+export const DEMO_VIDEO_VI_SRC = "/kenny-mack/bog-explainer-vi.mp4";
+export const DEMO_POSTER_SRC = "/kenny-mack/bog-explainer-poster.jpg";
 /** Caption taken from the demo’s own words. */
 export const DEMO_CAPTION = "From missed call to booked.";
 
