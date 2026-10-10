@@ -9,7 +9,7 @@ export const HERO_LINES = ["YOU TAKE CARE OF THEM.", "WE'LL GET THIS ONE READY."
 export const HERO_ATTENTION = "Your attention belongs with the customer you're serving.";
 
 export const HERO_BODY =
-  "Blades of Grass (B-O-G) helps handle the calls, messages, questions, and follow-up happening around you — so your next customer can be ready when you are.";
+  "Blades of Grass (B-O-G) helps answer the calls and questions coming in around you — so your next customer can be ready when you are.";
 
 export const HERO_PATH = "Find you. Reach you. Book your service.";
 
@@ -32,9 +32,9 @@ export const HELP = [
     name: "FRONT DESK",
     paragraphs: [
       "Enjoy the customer in front of you. We'll get the next one ready for you.",
-      "Calls come in. Texts arrive. People have questions.",
+      "Calls come in. People have questions.",
       "You shouldn't have to interrupt the person in front of you every time someone else reaches out.",
-      "Front Desk is your shop's own front desk. It answers your calls and texts in your shop's name while you work, and books the next customer.",
+      "Front Desk is your shop's own front desk. It answers your calls in your shop's name while you work, and books the next customer.",
       "Think of a great restaurant: When the chef is ready to cook, the host has already welcomed the guest, made them comfortable, and prepared them to be served.",
       "That's what we do for your next customer.",
       "You take care of them. We'll get this one ready.",
@@ -91,7 +91,7 @@ export const WAY_HEADING = "THE B-O-G WAY";
 
 export const WAY = [
   "FIND ME™ — Help them discover you.",
-  "FRONT DESK — Answer your calls and texts in your shop's name, and book the next customer while you work.",
+  "FRONT DESK — Answer your calls in your shop's name, and book the next customer while you work.",
   "BRING ME MORE™ — Create more opportunities when you're ready to grow.",
 ] as const;
 

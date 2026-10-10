@@ -27,7 +27,7 @@ export const ROLE_LINE = "Founder, Blades of Grass";
 export const FOUNDING_LABEL = "Founding shop · first ten";
 export const FOUNDING_PRICE = "$297 a month plus tax, guaranteed for your first year.";
 export const FOUNDING_DETAIL =
-  "The full front desk for your shop: your calls get answered as well as your texts, so customers aren't left waiting while your hands are busy. Calls and texts are included, it's month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
+  "The full front desk for your shop: your calls get answered, so customers aren't left waiting while your hands are busy. Calls are included, it's month to month, and billing starts when your line goes live. Texting comes later as a free bonus, once your shop's texting line is approved. Free with it: a directory listing and a one-page shop website.";
 export const FOUNDING_ANNUAL_LABEL = "Annual option";
 export const FOUNDING_ANNUAL =
   "After your first month, you can choose $2,500 plus tax for the next full year, which saves $1,064 compared with paying monthly.";
