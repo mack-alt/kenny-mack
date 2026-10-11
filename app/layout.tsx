@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mack-alt.github.io/kenny-mack"),
   title: "Kenny Mack · Blades of Grass",
   description:
-    "B-O-G helps handle the calls, messages, questions, and follow-up happening around you — so your next customer can be ready when you are.",
+    "B-O-G helps answer the calls and questions coming in around you — so your next customer can be ready when you are.",
   applicationName: "Kenny Mack · Blades of Grass",
 };
 

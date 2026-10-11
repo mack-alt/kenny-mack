@@ -233,7 +233,7 @@ export function LookB() {
           </div>
           <ul className="mx-auto grid w-full max-w-6xl gap-3 px-4 py-5 sm:px-6 lg:grid-cols-3 lg:px-8">
             {HELP.map((offer) => {
-              const forest = offer.name === "ANSWER FOR ME™";
+              const forest = offer.name === "FRONT DESK";
               return (
                 <li
                   key={offer.name}
