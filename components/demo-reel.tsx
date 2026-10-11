@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { DEMO_CAPTION, DEMO_POSTER_SRC, DEMO_VIDEO_SRC, DEMO_VIDEO_VI_SRC } from "@/lib/content";
+import { isTracked, trackOpened, trackUnmuted, trackWatched } from "@/lib/track";
 
 const REDUCE_QUERY = "(prefers-reduced-motion: reduce)";
 
@@ -106,10 +107,36 @@ export function DemoReel({ className = "" }: { className?: string }) {
     };
   }, [mode]);
 
+  /* Prospect tracking. Does nothing unless the link carries a valid ?ref= code. */
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isTracked()) return;
+    trackOpened();
+    let last = 0;
+    const onTime = () => {
+      const duration = video.duration;
+      if (!Number.isFinite(duration) || duration <= 0) return;
+      const now = video.currentTime;
+      // The video loops, so "ended" never fires. Count the end when playback
+      // reaches the last half second or wraps around from the end.
+      const wrapped = last - now > 1 && last >= duration - 1.5;
+      last = now;
+      trackWatched(wrapped || now >= duration - 0.5 ? 100 : (now / duration) * 100);
+    };
+    const onEnded = () => trackWatched(100);
+    video.addEventListener("timeupdate", onTime);
+    video.addEventListener("ended", onEnded);
+    return () => {
+      video.removeEventListener("timeupdate", onTime);
+      video.removeEventListener("ended", onEnded);
+    };
+  }, []);
+
   function toggleSound() {
     const video = videoRef.current;
     const next = !(video ? video.muted : muted);
     if (video) video.muted = next;
+    if (!next) trackUnmuted();
     setMuted(next);
   }
 
