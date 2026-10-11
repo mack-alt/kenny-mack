@@ -79,7 +79,7 @@ export const MEET_HEADING = "MEET KENNY";
 export const MEET = [
   "Hi, I'm Kenny, founder of Blades of Grass.",
   "I spend time with local business owners and see what actually happens while they're working.",
-  "There's already a real person in front of you who deserves your attention — while another person may be calling, texting, or trying to book.",
+  "There's already a real person in front of you who deserves your attention — while another person may be calling or trying to book.",
   "I built B-O-G to help those two things work together.",
   "I believe good technology should support human relationships, not interrupt them.",
   "I'm also Dad to Prana and Sergen, and building something useful, human, and my own matters deeply to me.",
