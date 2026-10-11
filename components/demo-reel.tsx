@@ -9,9 +9,12 @@ type MotionMode = "unknown" | "ok" | "reduce";
 
 type VideoLang = "en" | "vi";
 
+/** Set to true to bring back the English / Tiếng Việt chips and the Vietnamese cut. */
+const SHOW_VI_VIDEO = false;
+
 const VIDEO_OPTIONS: { id: VideoLang; label: string; src: string }[] = [
   { id: "en", label: "English", src: DEMO_VIDEO_SRC },
-  { id: "vi", label: "Tiếng Việt", src: DEMO_VIDEO_VI_SRC },
+  ...(SHOW_VI_VIDEO ? [{ id: "vi" as const, label: "Tiếng Việt", src: DEMO_VIDEO_VI_SRC }] : []),
 ];
 
 function subscribeMotion(onStoreChange: () => void) {
@@ -203,31 +206,33 @@ export function DemoReel({ className = "" }: { className?: string }) {
         </div>
         <span className="phone-home" aria-hidden="true" />
       </div>
-      <div
-        role="group"
-        aria-label="Video language"
-        className="mt-2 grid grid-cols-2 gap-1 rounded-2xl border border-forest/10 bg-paper p-1 shadow-[0_10px_24px_-20px_rgba(27,67,50,0.8)]"
-      >
-        {VIDEO_OPTIONS.map((option) => {
-          const selected = videoLang === option.id;
-          return (
-            <button
-              key={option.id}
-              type="button"
-              lang={option.id}
-              translate="no"
-              aria-pressed={selected}
-              aria-label={`Video: ${option.label}`}
-              onClick={() => chooseVideo(option.id)}
-              className={`min-h-11 min-w-0 rounded-xl px-1 text-center text-[0.85rem] font-semibold leading-tight transition-[background-color,color,scale] duration-200 ${
-                selected ? "bg-forest text-paper" : "text-ink hover:bg-linen"
-              }`}
-            >
-              {option.label}
-            </button>
-          );
-        })}
-      </div>
+      {VIDEO_OPTIONS.length > 1 ? (
+        <div
+          role="group"
+          aria-label="Video language"
+          className="mt-2 grid grid-cols-2 gap-1 rounded-2xl border border-forest/10 bg-paper p-1 shadow-[0_10px_24px_-20px_rgba(27,67,50,0.8)]"
+        >
+          {VIDEO_OPTIONS.map((option) => {
+            const selected = videoLang === option.id;
+            return (
+              <button
+                key={option.id}
+                type="button"
+                lang={option.id}
+                translate="no"
+                aria-pressed={selected}
+                aria-label={`Video: ${option.label}`}
+                onClick={() => chooseVideo(option.id)}
+                className={`min-h-11 min-w-0 rounded-xl px-1 text-center text-[0.85rem] font-semibold leading-tight transition-[background-color,color,scale] duration-200 ${
+                  selected ? "bg-forest text-paper" : "text-ink hover:bg-linen"
+                }`}
+              >
+                {option.label}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }
