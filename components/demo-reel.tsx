@@ -10,7 +10,7 @@ type MotionMode = "unknown" | "ok" | "reduce";
 type VideoLang = "en" | "vi";
 
 /** Set to true to bring back the English / Tiếng Việt chips and the Vietnamese cut. */
-const SHOW_VI_VIDEO = false;
+const SHOW_VI_VIDEO = true;
 
 const VIDEO_OPTIONS: { id: VideoLang; label: string; src: string }[] = [
   { id: "en", label: "English", src: DEMO_VIDEO_SRC },
