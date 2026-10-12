@@ -17,7 +17,7 @@ export const VCARD_HREF = "/kenny-mack/kenny-mack.vcf";
 export const QR_SRC = "/kenny-mack/contact-qr.svg";
 /** Explainer cuts. English is the default. Captions are burned into both. */
 export const DEMO_VIDEO_SRC = "/kenny-mack/bog-explainer-en-v4.mp4";
-export const DEMO_VIDEO_VI_SRC = "/kenny-mack/bog-explainer-vi.mp4";
+export const DEMO_VIDEO_VI_SRC = "/kenny-mack/bog-explainer-vi-v4-b.mp4";
 export const DEMO_POSTER_SRC = "/kenny-mack/bog-explainer-poster-v4.jpg";
 /** Caption taken from the demo’s own words. */
 export const DEMO_CAPTION = "From missed call to booked.";
