@@ -33,7 +33,7 @@ export const FOUNDING_ANNUAL =
   "After your first month, you can choose $2,500 plus tax for the next full year, which saves $1,064 compared with paying monthly.";
 export const FOUNDING_GUARANTEE_LABEL = "First-month satisfaction guarantee";
 export const FOUNDING_GUARANTEE =
-  "If you're not happy in your first month, you get your money back or a credit toward another service. We'll ask for a quick chance to hear your feedback, but it's not required.";
+  "Try it for your first month. If it isn't working for you, tell us and you get your money back or a credit toward another service, no hard feelings. Until then, we keep tuning it until it's right for your shop.";
 /** Renewal wording, verbatim from the final terms. */
 export const FOUNDING_RENEWAL =
   "We'll give you at least 30 days' notice of your renewal rate before your founding monthly rate or prepaid annual term ends.";
