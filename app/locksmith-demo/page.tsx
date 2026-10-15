@@ -56,17 +56,7 @@ export default function LocksmithDemoPage() {
       </header>
 
       <main className="mx-auto w-full max-w-3xl px-5 pt-6 pb-16 sm:px-6">
-        <section className="text-center">
-          <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase">For locksmith shops</p>
-          <h1 className="mt-2 font-serif text-4xl leading-tight text-forest text-balance sm:text-5xl">
-            The front desk that answers your calls while you&rsquo;re on the job.
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-pretty">
-            Every missed call can be a lockout job that goes to the next shop. B-O-G picks up, takes the details, and sends the job to you.
-          </p>
-        </section>
-
-        <section className="mt-6 flex justify-center">
+        <section className="flex justify-center">
           <video
             className="w-full max-w-[22rem] rounded-3xl border border-forest/15 bg-forest shadow-lg"
             src="/kenny-mack/locksmith-demo.mp4"
@@ -77,6 +67,16 @@ export default function LocksmithDemoPage() {
             width={1080}
             height={1920}
           />
+        </section>
+
+        <section className="mt-6 text-center">
+          <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase">For locksmith shops</p>
+          <h1 className="mt-2 font-serif text-4xl leading-tight text-forest text-balance sm:text-5xl">
+            The front desk that answers your calls while you&rsquo;re on the job.
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-pretty">
+            Every missed call can be a lockout job that goes to the next shop. B-O-G picks up, takes the details, and sends the job to you.
+          </p>
         </section>
 
         <section className="mt-6 flex flex-col items-center gap-2 text-center">
