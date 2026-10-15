@@ -15,7 +15,7 @@ const STEPS = [
   "A caller is locked out. You're on a job and can't pick up.",
   "The B-O-G front desk answers in your shop's name.",
   "It takes the caller's name, location, job type and how urgent it is.",
-  "The job details go straight to you, so you can dispatch or call back.",
+  "You get an alert with the job details right away, so you can call back.",
 ];
 
 const JOBS = ["Home lockout", "Car lockout", "Rekey", "Lock change", "Emergency"];
@@ -120,7 +120,7 @@ export default function LocksmithDemoPage() {
         <section className="mt-10 rounded-3xl border border-straw/60 bg-paper px-5 py-5 text-center">
           <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase">Our promise</p>
           <p className="mt-2 font-serif text-xl leading-snug text-forest">
-            If it isn&rsquo;t working for you in the first 30 days, we&rsquo;ll refund your first month&rsquo;s fee.
+            Try it for 30 days. If it isn&rsquo;t working for you, tell us and we&rsquo;ll refund your first month, no hard feelings. Until then, we keep tuning it until it&rsquo;s right for your shop.
           </p>
         </section>
 

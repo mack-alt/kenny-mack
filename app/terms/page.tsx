@@ -19,7 +19,7 @@ export default function TermsPage() {
       </p>
       <LegalHeading>Paid services</LegalHeading>
       <p>
-        Prices, guarantees, cancellation terms, and responsibilities for paid Blades of Grass services are set out
+        Prices, refund terms, cancellation terms, and responsibilities for paid Blades of Grass services are set out
         in a separate written agreement before service begins.
       </p>
       <SmsSection headingId="sms" />
