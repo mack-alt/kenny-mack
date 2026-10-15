@@ -25,13 +25,13 @@ export const DEMO_CAPTION = "From missed call to booked.";
 /** English facts. The story in `lib/card-copy.ts` stays as written. */
 export const ROLE_LINE = "Founder, Blades of Grass";
 export const FOUNDING_LABEL = "Founding shop · first ten";
-export const FOUNDING_PRICE = "$297 a month plus tax, guaranteed for your first year.";
+export const FOUNDING_PRICE = "$297 a month plus tax, locked in for your first year.";
 export const FOUNDING_DETAIL =
   "The full front desk for your shop: your calls get answered, so customers aren't left waiting while your hands are busy. Calls are included, it's month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
 export const FOUNDING_ANNUAL_LABEL = "Annual option";
 export const FOUNDING_ANNUAL =
   "After your first month, you can choose $2,500 plus tax for the next full year, which saves $1,064 compared with paying monthly.";
-export const FOUNDING_GUARANTEE_LABEL = "First-month satisfaction guarantee";
+export const FOUNDING_GUARANTEE_LABEL = "First-month refund";
 export const FOUNDING_GUARANTEE =
   "Try it for your first month. If it isn't working for you, tell us and you get your money back or a credit toward another service, no hard feelings. Until then, we keep tuning it until it's right for your shop.";
 /** Renewal wording, verbatim from the final terms. */

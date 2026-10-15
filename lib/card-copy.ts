@@ -104,7 +104,7 @@ export const TRUST = [
   "Listings should be accurate and easy to correct.",
   "Automated communication should be used responsibly and with appropriate consent.",
   "Multilingual support should be represented accurately.",
-  "Paid services, guarantees, cancellation terms, and responsibilities should be clear before service begins.",
+  "Paid services, refund terms, cancellation terms, and responsibilities should be clear before service begins.",
 ] as const;
 
 export const TRUST_FOOTER = ["Privacy", "Terms", "SMS Terms", "Service Agreement", "Contact"] as const;
