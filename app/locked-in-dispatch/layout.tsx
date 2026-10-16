@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     template: "%s · Locked In Dispatch",
   },
   description:
-    "Locked In Dispatch is a virtual front desk for locksmith shops from Blades of Grass Marketing. We answer calls, take the job details, and alert your shop.",
+    "Locked In Dispatch, a trade name of Blades of Grass Marketing in Burien, WA, is a virtual front desk for locksmith shops.",
   applicationName: "Locked In Dispatch",
   openGraph: {
     title: "Locked In Dispatch",
     description:
-      "A virtual front desk for locksmith shops. Locked In Launch, Locked In Trust, and Locked In Standards and Proof.",
+      "Locked In Dispatch, a trade name of Blades of Grass Marketing in Burien, WA. A virtual front desk for locksmith shops.",
     siteName: "Locked In Dispatch",
     type: "website",
   },

@@ -257,6 +257,21 @@
   height: auto;
 }
 
+.lid-trade {
+  max-width: 68ch;
+  margin: 1rem 0 0;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.lid-phone-card .lid-kicker {
+  margin-top: 1.15rem;
+}
+
+.lid-phone-card .lid-kicker:first-child {
+  margin-top: 0;
+}
+
 .lid-offer {
   max-width: 68ch;
   margin: 1.15rem 0 0;
@@ -655,10 +670,10 @@
 
 .lid-footer-brand {
   margin: 0;
-  font-family: var(--font-lid-display), "Arial Narrow", sans-serif;
-  font-size: 1.35rem;
+  max-width: 36rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  line-height: 1.35;
 }
 
 .lid-footer-company,
@@ -677,8 +692,9 @@
 
 .lid-footer-phone {
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
   text-decoration: none;
 }
 

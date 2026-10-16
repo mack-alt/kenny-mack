@@ -6,40 +6,39 @@
 
 export const COMPANY = "Blades of Grass Marketing";
 export const BRAND = "Locked In Dispatch";
+export const TRADE_LINE = "Locked In Dispatch, a trade name of Blades of Grass Marketing";
+export const LOCATION = "Burien, WA";
+export const EMAIL = "mac@lovebog.com";
+export const PRODUCT = "LockedIn Front Desk";
 
 export const DEMO_PHONE_DISPLAY = "206-743-6296";
 export const DEMO_PHONE_TEL = "+12067436296";
 
-/** Same file the locksmith demo page plays. Screen recording, no person on camera. */
-export const DEMO_VIDEO_SRC = "/kenny-mack/locksmith-demo.mp4";
-export const DEMO_POSTER_SRC = "/kenny-mack/locksmith-demo-poster.jpg";
-
 export const OFFER_SENTENCE =
   "Try it for 30 days. If it isn't working for you, tell us and we'll refund your first month, no hard feelings.";
 
-export const AI_ANSWER =
-  "Yes. We use automated voice technology as part of a virtual front desk set up for your shop. Call the demo and judge it yourself.";
+export const AI_ANSWER = "We are way more than AI. And yes we use AI.";
 
 export const HOME_ANSWER =
-  "Locked In Dispatch is a virtual front desk for locksmith shops. We answer calls in your shop's name, take the job details, and send you an alert so you can call the customer back. Blades of Grass Marketing runs the service.";
+  "Locked In Dispatch is a virtual front desk for locksmith shops. We answer calls in your shop's name, take the job details, and send you an alert so you can call the customer back. Locked In Dispatch is a trade name of Blades of Grass Marketing in Burien, WA.";
 
 export const PATH_ANSWER =
   "Days 1 through 14 are Locked In Launch. Days 15 through 45 are Locked In Trust. The tech hand-off is in final testing. Day 46 onward is Locked In Standards and Proof, with checks, reports, and a monthly review. Some live views are coming soon.";
 
 export const COMPARE_ANSWER =
-  "Starter covers up to 10 techs. Growth covers up to 25 techs. Both use the same three steps, the same reports, and the same monthly review. A tech past the plan count is $45/mo. The setup fee is not refundable.";
+  "LockedIn Front Desk Starter covers up to 10 techs. Growth covers up to 25 techs. Both use the same three steps, the same reports, and the same monthly review. A tech over the tier is $45/mo. The setup fee is not refundable.";
 
 export const CALL_FLOW_ANSWER =
   "The virtual front desk answers in your shop's name. It gives the recorded-call notice, then asks for the caller's name, location, job type, and urgency. It never quotes a price. It says the job is booked only after the booking goes through.";
-
-export const VIDEO_ANSWER =
-  "This screen recording shows the locksmith call flow from the shop's side: a missed call, the virtual front desk taking the details, and a job alert. No person is on camera. Call the demo line and judge the voice for yourself.";
 
 export const PROTECT_ANSWER =
   "Every call opens with a recorded-call notice. The virtual front desk never quotes prices, and it says a job is booked only after the booking goes through. Lines have spending limits. We log our own test calls so we hear what callers hear.";
 
 export const PRICING_ANSWER =
-  "Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. Each extra tech is $45/mo. The setup fee is not refundable.";
+  "LockedIn Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. A tech over the tier is $45/mo. Pay by Zelle. The setup fee is not refundable.";
+
+export const PAY_ANSWER =
+  "Pay LockedIn Front Desk by Zelle to 206-743-6296. The Zelle name is Blades of Grass Marketing. The setup fee is paid once. The monthly fee follows the tier, plus $45/mo for each tech over that tier.";
 
 export const OFFER_ANSWER = `${OFFER_SENTENCE} The setup fee is not part of that refund. Call the demo line before you decide.`;
 
@@ -83,13 +82,13 @@ export const INCLUDED_ANSWER =
   "Both plans include Locked In Launch, Locked In Trust, and Locked In Standards and Proof. Reports are weekly for six weeks after go-live, then monthly, or on a frequency you choose. A monthly account review runs 15 to 30 minutes. Tech hand-off is in final testing.";
 
 export const DEMO_BAND_ANSWER =
-  "Call the demo line and judge the virtual front desk yourself. The number is 206-743-6296. You can also leave a note on the contact page. That form is a placeholder and does not send.";
+  "Call the demo line and judge the virtual front desk yourself. The number is 206-743-6296. You can also email mac@lovebog.com. The contact form is a placeholder and does not send.";
 
 export const CONTACT_ANSWER =
-  "Call the demo line at 206-743-6296 and hear the virtual front desk yourself. The form on this page is a placeholder. It does not send a message. If you want a shop set up, call us and we will walk through Locked In Launch with you.";
+  "Call the demo line at 206-743-6296 or email mac@lovebog.com. The form on this page is a placeholder and does not send. Locked In Dispatch, a trade name of Blades of Grass Marketing, is in Burien, WA.";
 
 export const FAQ_PAGE_ANSWER =
-  "These answers cover what the virtual front desk does, what is in final testing, what is coming soon, and what you pay. Read them here, then call the demo line and judge the voice yourself. Locked In Dispatch is a service of Blades of Grass Marketing.";
+  "These answers cover what the virtual front desk does, what is in final testing, what is coming soon, and what you pay. Read them here, then call the demo line or email mac@lovebog.com. Locked In Dispatch is a trade name of Blades of Grass Marketing.";
 
 export const NAV = [
   { href: "/locked-in-dispatch/how-it-works", label: "How it works" },
@@ -189,7 +188,7 @@ export const PRICE_ROWS = [
   { label: "Setup fee", values: ["$1,500", "$3,000"] },
   { label: "Monthly", values: ["$468/mo", "$929/mo"] },
   { label: "Techs included", values: ["Up to 10", "Up to 25"] },
-  { label: "Each extra tech", values: ["$45/mo", "$45/mo"] },
+  { label: "Tech over the tier", values: ["$45/mo", "$45/mo"] },
 ];
 
 export const FAQ: { question: string; answer: string }[] = [
@@ -202,7 +201,7 @@ export const FAQ: { question: string; answer: string }[] = [
   {
     question: "Who operates Locked In Dispatch?",
     answer:
-      "Locked In Dispatch is a service of Blades of Grass Marketing. On the phone and on this site, we speak as Locked In Dispatch.",
+      "Locked In Dispatch, a trade name of Blades of Grass Marketing, is in Burien, WA. On the phone and on this site, we speak as Locked In Dispatch.",
   },
   {
     question: "What are the three steps?",
@@ -275,9 +274,13 @@ export const FAQ: { question: string; answer: string }[] = [
       "Fast accepts, clean hand-offs, average response time, and honest status updates. The scoreboard is part of Locked In Trust and is in final testing. A live view of it is coming soon.",
   },
   {
-    question: "What does it cost?",
+    question: "What does LockedIn Front Desk cost?",
     answer:
-      "Starter is a $1,500 setup and $468 a month for up to 10 techs. Growth is a $3,000 setup and $929 a month for up to 25 techs. Each extra tech is $45 a month. The setup fee is not refundable.",
+      "LockedIn Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. Each tech over the tier is $45/mo. The setup fee is not refundable.",
+  },
+  {
+    question: "How do I pay?",
+    answer: "Pay by Zelle to 206-743-6296. The Zelle name is Blades of Grass Marketing.",
   },
   {
     question: "Can I get the first month back?",
@@ -290,6 +293,7 @@ export const FAQ: { question: string; answer: string }[] = [
   },
   {
     question: "How do I hear a demo?",
-    answer: "Call 206-743-6296. The contact form on this site is a placeholder and does not send.",
+    answer:
+      "Call 206-743-6296 or email mac@lovebog.com. The contact form on this site is a placeholder and does not send.",
   },
 ];
