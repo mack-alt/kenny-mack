@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "LockedIn Front Desk Starter is $1,500 to set up and $468/mo for up to 10 techs. Growth is $3,000 to set up and $929/mo for up to 25 techs. Each tech over the tier is $45/mo. Pay by Zelle.",
+    "Locked In Front Desk Starter is $1,500 to set up and $468/mo for up to 10 techs. Growth is $3,000 to set up and $929/mo for up to 25 techs. Each tech over the tier is $45/mo. Pay by Zelle.",
 };
 
 const INCLUDED = [
@@ -35,7 +35,7 @@ export default function PricingPage() {
     <>
       <PageHero
         kicker={PRODUCT}
-        title="What does LockedIn Front Desk cost?"
+        title="What does Locked In Front Desk cost?"
         answer={PRICING_ANSWER}
         trail={
           <p className="lid-crumb">
@@ -73,7 +73,7 @@ export default function PricingPage() {
         </div>
       </Section>
 
-      <Section id="payment" title="How do I pay for LockedIn Front Desk?" answer={PAY_ANSWER}>
+      <Section id="payment" title="How do I pay for Locked In Front Desk?" answer={PAY_ANSWER}>
         <p className="lid-offer">
           Zelle {DEMO_PHONE_DISPLAY}
           <br />

@@ -9,10 +9,15 @@ export const BRAND = "Locked In Dispatch";
 export const TRADE_LINE = "Locked In Dispatch, a trade name of Blades of Grass Marketing";
 export const LOCATION = "Burien, WA";
 export const EMAIL = "mac@lovebog.com";
-export const PRODUCT = "LockedIn Front Desk";
+export const PRODUCT = "Locked In Front Desk";
 
 export const DEMO_PHONE_DISPLAY = "206-743-6296";
 export const DEMO_PHONE_TEL = "+12067436296";
+
+const MEDIA = "/kenny-mack/locked-in-dispatch/media";
+export const HERO_VIDEO_SRC = `${MEDIA}/lid_closer_hero_v1.mp4`;
+export const HERO_VIDEO_POSTER = `${MEDIA}/lid_closer_hero_v1_poster.jpg`;
+export const HERO_VIDEO_CAPTIONS = `${MEDIA}/lid_closer_hero_v1.vtt`;
 
 export const OFFER_SENTENCE =
   "Try it for 30 days. If it isn't working for you, tell us and we'll refund your first month, no hard feelings.";
@@ -20,13 +25,41 @@ export const OFFER_SENTENCE =
 export const AI_ANSWER = "We are way more than AI. And yes we use AI.";
 
 export const HOME_ANSWER =
-  "Locked In Dispatch is a virtual front desk for locksmith shops. We answer calls in your shop's name, take the job details, and send you an alert so you can call the customer back. Locked In Dispatch is a trade name of Blades of Grass Marketing in Burien, WA.";
+  "Yes. We answer in your shop's name so the job doesn't go to the next locksmith on Google. You stay on the work in front of you. The virtual front desk takes the call, and your shop gets the details so you can call the customer back.";
+
+export const SHOP_ANSWER =
+  "You're on a job and the phone rings out. You're under a dash or on a ladder, and you can't pick up. The customer doesn't wait. They call the next shop, and that job is gone before you get back to the van.";
+
+export const TRIED_ANSWER =
+  "Voicemail, and lockout callers don't leave messages. Forwarding to your cell, and you can't answer mid-job. Answering services that fumble the job details or feel like a call center. None of those keep the job with your shop while your hands are full.";
+
+export const HANDLED_ANSWER =
+  "You finish the job in front of you. The next one is already waiting, with the caller's name, location, job type, and urgency. You get plain reports, and you can check our work. The virtual front desk answered in your shop's name while you stayed on the job.";
+
+export const CONCERNS_ANSWER =
+  "A few questions come up before an owner says yes. The virtual front desk never quotes a price. A job is booked only after the booking goes through. Calls open with a recorded-call notice. You can hear how we test, and the first month can be refunded.";
+
+export const PRICE_QUOTE_ANSWER =
+  "No. The virtual front desk never quotes a price. During Locked In Launch we map your pricing menu so we understand the work, and we still do not give a price on the call. The caller hears the job details taken down, not a number.";
+
+export const BOOKED_ANSWER =
+  "A job is called booked only after the booking goes through. If it has not gone through, the virtual front desk does not say it is booked. We would rather pause than tell a caller something that is not true yet.";
+
+export const REFUND_ANSWER = `${OFFER_SENTENCE} The setup fee is not part of that refund. Call the demo line before you decide.`;
+
+export const REINFORCE_LINE =
+  "Calling the demo line is the smart first move: you hear exactly what your callers would hear, with nothing to sign.";
+
+export const EMAIL_LINE = `You can also email ${EMAIL}.`;
+
+export const HEAR_ANSWER =
+  "Call the demo line and hear the virtual front desk the way your callers would. The number is 206-743-6296. You can also email mac@lovebog.com. The contact form is a placeholder and does not send. Hear it before you decide.";
 
 export const PATH_ANSWER =
   "Days 1 through 14 are Locked In Launch. Days 15 through 45 are Locked In Trust. The tech hand-off is in final testing. Day 46 onward is Locked In Standards and Proof, with checks, reports, and a monthly review. Some live views are coming soon.";
 
 export const COMPARE_ANSWER =
-  "LockedIn Front Desk Starter covers up to 10 techs. Growth covers up to 25 techs. Both use the same three steps, the same reports, and the same monthly review. A tech over the tier is $45/mo. The setup fee is not refundable.";
+  "Locked In Front Desk Starter covers up to 10 techs. Growth covers up to 25 techs. Both use the same three steps, the same reports, and the same monthly review. A tech over the tier is $45/mo. The setup fee is not refundable.";
 
 export const CALL_FLOW_ANSWER =
   "The virtual front desk answers in your shop's name. It gives the recorded-call notice, then asks for the caller's name, location, job type, and urgency. It never quotes a price. It says the job is booked only after the booking goes through.";
@@ -35,10 +68,10 @@ export const PROTECT_ANSWER =
   "Every call opens with a recorded-call notice. The virtual front desk never quotes prices, and it says a job is booked only after the booking goes through. Lines have spending limits. We log our own test calls so we hear what callers hear.";
 
 export const PRICING_ANSWER =
-  "LockedIn Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. A tech over the tier is $45/mo. Pay by Zelle. The setup fee is not refundable.";
+  "Locked In Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. A tech over the tier is $45/mo. Pay by Zelle. The setup fee is not refundable.";
 
 export const PAY_ANSWER =
-  "Pay LockedIn Front Desk by Zelle to 206-743-6296. The Zelle name is Blades of Grass Marketing. The setup fee is paid once. The monthly fee follows the tier, plus $45/mo for each tech over that tier.";
+  "Pay Locked In Front Desk by Zelle to 206-743-6296. The Zelle name is Blades of Grass Marketing. The setup fee is paid once. The monthly fee follows the tier, plus $45/mo for each tech over that tier.";
 
 export const OFFER_ANSWER = `${OFFER_SENTENCE} The setup fee is not part of that refund. Call the demo line before you decide.`;
 
@@ -282,9 +315,9 @@ export const FAQ: { question: string; answer: string }[] = [
       "Fast accepts, clean hand-offs, average response time, and honest status updates. The scoreboard is part of Locked In Trust and is in final testing. A live view of it is coming soon.",
   },
   {
-    question: "What does LockedIn Front Desk cost?",
+    question: "What does Locked In Front Desk cost?",
     answer:
-      "LockedIn Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. Each tech over the tier is $45/mo. The setup fee is not refundable.",
+      "Locked In Front Desk Starter is a $1,500 setup and $468/mo for up to 10 techs. Growth is a $3,000 setup and $929/mo for up to 25 techs. Each tech over the tier is $45/mo. The setup fee is not refundable.",
   },
   {
     question: "How do I pay?",
