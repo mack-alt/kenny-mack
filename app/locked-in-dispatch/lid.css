@@ -242,10 +242,94 @@
   padding-block: 1.75rem 0.5rem;
 }
 
-.lid-hero-layout {
+.lid-hero-layout,
+.lid-hero-closer {
   display: grid;
   gap: 1.5rem;
   align-items: center;
+}
+
+.lid-hero-closer {
+  gap: 0.85rem 2rem;
+  align-items: start;
+  grid-template-areas:
+    "kicker"
+    "title"
+    "answer"
+    "video"
+    "cta";
+}
+
+.lid-hero-closer .lid-kicker {
+  grid-area: kicker;
+}
+
+.lid-hero-closer h1 {
+  grid-area: title;
+}
+
+.lid-hero-closer > .lid-answer {
+  grid-area: answer;
+}
+
+.lid-hero-video {
+  grid-area: video;
+  margin: 0.35rem 0 0.15rem;
+  min-width: 0;
+}
+
+.lid-hero-cta {
+  grid-area: cta;
+}
+
+.lid-hero-cta .lid-trade {
+  margin-top: 0.35rem;
+}
+
+.lid-hero-cta .lid-btn {
+  margin-top: 1rem;
+}
+
+.lid-video-frame {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  place-items: center;
+  border-radius: 8px;
+  background: #0b2545;
+}
+
+video.lid-video-frame {
+  display: block;
+  object-fit: contain;
+}
+
+.lid-video-play {
+  width: 4.25rem;
+  height: 4.25rem;
+}
+
+.lid-hero-video figcaption {
+  margin: 0.6rem 0 0;
+  color: #17191c;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.lid-concerns h3 {
+  margin-top: 1.35rem;
+}
+
+.lid-band .lid-reinforce {
+  max-width: 68ch;
+  margin: 1rem 0 0;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.lid-band .lid-reinforce a {
+  color: #fff;
 }
 
 .lid-hero-aside {
@@ -1046,6 +1130,21 @@
 
   .lid-hero-layout {
     grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .lid-hero-closer {
+    grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
+    grid-template-areas:
+      "kicker video"
+      "title video"
+      "answer video"
+      "cta video";
+    align-items: start;
+  }
+
+  .lid-hero-video {
+    align-self: start;
+    margin-top: 0.15rem;
   }
 
   .lid-hero-aside {
