@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MissedCallCalculator } from "@/components/lid/missed-call-calculator";
 import { Shield } from "@/components/lid/logo";
 import { Actions, BulletList, DemoBand, PageHero, Section, StepPath } from "@/components/lid/ui";
 import {
+  CALC_ANSWER,
   CALL_FLOW_ANSWER,
-  DEMO_POSTER_SRC,
-  DEMO_VIDEO_SRC,
   HOME_ANSWER,
+  LOCATION,
   OFFER_ANSWER,
   PATH_ANSWER,
   PRICING_ANSWER,
   PROTECT_ANSWER,
-  VIDEO_ANSWER,
+  TRADE_LINE,
 } from "@/lib/lid";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     absolute: "Locked In Dispatch · Virtual front desk for locksmith shops",
   },
   description:
-    "Locked In Dispatch is a virtual front desk for locksmith shops from Blades of Grass Marketing. We answer calls, take the job details, and alert your shop.",
+    "Locked In Dispatch, a trade name of Blades of Grass Marketing in Burien, WA, is a virtual front desk for locksmith shops.",
 };
 
 const JOBS = ["Home lockout", "Car lockout", "Rekey", "Lock change", "Emergency"];
@@ -37,6 +38,9 @@ export default function LockedInDispatchHome() {
           </div>
         }
       >
+        <p className="lid-trade">
+          {TRADE_LINE}. {LOCATION}.
+        </p>
         <Actions />
       </PageHero>
 
@@ -66,34 +70,20 @@ export default function LockedInDispatchHome() {
         </p>
       </Section>
 
-      <Section id="recording" title="What does the screen recording show?" answer={VIDEO_ANSWER}>
-        <figure className="lid-video-block">
-          <div className="lid-video">
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster={DEMO_POSTER_SRC}
-              width={1080}
-              height={1920}
-              aria-label="Screen recording of the locksmith virtual front desk. No person is on camera."
-            >
-              <source src={DEMO_VIDEO_SRC} type="video/mp4" />
-            </video>
-          </div>
-          <figcaption>
-            Screen recording of a locksmith call. The picture is a phone screen. No person is on camera.
-          </figcaption>
-        </figure>
-      </Section>
-
       <Section id="protect" title="How we test and protect your calls" answer={PROTECT_ANSWER}>
         <p className="lid-note">
           <Link href="/locked-in-dispatch/calls">Read how a call is handled</Link>
         </p>
       </Section>
 
-      <Section id="pricing" title="What does Locked In Dispatch cost?" answer={PRICING_ANSWER}>
+      <Section id="missed-calls" title="How much are missed calls costing my shop?" answer={CALC_ANSWER}>
+        <MissedCallCalculator />
+        <p className="lid-note">
+          <Link href="/locked-in-dispatch/missed-call-calculator">Open the calculator on its own page</Link>
+        </p>
+      </Section>
+
+      <Section id="pricing" title="What does LockedIn Front Desk cost?" answer={PRICING_ANSWER}>
         <p className="lid-note">
           <Link href="/locked-in-dispatch/pricing">Compare Starter and Growth</Link>
         </p>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { DEMO_BAND_ANSWER, DEMO_PHONE_DISPLAY, DEMO_PHONE_TEL, STEPS } from "@/lib/lid";
+import { DEMO_BAND_ANSWER, DEMO_PHONE_DISPLAY, DEMO_PHONE_TEL, EMAIL, STEPS } from "@/lib/lid";
 
 export function PageHero({
   kicker,
@@ -112,6 +112,9 @@ export function DemoBand() {
         <div className="lid-actions">
           <a className="lid-btn lid-btn-gold" href={`tel:${DEMO_PHONE_TEL}`}>
             Call {DEMO_PHONE_DISPLAY}
+          </a>
+          <a className="lid-btn lid-btn-ghost-light" href={`mailto:${EMAIL}`}>
+            {EMAIL}
           </a>
           <Link className="lid-btn lid-btn-ghost-light" href="/locked-in-dispatch/contact">
             Contact form
