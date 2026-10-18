@@ -90,8 +90,16 @@ export const CONTACT_ANSWER =
 export const FAQ_PAGE_ANSWER =
   "These answers cover what the virtual front desk does, what is in final testing, what is coming soon, and what you pay. Read them here, then call the demo line or email mac@lovebog.com. Locked In Dispatch is a trade name of Blades of Grass Marketing.";
 
+export const CALC_ANSWER =
+  "Enter missed calls for a week or a month, what a typical job is worth, and how many of those callers would have booked. The calculator turns those numbers into jobs and revenue for a month and a year. The result is an estimate based on your numbers.";
+
+export const STARTER_MONTHLY = 468;
+export const STARTER_SETUP = 1500;
+export const WEEKS_PER_MONTH = 4.33;
+
 export const NAV = [
   { href: "/locked-in-dispatch/how-it-works", label: "How it works" },
+  { href: "/locked-in-dispatch/missed-call-calculator", label: "Calculator" },
   { href: "/locked-in-dispatch/pricing", label: "Pricing" },
   { href: "/locked-in-dispatch/calls", label: "Your calls" },
   { href: "/locked-in-dispatch/faq", label: "FAQ" },
