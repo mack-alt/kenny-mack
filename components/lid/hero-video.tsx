@@ -7,7 +7,17 @@
  * E 40-52s never quotes a price, recorded notice, 30-day first-month refund, honest yes we use AI;
  * R 52-60s call the demo line, smart first move.
  */
-export function HeroVideo({ src }: { src: string }) {
+export function HeroVideo({
+  src,
+  poster = "",
+  captions = "",
+  label = "Locked In Dispatch. Call the demo line, 206-743-6296. Hear what your callers would hear. The smart first move.",
+}: {
+  src: string;
+  poster?: string;
+  captions?: string;
+  label?: string;
+}) {
   const source = src.trim();
   const caption = "Video coming soon: hear how a missed call gets handled";
 
@@ -25,10 +35,21 @@ export function HeroVideo({ src }: { src: string }) {
     );
   }
 
+  const posterSrc = poster.trim();
+  const captionSrc = captions.trim();
+
   return (
     <figure className="lid-hero-video">
-      <video className="lid-video-frame" controls preload="none" playsInline>
-        <source src={source} />
+      <video
+        className="lid-video-frame"
+        controls
+        playsInline
+        preload="metadata"
+        poster={posterSrc || undefined}
+        aria-label={label}
+      >
+        <source src={source} type="video/mp4" />
+        {captionSrc ? <track kind="captions" src={captionSrc} srcLang="en" label="English" default /> : null}
       </video>
     </figure>
   );

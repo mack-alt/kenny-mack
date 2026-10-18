@@ -12,6 +12,9 @@ import {
   EMAIL,
   EMAIL_LINE,
   HANDLED_ANSWER,
+  HERO_VIDEO_CAPTIONS,
+  HERO_VIDEO_POSTER,
+  HERO_VIDEO_SRC,
   HEAR_ANSWER,
   HEAR_FIRST_ANSWER,
   HOME_ANSWER,
@@ -54,7 +57,7 @@ export default function LockedInDispatchHome() {
           <p className="lid-kicker">Virtual front desk for locksmith shops</p>
           <h1>Running a locksmith shop and missing calls while you&apos;re on a job?</h1>
           <p className="lid-answer">{HOME_ANSWER}</p>
-          <HeroVideo src="" />
+          <HeroVideo src={HERO_VIDEO_SRC} poster={HERO_VIDEO_POSTER} captions={HERO_VIDEO_CAPTIONS} />
           <div className="lid-hero-cta">
             <p className="lid-trade">
               {TRADE_LINE}. {LOCATION}.

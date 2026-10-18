@@ -14,6 +14,11 @@ export const PRODUCT = "Locked In Front Desk";
 export const DEMO_PHONE_DISPLAY = "206-743-6296";
 export const DEMO_PHONE_TEL = "+12067436296";
 
+const MEDIA = "/kenny-mack/locked-in-dispatch/media";
+export const HERO_VIDEO_SRC = `${MEDIA}/lid_closer_hero_v1.mp4`;
+export const HERO_VIDEO_POSTER = `${MEDIA}/lid_closer_hero_v1_poster.jpg`;
+export const HERO_VIDEO_CAPTIONS = `${MEDIA}/lid_closer_hero_v1.vtt`;
+
 export const OFFER_SENTENCE =
   "Try it for 30 days. If it isn't working for you, tell us and we'll refund your first month, no hard feelings.";
 
