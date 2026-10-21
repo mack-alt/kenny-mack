@@ -214,8 +214,8 @@ export function LookB() {
                 </div>
               </div>
               <SalonPhoto
-                src="hair-salon-interior.webp"
-                alt="Empty modern hair salon with black styling chairs and round mirrors"
+                src="salon-receptionist.webp"
+                alt="Smiling receptionist at a salon front desk"
                 className="aspect-[4/3] lg:aspect-[5/4]"
                 eager
               />
@@ -236,8 +236,8 @@ export function LookB() {
               ))}
             </ol>
             <SalonPhoto
-              src="nail-manicure-hands.webp"
-              alt="Close-up of a nail technician's hands shaping a client's nails at the manicure station"
+              src="salon-color-chair.webp"
+              alt="Stylist applying hair color while a client sits in the salon chair"
               className="mt-6 aspect-[3/2] md:aspect-[21/8]"
             />
           </div>
@@ -263,8 +263,8 @@ export function LookB() {
             </div>
             </div>
             <SalonPhoto
-              src="lash-tweezers-tray.webp"
-              alt="Lash tweezers resting on a tray of eyelash extensions"
+              src="salon-owner-book.webp"
+              alt="Salon owner checking appointments on a tablet beside her chair"
               className="aspect-[3/2] ring-1 ring-paper/15 lg:aspect-[4/5]"
             />
           </div>
@@ -285,8 +285,8 @@ export function LookB() {
             </dl>
             </div>
             <SalonPhoto
-              src="nail-polish-wall.webp"
-              alt="Rows of gel polish bottles on gold wall shelves in a nail salon"
+              src="salon-vibrant-chair.webp"
+              alt="Hairstylist and client smiling together during an appointment"
               className="aspect-[3/2] lg:sticky lg:top-24 lg:aspect-[4/5]"
             />
           </div>
