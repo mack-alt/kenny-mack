@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import {
   CL_CONCERNS_H,
   CL_EYEBROW,
@@ -76,6 +77,59 @@ function Book({ className = btnPrimary }: { className?: string }) {
 function Num({ n }: { n: number }) {
   return (
     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest/10 text-sm font-semibold text-forest">{n}</span>
+  );
+}
+
+function PriceCompare() {
+  const [avg, setAvg] = useState("75");
+  const value = Number(avg);
+  const valid = Number.isFinite(value) && value > 0;
+  const needed = valid ? Math.ceil(297 / value) : null;
+  const card = `${glass} ${hoverCard} flex flex-col p-6`;
+  return (
+    <div id="price-compare" className="reveal mt-12" lang="en" translate="no">
+      <h3 className="text-balance text-[1.6rem] leading-[1.15] font-semibold tracking-[-0.03em] text-zinc-900 sm:text-[2rem]">
+        What does $297 a month really cost?
+      </h3>
+      <ul className="mt-6 grid gap-4 md:grid-cols-3">
+        <li className={card}>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">About $10 a day</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">Roughly the cost of a couple of coffees from your local café.</p>
+          <p className="mt-4 inline-flex w-fit rounded-full bg-zinc-900/5 px-3 py-1 text-sm text-zinc-500">$297 ÷ 30 days ≈ $9.90</p>
+        </li>
+        <li className={card}>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">A couple of appointments a month</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">If one missed call is a $60–$150 service, a few saved bookings can cover it.</p>
+          <div className="mt-auto pt-5">
+            <label htmlFor="avg-service" className="text-sm font-medium text-zinc-700">Your average service</label>
+            <div className="mt-1.5 flex items-center rounded-2xl border border-zinc-900/10 bg-white px-3.5 transition focus-within:border-forest focus-within:ring-2 focus-within:ring-forest/15">
+              <span className="text-lg text-zinc-500">$</span>
+              <input
+                id="avg-service"
+                type="number"
+                inputMode="decimal"
+                min={1}
+                step={1}
+                value={avg}
+                onChange={(e) => setAvg(e.target.value)}
+                className="min-h-12 w-full min-w-0 bg-transparent px-1.5 text-lg font-semibold text-zinc-900 outline-none"
+              />
+            </div>
+            <p className="mt-3 rounded-2xl bg-forest/[0.07] px-4 py-3 text-[1rem] leading-snug text-forest" aria-live="polite">
+              {needed ? (
+                <><span className="text-xl font-semibold">{needed}</span> booking{needed === 1 ? "" : "s"} a month cover $297.</>
+              ) : (
+                "Enter a service price to see how many bookings cover $297."
+              )}
+            </p>
+          </div>
+        </li>
+        <li className={card}>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">Less than a part-time front desk</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">A receptionist is a real monthly cost and still can&apos;t cover every break, lunch, and late call.</p>
+        </li>
+      </ul>
+    </div>
   );
 }
 
@@ -203,6 +257,7 @@ export function LookC() {
             </div>
             <Photo src="lash-tweezers-tray.webp" alt="Lash tweezers resting on a tray of eyelash extensions" className="aspect-[4/3] !rounded-[1.6rem] lg:aspect-auto" />
           </div>
+          <PriceCompare />
         </section>
 
         {/* Explain away concerns */}
