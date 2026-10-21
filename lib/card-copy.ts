@@ -108,3 +108,48 @@ export const TRUST = [
 ] as const;
 
 export const TRUST_FOOTER = ["Privacy", "Terms", "SMS Terms", "Service Agreement", "Contact"] as const;
+
+/* ---- Front Desk sales copy (AEO format). Calls only. ---- */
+export const FD_QUESTION = "What does Front Desk do for a salon?";
+export const FD_ANSWER =
+  "Front Desk answers your salon's phone in your shop's name when you can't pick up. It greets the caller, answers common questions about your services and hours, and helps book the next appointment, so you can keep your hands on the client in your chair.";
+export const FD_PRICE_LINE = "First 10 salons: $297 a month, locked for 12 months. Month to month.";
+export const FD_CTA = "Book a 15-minute demo";
+export const FD_HOW_Q = "How does it work?";
+export const FD_STEPS = [
+  "We set it up with your services, hours, prices, and how you like to book.",
+  "When you're busy and a call goes unanswered, Front Desk picks up in your shop's name.",
+  "The caller gets answers and a booking, and you see who called and what they needed.",
+] as const;
+export const FD_PRICE_Q = "What does it cost?";
+export const FD_PRICE_POINTS = [
+  "Founding price for the first 10 salons only.",
+  "Your $297 rate is locked for your first 12 months.",
+  "Month to month. No long contract.",
+  "Calls only. Texting is not part of this offer.",
+  "First month: if it isn't right for you, ask for a refund or a $297 credit. No conditions.",
+] as const;
+export const FD_FAQ = [
+  {
+    q: "Is this AI?",
+    a: "Yes, we use AI, and we're way more than AI. Kenny sets up your Front Desk by hand, learns how your shop works, and keeps tuning it with you.",
+  },
+  {
+    q: "Will callers know it's my shop?",
+    a: "Yes. Front Desk answers in your shop's name, using your services, hours, and booking details.",
+  },
+  {
+    q: "Does it send texts?",
+    a: "No. This offer covers phone calls only.",
+  },
+  {
+    q: "What if it doesn't work for my salon?",
+    a: "Tell us in your first month and you get your money back or a $297 credit. No conditions.",
+  },
+  {
+    q: "Do I need to learn new technology?",
+    a: "No. We handle the setup. You tell us how your shop works.",
+  },
+] as const;
+export const FD_WHO =
+  "Kenny Mack, founder of Blades of Grass Marketing. Call, email, or book a demo and you talk to Kenny directly.";
