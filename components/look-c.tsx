@@ -94,13 +94,11 @@ function PriceCompare({ copy }: { copy: SalonCopy }) {
       <ul className="mt-6 grid gap-4 md:grid-cols-3">
         <li className={card}>
           <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.dayTitle}</p>
-          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.dayBody}</p>
         </li>
         <li className={card}>
-          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.apptTitle}</p>
+          <label htmlFor="avg-service" className="cursor-pointer text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.apptTitle}</label>
           <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.apptBody}</p>
           <div className="mt-auto pt-5">
-            <label htmlFor="avg-service" className="sr-only">{copy.calcLabel}</label>
             <div className="flex items-center rounded-2xl border border-zinc-900/10 bg-white px-3.5 transition focus-within:border-forest focus-within:ring-2 focus-within:ring-forest/15">
               <span className="text-lg text-zinc-500">$</span>
               <input
@@ -200,13 +198,10 @@ export function LookC() {
         </section>
 
         <section id="problem" className={`${wrap} ${section} border-t border-zinc-900/5`} aria-labelledby="label-h">
-          <div className="reveal grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <Photo src="salon-color-chair.webp" alt={copy.photoColor} className="aspect-[4/3] lg:order-2" />
-            <div className="min-w-0">
-              <p className={eyebrow}>{copy.problemEyebrow}</p>
-              <h2 id="label-h" className={h2}>{copy.problemTitle}</h2>
-              <p className={lead}>{copy.problemBody}</p>
-            </div>
+          <div className="reveal max-w-3xl">
+            <p className={eyebrow}>{copy.problemEyebrow}</p>
+            <h2 id="label-h" className={h2}>{copy.problemTitle}</h2>
+            <p className={lead}>{copy.problemBody}</p>
           </div>
         </section>
 
@@ -243,11 +238,6 @@ export function LookC() {
               </div>
               <AnsweredCall copy={copy} />
             </div>
-            <Photo
-              src="salon-vibrant-chair.webp"
-              alt={copy.photoTogether}
-              className="reveal mt-10 aspect-[4/3] lg:aspect-[16/10]"
-            />
           </div>
         </section>
 
@@ -257,9 +247,6 @@ export function LookC() {
               <p className="text-[0.8rem] font-semibold tracking-[0.14em] text-emerald-200/80 uppercase">{copy.priceEyebrow}</p>
               <h2 id="price-h" className="mt-3 text-[2rem] leading-[1.1] font-semibold tracking-[-0.035em] sm:text-[2.5rem]">{copy.priceTitle}</h2>
               <p className="mt-4 text-pretty text-xl leading-snug font-medium text-white sm:text-2xl">{copy.priceLine}</p>
-              <p className="mt-4 inline-flex max-w-full rounded-2xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-2.5 text-[0.98rem] leading-snug font-medium text-emerald-50">
-                {copy.refundBadge}
-              </p>
               <ul className="mt-6 space-y-3">
                 {copy.pricePoints.map((pt) => (
                   <li key={pt} className="flex gap-3 text-[1rem] leading-relaxed text-zinc-300">
