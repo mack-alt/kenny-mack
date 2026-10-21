@@ -1,12 +1,5 @@
 import type { Lang } from "@/lib/content";
 
-/**
- * Coffee price on the comparison: a latte at Burien Press (423 SW 152nd St, Burien, WA)
- * is listed at $5.75+ on the shop's public Toast menu, so the card says it starts at $5.75.
- * Source checked 2026-10-21:
- * https://order.toasttab.com/online/burienpress/item-lavender-blossom-latte_244c9bc4-f9f6-425b-b0f4-d405f04b6f92
- */
-
 export type Pair = { t: string; d: string };
 export type FaqItem = { q: string; a: string };
 
@@ -34,18 +27,14 @@ export type SalonCopy = {
   phoneSummaryLabel: string;
   phoneSummary: string;
   photoReception: string;
-  photoColor: string;
-  photoTogether: string;
   photoOwner: string;
   priceEyebrow: string;
   priceTitle: string;
   priceLine: string;
-  refundBadge: string;
   pricePoints: string[];
   renewal: string;
   compareTitle: string;
   dayTitle: string;
-  dayBody: string;
   apptTitle: string;
   apptBody: string;
   calcLabel: string;
@@ -118,22 +107,17 @@ const en: SalonCopy = {
   phoneSummaryLabel: "Summary",
   phoneSummary: "Maya · new color client · Tuesday at 2:00.",
   photoReception: "Smiling receptionist at a salon front desk",
-  photoColor: "Stylist applying hair color while a client sits in the salon chair",
-  photoTogether: "Hairstylist and client smiling together during an appointment",
   photoOwner: "Salon owner checking appointments on a tablet beside her chair",
   priceEyebrow: "Pricing",
   priceTitle: "What does it cost?",
   priceLine: "$297/month plus tax, month-to-month",
-  refundBadge: "Not happy in your first month for any reason? Full refund.",
   pricePoints: [
     "Calls answered in your salon's name, help booking the next appointment, and a summary of who called and what they needed.",
   ],
   renewal: renewalEn,
   compareTitle: "About $10 a day. Less than your morning coffee run.",
   dayTitle: "A morning coffee run",
-  dayBody:
-    "A latte at Burien Press in Burien starts at $5.75. Two of those already cost more than a day of this.",
-  apptTitle: "or a couple of appointments a month",
+  apptTitle: "Cost calculator",
   apptBody: "If one missed call is a service you already sell, a few saved bookings can cover the month.",
   calcLabel: "Input your average service cost",
   calcPlaceholder: "Input your average service cost",
@@ -234,22 +218,17 @@ const vi: SalonCopy = {
   phoneSummaryLabel: "Tóm tắt",
   phoneSummary: "Maya · khách nhuộm mới · Thứ Ba lúc 2:00.",
   photoReception: "Lễ tân salon đang cười tại quầy",
-  photoColor: "Thợ đang nhuộm tóc cho khách ngồi trên ghế salon",
-  photoTogether: "Thợ làm tóc và khách cùng cười trong buổi hẹn",
   photoOwner: "Chủ salon xem lịch hẹn trên máy tính bảng cạnh ghế",
   priceEyebrow: "Giá",
   priceTitle: "Chi phí là bao nhiêu?",
   priceLine: "$297/tháng cộng thuế, thanh toán từng tháng",
-  refundBadge: "Tháng đầu không hài lòng vì bất kỳ lý do nào? Hoàn đủ tiền.",
   pricePoints: [
     "Cuộc gọi được trả lời bằng tên tiệm bạn, được giúp đặt lịch kế tiếp, và một bản tóm tắt ai đã gọi cùng họ cần gì.",
   ],
   renewal: "Nếu giá theo tháng sắp đổi, chúng tôi báo trước ít nhất 30 ngày.",
   compareTitle: "Khoảng $10 một ngày. Ít hơn một vòng cà phê buổi sáng.",
   dayTitle: "Một vòng cà phê buổi sáng",
-  dayBody:
-    "Một ly latte tại Burien Press ở Burien có giá từ $5.75. Hai ly như vậy đã nhiều hơn số tiền của một ngày.",
-  apptTitle: "hoặc vài lịch hẹn mỗi tháng",
+  apptTitle: "Máy tính chi phí",
   apptBody: "Nếu một cuộc gọi lỡ là một dịch vụ bạn vẫn đang bán, vài lịch giữ được là đủ cho cả tháng.",
   calcLabel: "Nhập giá dịch vụ trung bình của bạn",
   calcPlaceholder: "Nhập giá dịch vụ trung bình của bạn",
@@ -349,22 +328,17 @@ const es: SalonCopy = {
   phoneSummaryLabel: "Resumen",
   phoneSummary: "Maya · clienta nueva de color · martes a las 2:00.",
   photoReception: "Recepcionista sonriendo en el mostrador de un salón",
-  photoColor: "Estilista aplicando color mientras una clienta está en la silla",
-  photoTogether: "Estilista y clienta sonriendo juntas durante una cita",
   photoOwner: "Dueña de salón revisando citas en una tableta junto a su silla",
   priceEyebrow: "Precio",
   priceTitle: "¿Cuánto cuesta?",
   priceLine: "$297 al mes más impuestos, de mes a mes",
-  refundBadge: "¿No te convence el primer mes, por el motivo que sea? Reembolso completo.",
   pricePoints: [
     "Llamadas contestadas con el nombre de tu salón, ayuda para reservar la siguiente cita y un resumen de quién llamó y qué necesitaba.",
   ],
   renewal: "Si tu tarifa mensual va a cambiar, te avisamos con al menos 30 días de anticipación.",
   compareTitle: "Unos $10 al día. Menos que tu vuelta de café por la mañana.",
   dayTitle: "Una vuelta de café por la mañana",
-  dayBody:
-    "Un latte en Burien Press, en Burien, empieza en $5.75. Dos de esos ya cuestan más que un día de esto.",
-  apptTitle: "o un par de citas al mes",
+  apptTitle: "Calculadora de costos",
   apptBody: "Si una llamada perdida es un servicio que ya vendes, unas pocas reservas salvadas cubren el mes.",
   calcLabel: "Escribe el precio promedio de tu servicio",
   calcPlaceholder: "Escribe el precio promedio de tu servicio",
