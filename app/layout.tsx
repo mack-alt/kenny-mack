@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Nunito_Sans } from "next/font/google";
+import { Fraunces, Inter, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -16,16 +16,22 @@ const nunito = Nunito_Sans({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://mack-alt.github.io/kenny-mack"),
-  title: "Kenny Mack · Blades of Grass",
+  title: "Front Desk for salons · Blades of Grass Marketing",
   description:
-    "B-O-G helps answer the calls and questions coming in around you — so your next customer can be ready when you are.",
+    "Front Desk answers your salon's missed calls in your shop's name and helps book the next appointment. First 10 salons: $297/mo, locked 12 months.",
   applicationName: "Kenny Mack · Blades of Grass",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1b4332",
+  themeColor: "#fafaf8",
   width: "device-width",
   initialScale: 1,
 };
@@ -36,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${nunito.variable} h-full antialiased`}>
+    <html lang="en" className={`${fraunces.variable} ${nunito.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

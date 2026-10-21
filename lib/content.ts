@@ -23,7 +23,7 @@ export const DEMO_POSTER_SRC = "/kenny-mack/bog-explainer-poster-v4.jpg";
 export const DEMO_CAPTION = "From missed call to booked.";
 
 /** English facts. The story in `lib/card-copy.ts` stays as written. */
-export const ROLE_LINE = "Founder, Blades of Grass";
+export const ROLE_LINE = "Founder, Blades of Grass Marketing";
 export const FOUNDING_LABEL = "Founding shop · first ten";
 export const FOUNDING_PRICE = "$297 a month plus tax, locked in for your first year.";
 export const FOUNDING_DETAIL =
@@ -57,7 +57,7 @@ export type Copy = {
 export const copy: Record<Lang, Copy> = {
   en: {
     language: "Language",
-    callText: "Call / text",
+    callText: "Call",
     directory: "Directory",
     storyNote: null,
     photoAlt: "Kenny Mack with his kids, Prana and Sergen, near the Seattle waterfront",

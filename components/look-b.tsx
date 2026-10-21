@@ -3,57 +3,39 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import {
-  CTA_HI,
-  CTA_LOOK,
-  CTA_SEE,
   CTA_TALK,
-  HELP,
-  HELP_HEADING,
-  HERO_ATTENTION,
-  HERO_BODY,
-  HERO_PATH,
-  LANGUAGE,
-  LANGUAGE_HEADING,
-  LOOK,
-  LOOK_HEADING,
-  MEET,
-  MEET_HEADING,
+  FD_ANSWER,
+  FD_CTA,
+  FD_FAQ,
+  FD_HOW_Q,
+  FD_PRICE_LINE,
+  FD_PRICE_POINTS,
+  FD_PRICE_Q,
+  FD_QUESTION,
+  FD_STEPS,
+  FD_WHO,
   TRUST,
   TRUST_FOOTER,
   TRUST_HEADING,
-  WAY,
-  WAY_HEADING,
 } from "@/lib/card-copy";
 import {
   BOOK_URL,
-  DEMO_CAPTION,
-  DIRECTORY_URL,
   EMAIL,
-  FOUNDING_ANNUAL,
-  FOUNDING_ANNUAL_LABEL,
-  FOUNDING_DETAIL,
-  FOUNDING_GUARANTEE,
-  FOUNDING_GUARANTEE_LABEL,
-  FOUNDING_LABEL,
   FOUNDING_PRICE,
   FOUNDING_RENEWAL,
   PHONE_DISPLAY,
   PHONE_TEL,
-  ROLE_LINE,
   VCARD_HREF,
 } from "@/lib/content";
 import { useLang } from "@/lib/use-lang";
 import {
   BookingLink,
   ContactQr,
-  ContactRow,
   EnglishNote,
-  FamilyPhoto,
   GrassMark,
   LanguageChips,
   SaveContact,
 } from "@/components/card-ui";
-import { DemoReel } from "@/components/demo-reel";
 import { Motion } from "@/components/motion";
 
 const body = "max-w-full text-pretty text-lg leading-relaxed [overflow-wrap:break-word]";
@@ -96,6 +78,25 @@ function Prose({ text, className = body }: { text: string; className?: string })
   if (DOT_LISTS.has(text)) return <DotList text={text} />;
   if (text.includes(" → ")) return <ArrowLine text={text} className={className} />;
   return <p className={className}>{text}</p>;
+}
+
+function SalonPhoto({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
+  return (
+    <figure className={`relative m-0 min-w-0 overflow-hidden rounded-[1.4rem] bg-mist shadow-[0_24px_50px_-30px_rgba(27,67,50,0.55)] ${className}`}>
+      {/* Native img keeps /kenny-mack on the URL in the static export. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/kenny-mack/salon/${src}`}
+        alt={alt}
+        width={1200}
+        height={800}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        sizes="(min-width: 1024px) 560px, 100vw"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    </figure>
+  );
 }
 
 function Rule({ gold = false }: { gold?: boolean }) {
@@ -153,7 +154,6 @@ function usePinTop() {
 
 export function LookB() {
   const { t } = useLang();
-  const pinRef = usePinTop();
 
   return (
     <div className="min-h-dvh pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-ink">
@@ -168,8 +168,8 @@ export function LookB() {
           <GrassMark className="h-9 w-9 shrink-0 text-forest" />
           <div className="min-w-0" translate="no">
             <p className="truncate font-serif text-xl leading-none text-forest">Kenny Mack</p>
-            <p className="mt-1 truncate text-[0.68rem] font-bold tracking-[0.16em] text-sage uppercase">
-              Blades of Grass
+            <p className="mt-1 text-[0.62rem] leading-tight font-bold tracking-[0.12em] text-sage uppercase sm:text-[0.68rem] sm:tracking-[0.16em]">
+              Blades of Grass Marketing
             </p>
           </div>
         </div>
@@ -184,232 +184,137 @@ export function LookB() {
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
         <LanguageChips />
-        <div className="mt-3">
-          <EnglishNote note={t.storyNote} />
-        </div>
+        {t.storyNote ? (
+          <div className="mt-3">
+            <EnglishNote note={t.storyNote} />
+          </div>
+        ) : null}
       </div>
 
       <main id="content">
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden" aria-labelledby="hero-q">
           <HeroField />
           <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-3 pb-8 sm:px-6 lg:px-8 lg:pt-8">
-            <div className="grid items-start gap-4 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-x-14 lg:gap-y-6">
-              <DemoReel className="lg:row-span-2" />
-              <div className="min-w-0 text-center lg:pt-1 lg:text-left">
-                <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase" translate="no">
-                  Blades of Grass
-                </p>
+            <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-x-12">
+              <div lang="en" translate="no" className="min-w-0 max-w-2xl">
+                <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase">Front Desk for salons</p>
                 <h1
-                  id="hero-caption"
-                  lang="en"
-                  translate="no"
-                  className="mt-2 text-balance font-serif text-[1.65rem] leading-[1.08] font-semibold tracking-[-0.03em] text-forest sm:text-4xl lg:text-[2.85rem] lg:leading-[0.98]"
+                  id="hero-q"
+                  className="mt-2 text-balance font-serif text-[2.15rem] leading-[1.04] font-semibold tracking-[-0.03em] text-forest sm:text-5xl lg:text-[3.4rem] lg:leading-[1]"
                 >
-                  {DEMO_CAPTION}
+                  {FD_QUESTION}
                 </h1>
-                <SaveContact label={t.saveContact} className="mx-auto mt-4 max-w-md lg:mx-0" />
-              </div>
-              <div lang="en" translate="no" className="min-w-0 max-w-2xl space-y-3 lg:col-start-2">
-                <p className="font-serif text-[1.45rem] leading-snug font-medium text-ink sm:text-[1.7rem]">
-                  {HERO_ATTENTION}
-                </p>
-                <p className={body}>{HERO_BODY}</p>
-                <p className="font-serif text-xl leading-snug font-medium text-forest sm:text-2xl">{HERO_PATH}</p>
-                <BookingLink className="mt-4 bg-forest px-6 text-paper">{CTA_SEE}</BookingLink>
-                <ContactRow t={t} className="mt-4" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section aria-labelledby="help-heading">
-          <div className="mx-auto w-full max-w-6xl px-5 pt-4 sm:px-6 lg:px-8">
-            <div className="reveal">
-              <Rule />
-              <h2 id="help-heading" className="display-heading font-serif font-medium text-forest">
-                {HELP_HEADING}
-              </h2>
-            </div>
-          </div>
-          <ul className="mx-auto grid w-full max-w-6xl gap-3 px-4 py-5 sm:px-6 lg:grid-cols-3 lg:px-8">
-            {HELP.map((offer) => {
-              const forest = offer.name === "FRONT DESK";
-              return (
-                <li
-                  key={offer.name}
-                  lang="en"
-                  translate="no"
-                  className={`reveal relative min-w-0 overflow-hidden rounded-[1.4rem] border px-5 py-6 ${
-                    forest ? "border-forest bg-forest text-paper" : "border-forest/10 bg-paper text-ink"
-                  }`}
-                >
-                  <h3
-                    className={`font-serif text-[1.7rem] leading-tight font-semibold sm:text-[1.85rem] ${
-                      forest ? "text-[#f0e0b8]" : "text-forest"
-                    }`}
-                  >
-                    {offer.name}
-                  </h3>
-                  <div className="mt-4 space-y-4">
-                    {offer.paragraphs.map((paragraph) => (
-                      <Prose key={paragraph} text={paragraph} />
-                    ))}
-                  </div>
-                  {offer.name === "FIND ME™" ? (
-                    <a
-                      href={DIRECTORY_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex min-h-12 items-center text-lg font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
-                    >
-                      {t.directory}
-                    </a>
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        <section className="bg-forest text-paper" aria-labelledby="language-heading">
-          <div lang="en" translate="no" className="reveal mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
-            <Rule gold />
-            <h2 id="language-heading" className="display-heading font-serif font-medium text-[#f0e0b8]">
-              {LANGUAGE_HEADING}
-            </h2>
-            <div className="mt-5 max-w-4xl space-y-4">
-              {LANGUAGE.map((paragraph) => (
-                <p key={paragraph} className={`${body} text-paper`}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="look-heading">
-          <div className="reveal max-w-2xl">
-            <Rule />
-            <h2 id="look-heading" className="display-heading font-serif font-medium text-forest">
-              {LOOK_HEADING}
-            </h2>
-            <div lang="en" translate="no" className="mt-5 space-y-4">
-              {LOOK.map((paragraph) => (
-                <Prose
-                  key={paragraph}
-                  text={paragraph}
-                  className={
-                    paragraph.includes("→") ? "font-serif text-xl leading-snug font-medium text-forest" : body
-                  }
-                />
-              ))}
-            </div>
-            <BookingLink className="mt-6 bg-forest px-6 text-paper">{CTA_TALK}</BookingLink>
-          </div>
-        </section>
-
-        <div className="pin-scene">
-          <div ref={pinRef} className="pin-card mx-auto w-full max-w-xl px-4 sm:px-6">
-            <article
-              className="rounded-[1.6rem] border border-forest/15 bg-paper p-5 shadow-[0_28px_60px_-32px_rgba(27,67,50,0.6)] sm:p-6"
-              aria-label={t.saveContact}
-            >
-              <p
-                className="font-serif text-[2.7rem] leading-[0.9] font-semibold tracking-[-0.03em] text-forest"
-                lang="en"
-                translate="no"
-              >
-                Kenny Mack
-              </p>
-              <p className="mt-2 font-serif text-xl text-sage" lang="en" translate="no">
-                {ROLE_LINE}
-              </p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="w-[7.25rem] shrink-0">
-                  <ContactQr alt={t.qrAlt} />
-                </div>
-                <div className="grid min-w-0 flex-1 gap-2">
-                  <a
-                    className="inline-flex min-h-12 items-center text-lg leading-snug font-bold text-forest underline decoration-straw decoration-2 underline-offset-4"
-                    href={`tel:${PHONE_TEL}`}
-                  >
-                    {PHONE_DISPLAY}
+                <p className={`${body} mt-4`}>{FD_ANSWER}</p>
+                <p className="mt-4 text-pretty font-serif text-xl leading-snug font-medium text-forest">{FD_PRICE_LINE}</p>
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <BookingLink className="bg-forest px-6 text-paper">{FD_CTA}</BookingLink>
+                  <a href={`tel:${PHONE_TEL}`} className="btn inline-flex min-h-12 items-center justify-center rounded-full border border-forest/20 bg-paper px-6 text-lg font-bold text-forest">
+                    Call Kenny · {PHONE_DISPLAY}
                   </a>
-                  <SaveContact label={t.saveContact} />
                 </div>
               </div>
-              <a
-                className="mt-2 inline-flex min-h-12 items-center text-lg leading-snug font-bold text-forest underline decoration-straw decoration-2 underline-offset-4"
-                href={`mailto:${EMAIL}`}
-              >
-                {EMAIL}
-              </a>
-              <div className="mt-4 border-t border-line pt-4" lang="en" translate="no">
-                <p className="text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_LABEL}</p>
-                <p className="mt-1 font-serif text-[1.65rem] leading-tight text-forest">{FOUNDING_PRICE}</p>
-                <p className="mt-2 text-base leading-relaxed text-ink">{FOUNDING_DETAIL}</p>
-                <p className="mt-4 text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_ANNUAL_LABEL}</p>
-                <p className="mt-1 text-base leading-relaxed text-ink">{FOUNDING_ANNUAL}</p>
-                <p className="mt-4 text-[0.72rem] font-bold tracking-[0.16em] text-sage uppercase">{FOUNDING_GUARANTEE_LABEL}</p>
-                <p className="mt-1 text-base leading-relaxed text-ink">{FOUNDING_GUARANTEE}</p>
-                <p className="mt-4 text-sm leading-relaxed text-ink/70">{FOUNDING_RENEWAL}</p>
-              </div>
-            </article>
+              <SalonPhoto
+                src="hair-salon-interior.webp"
+                alt="Empty modern hair salon with black styling chairs and round mirrors"
+                className="aspect-[4/3] lg:aspect-[5/4]"
+                eager
+              />
+            </div>
           </div>
+        </section>
 
-          <section className="pin-cover" aria-labelledby="meet-heading">
-            <div className="mx-auto grid w-full max-w-6xl items-start gap-8 px-5 py-8 sm:px-6 lg:grid-cols-[minmax(240px,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10 lg:px-8 lg:py-12">
-              <figure className="shot">
-                <div className="shot-frame">
-                  <FamilyPhoto alt={t.photoAlt} loading="lazy" className="shot-media" />
-                </div>
-              </figure>
-              <div lang="en" translate="no" className="reveal min-w-0">
-                <Rule />
-                <h2 id="meet-heading" className="display-heading font-serif font-medium text-forest">
-                  {MEET_HEADING}
-                </h2>
-                <div className="mt-4 space-y-4">
-                  {MEET.map((paragraph) => (
-                    <p key={paragraph} className={body}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <BookingLink className="mt-6 border border-forest/15 bg-paper px-6 text-forest">{CTA_HI}</BookingLink>
-              </div>
-            </div>
-          </section>
-        </div>
+        <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="how-heading">
+          <div className="reveal">
+            <Rule />
+            <h2 id="how-heading" className="display-heading font-serif font-medium text-forest">{FD_HOW_Q}</h2>
+            <ol lang="en" translate="no" className="mt-6 grid gap-3 md:grid-cols-3">
+              {FD_STEPS.map((step, i) => (
+                <li key={step} className="flex gap-4 rounded-2xl border border-forest/10 bg-paper/80 px-4 py-4 text-lg leading-snug text-ink md:flex-col md:gap-2 md:px-5 md:py-5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest font-serif text-lg font-semibold text-paper">{i + 1}</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+            <SalonPhoto
+              src="nail-manicure-hands.webp"
+              alt="Close-up of a nail technician's hands shaping a client's nails at the manicure station"
+              className="mt-6 aspect-[3/2] md:aspect-[21/8]"
+            />
+          </div>
+        </section>
 
-        <section className="bg-forest px-5 py-10 text-paper sm:px-6 lg:px-8 lg:py-14" aria-labelledby="way-heading">
-          <div className="mx-auto w-full max-w-5xl">
-            <div className="reveal">
-              <Rule gold />
-              <h2 id="way-heading" className="display-heading font-serif font-medium text-[#f0e0b8] sm:text-center">
-                {WAY_HEADING}
-              </h2>
-            </div>
-            <ul lang="en" translate="no" className="mt-6 space-y-4 sm:text-center">
-              {WAY.map((line) => (
-                <li
-                  key={line}
-                  className="reveal max-w-full font-serif text-[1.35rem] leading-snug font-medium text-balance sm:text-2xl"
-                >
-                  {line}
+        <section className="bg-forest text-paper" aria-labelledby="price-heading">
+          <div lang="en" translate="no" className="reveal mx-auto grid w-full max-w-6xl items-center gap-8 px-5 py-12 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12 lg:px-8 lg:py-16">
+            <div className="min-w-0">
+            <Rule gold />
+            <h2 id="price-heading" className="display-heading font-serif font-medium text-[#f0e0b8]">{FD_PRICE_Q}</h2>
+            <p className="mt-4 text-pretty font-serif text-[1.65rem] leading-tight text-paper sm:text-[2rem]">{FOUNDING_PRICE}</p>
+            <ul className="mt-5 max-w-3xl space-y-2.5">
+              {FD_PRICE_POINTS.map((pt) => (
+                <li key={pt} className="flex gap-3 text-lg leading-snug text-paper">
+                  <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#f0e0b8]" aria-hidden="true" />
+                  <span className="min-w-0 text-pretty">{pt}</span>
                 </li>
               ))}
             </ul>
-            <div className="reveal mt-7 sm:text-center">
-              <BookingLink className="bg-[#f0e0b8] px-8 text-forest">{CTA_LOOK}</BookingLink>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-paper/80">{FOUNDING_RENEWAL}</p>
+            <div className="mt-6">
+              <BookingLink className="bg-[#f0e0b8] px-8 text-forest">{FD_CTA}</BookingLink>
             </div>
+            </div>
+            <SalonPhoto
+              src="lash-tweezers-tray.webp"
+              alt="Lash tweezers resting on a tray of eyelash extensions"
+              className="aspect-[3/2] ring-1 ring-paper/15 lg:aspect-[4/5]"
+            />
           </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="faq-heading">
+          <div className="reveal grid items-start gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12">
+            <div className="min-w-0">
+            <Rule />
+            <h2 id="faq-heading" className="display-heading font-serif font-medium text-forest">Questions salon owners ask</h2>
+            <dl lang="en" translate="no" className="mt-6 divide-y divide-forest/10 border-y border-forest/10">
+              {FD_FAQ.map((item) => (
+                <div key={item.q} className="py-4">
+                  <dt><h3 className="text-pretty font-serif text-xl leading-snug font-semibold text-forest">{item.q}</h3></dt>
+                  <dd className={`${body} mt-1.5`}>{item.a}</dd>
+                </div>
+              ))}
+            </dl>
+            </div>
+            <SalonPhoto
+              src="nail-polish-wall.webp"
+              alt="Rows of gel polish bottles on gold wall shelves in a nail salon"
+              className="aspect-[3/2] lg:sticky lg:top-24 lg:aspect-[4/5]"
+            />
+          </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-xl px-5 py-6 sm:px-6" aria-labelledby="card-heading">
+          <article className="rounded-[1.6rem] border border-forest/15 bg-paper p-5 shadow-[0_28px_60px_-32px_rgba(27,67,50,0.6)] sm:p-6">
+            <h2 id="card-heading" className="font-serif text-[2rem] leading-[1] font-semibold tracking-[-0.02em] text-forest sm:text-[2.4rem]" translate="no">
+              Who is behind this?
+            </h2>
+            <p className={`${body} mt-3`} lang="en">{FD_WHO}</p>
+            <div className="mt-4 flex items-center gap-3">
+              <div className="w-[7.25rem] shrink-0">
+                <ContactQr alt={t.qrAlt} />
+              </div>
+              <div className="grid min-w-0 flex-1 gap-2">
+                <a className={link} href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
+                <SaveContact label={t.saveContact} />
+              </div>
+            </div>
+            <a className={`${link} mt-2`} href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </article>
         </section>
 
         <footer className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="trust-heading">
           <div className="reveal max-w-3xl">
             <Rule />
-            <h2 id="trust-heading" className="display-heading font-serif font-medium text-forest">
+            <h2 id="trust-heading" className="display-heading font-serif font-medium text-forest normal-case">
               {TRUST_HEADING}
             </h2>
             <div lang="en" translate="no" className="mt-5 space-y-4">
@@ -418,7 +323,7 @@ export function LookB() {
                   {paragraph}
                 </p>
               ))}
-              <ul className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-0 border-t border-forest/10 pt-3">
                 {TRUST_FOOTER.map((part) => (
                   <li key={part}>
                     {part === "Privacy" ? (
@@ -438,7 +343,7 @@ export function LookB() {
                         {part}
                       </a>
                     ) : (
-                      <span className="inline-flex min-h-12 items-center text-base leading-snug">{part}</span>
+                      <span className="inline-flex min-h-12 items-center text-lg font-semibold text-forest/70">{part}</span>
                     )}
                   </li>
                 ))}
