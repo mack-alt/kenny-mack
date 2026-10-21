@@ -80,6 +80,25 @@ function Prose({ text, className = body }: { text: string; className?: string })
   return <p className={className}>{text}</p>;
 }
 
+function SalonPhoto({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
+  return (
+    <figure className={`relative m-0 min-w-0 overflow-hidden rounded-[1.4rem] bg-mist shadow-[0_24px_50px_-30px_rgba(27,67,50,0.55)] ${className}`}>
+      {/* Native img keeps /kenny-mack on the URL in the static export. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/kenny-mack/salon/${src}`}
+        alt={alt}
+        width={1200}
+        height={800}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        sizes="(min-width: 1024px) 560px, 100vw"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    </figure>
+  );
+}
+
 function Rule({ gold = false }: { gold?: boolean }) {
   return <span className={gold ? "rule rule-gold" : "rule"} aria-hidden="true" />;
 }
@@ -149,7 +168,7 @@ export function LookB() {
           <GrassMark className="h-9 w-9 shrink-0 text-forest" />
           <div className="min-w-0" translate="no">
             <p className="truncate font-serif text-xl leading-none text-forest">Kenny Mack</p>
-            <p className="mt-1 truncate text-[0.68rem] font-bold tracking-[0.16em] text-sage uppercase">
+            <p className="mt-1 text-[0.62rem] leading-tight font-bold tracking-[0.12em] text-sage uppercase sm:text-[0.68rem] sm:tracking-[0.16em]">
               Blades of Grass Marketing
             </p>
           </div>
@@ -165,26 +184,28 @@ export function LookB() {
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
         <LanguageChips />
-        <div className="mt-3">
-          <EnglishNote note={t.storyNote} />
-        </div>
+        {t.storyNote ? (
+          <div className="mt-3">
+            <EnglishNote note={t.storyNote} />
+          </div>
+        ) : null}
       </div>
 
       <main id="content">
         <section className="relative overflow-hidden" aria-labelledby="hero-q">
           <HeroField />
           <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pt-3 pb-8 sm:px-6 lg:px-8 lg:pt-8">
-            <div className="grid items-start gap-4 lg:gap-x-14 lg:gap-y-6">
+            <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-x-12">
               <div lang="en" translate="no" className="min-w-0 max-w-2xl">
                 <p className="text-[0.78rem] font-bold tracking-[0.22em] text-sage uppercase">Front Desk for salons</p>
                 <h1
                   id="hero-q"
-                  className="mt-2 text-balance font-serif text-[1.75rem] leading-[1.08] font-semibold tracking-[-0.03em] text-forest sm:text-4xl lg:text-[2.6rem] lg:leading-[1.02]"
+                  className="mt-2 text-balance font-serif text-[2.15rem] leading-[1.04] font-semibold tracking-[-0.03em] text-forest sm:text-5xl lg:text-[3.4rem] lg:leading-[1]"
                 >
                   {FD_QUESTION}
                 </h1>
                 <p className={`${body} mt-4`}>{FD_ANSWER}</p>
-                <p className="mt-4 font-serif text-xl leading-snug font-medium text-forest">{FD_PRICE_LINE}</p>
+                <p className="mt-4 text-pretty font-serif text-xl leading-snug font-medium text-forest">{FD_PRICE_LINE}</p>
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <BookingLink className="bg-forest px-6 text-paper">{FD_CTA}</BookingLink>
                   <a href={`tel:${PHONE_TEL}`} className="btn inline-flex min-h-12 items-center justify-center rounded-full border border-forest/20 bg-paper px-6 text-lg font-bold text-forest">
@@ -192,60 +213,88 @@ export function LookB() {
                   </a>
                 </div>
               </div>
+              <SalonPhoto
+                src="hair-salon-interior.webp"
+                alt="Empty modern hair salon with black styling chairs and round mirrors"
+                className="aspect-[4/3] lg:aspect-[5/4]"
+                eager
+              />
             </div>
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-6 lg:px-8" aria-labelledby="how-heading">
-          <div className="reveal max-w-3xl">
+        <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="how-heading">
+          <div className="reveal">
             <Rule />
             <h2 id="how-heading" className="display-heading font-serif font-medium text-forest">{FD_HOW_Q}</h2>
-            <ol lang="en" translate="no" className="mt-5 grid gap-3 sm:grid-cols-3">
+            <ol lang="en" translate="no" className="mt-6 grid gap-3 md:grid-cols-3">
               {FD_STEPS.map((step, i) => (
-                <li key={step} className="rounded-2xl bg-mist px-4 py-4 text-lg leading-snug text-ink">
-                  <span className="block font-serif text-2xl font-semibold text-forest">{i + 1}</span>
+                <li key={step} className="flex gap-4 rounded-2xl border border-forest/10 bg-paper/80 px-4 py-4 text-lg leading-snug text-ink md:flex-col md:gap-2 md:px-5 md:py-5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest font-serif text-lg font-semibold text-paper">{i + 1}</span>
                   {step}
                 </li>
               ))}
             </ol>
+            <SalonPhoto
+              src="nail-manicure-hands.webp"
+              alt="Close-up of a nail technician's hands shaping a client's nails at the manicure station"
+              className="mt-6 aspect-[3/2] md:aspect-[21/8]"
+            />
           </div>
         </section>
 
         <section className="bg-forest text-paper" aria-labelledby="price-heading">
-          <div lang="en" translate="no" className="reveal mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+          <div lang="en" translate="no" className="reveal mx-auto grid w-full max-w-6xl items-center gap-8 px-5 py-12 sm:px-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12 lg:px-8 lg:py-16">
+            <div className="min-w-0">
             <Rule gold />
             <h2 id="price-heading" className="display-heading font-serif font-medium text-[#f0e0b8]">{FD_PRICE_Q}</h2>
-            <p className="mt-4 font-serif text-[2rem] leading-tight text-paper">{FOUNDING_PRICE}</p>
-            <ul className="mt-4 max-w-3xl space-y-2">
+            <p className="mt-4 text-pretty font-serif text-[1.65rem] leading-tight text-paper sm:text-[2rem]">{FOUNDING_PRICE}</p>
+            <ul className="mt-5 max-w-3xl space-y-2.5">
               {FD_PRICE_POINTS.map((pt) => (
-                <li key={pt} className={`${body} text-paper`}>• {pt}</li>
+                <li key={pt} className="flex gap-3 text-lg leading-snug text-paper">
+                  <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#f0e0b8]" aria-hidden="true" />
+                  <span className="min-w-0 text-pretty">{pt}</span>
+                </li>
               ))}
             </ul>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-paper/80">{FOUNDING_RENEWAL}</p>
             <div className="mt-6">
               <BookingLink className="bg-[#f0e0b8] px-8 text-forest">{FD_CTA}</BookingLink>
             </div>
+            </div>
+            <SalonPhoto
+              src="lash-tweezers-tray.webp"
+              alt="Lash tweezers resting on a tray of eyelash extensions"
+              className="aspect-[3/2] ring-1 ring-paper/15 lg:aspect-[4/5]"
+            />
           </div>
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="faq-heading">
-          <div className="reveal max-w-3xl">
+          <div className="reveal grid items-start gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-12">
+            <div className="min-w-0">
             <Rule />
             <h2 id="faq-heading" className="display-heading font-serif font-medium text-forest">Questions salon owners ask</h2>
-            <dl lang="en" translate="no" className="mt-5 space-y-5">
+            <dl lang="en" translate="no" className="mt-6 divide-y divide-forest/10 border-y border-forest/10">
               {FD_FAQ.map((item) => (
-                <div key={item.q}>
-                  <dt><h3 className="font-serif text-xl font-semibold text-forest">{item.q}</h3></dt>
-                  <dd className={`${body} mt-1`}>{item.a}</dd>
+                <div key={item.q} className="py-4">
+                  <dt><h3 className="text-pretty font-serif text-xl leading-snug font-semibold text-forest">{item.q}</h3></dt>
+                  <dd className={`${body} mt-1.5`}>{item.a}</dd>
                 </div>
               ))}
             </dl>
+            </div>
+            <SalonPhoto
+              src="nail-polish-wall.webp"
+              alt="Rows of gel polish bottles on gold wall shelves in a nail salon"
+              className="aspect-[3/2] lg:sticky lg:top-24 lg:aspect-[4/5]"
+            />
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-xl px-4 pb-10 sm:px-6" aria-labelledby="card-heading">
+        <section className="mx-auto w-full max-w-xl px-5 py-6 sm:px-6" aria-labelledby="card-heading">
           <article className="rounded-[1.6rem] border border-forest/15 bg-paper p-5 shadow-[0_28px_60px_-32px_rgba(27,67,50,0.6)] sm:p-6">
-            <h2 id="card-heading" className="font-serif text-[2.4rem] leading-[0.95] font-semibold text-forest" translate="no">
+            <h2 id="card-heading" className="font-serif text-[2rem] leading-[1] font-semibold tracking-[-0.02em] text-forest sm:text-[2.4rem]" translate="no">
               Who is behind this?
             </h2>
             <p className={`${body} mt-3`} lang="en">{FD_WHO}</p>
@@ -265,7 +314,7 @@ export function LookB() {
         <footer className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14" aria-labelledby="trust-heading">
           <div className="reveal max-w-3xl">
             <Rule />
-            <h2 id="trust-heading" className="display-heading font-serif font-medium text-forest">
+            <h2 id="trust-heading" className="display-heading font-serif font-medium text-forest normal-case">
               {TRUST_HEADING}
             </h2>
             <div lang="en" translate="no" className="mt-5 space-y-4">
@@ -274,7 +323,7 @@ export function LookB() {
                   {paragraph}
                 </p>
               ))}
-              <ul className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-0 border-t border-forest/10 pt-3">
                 {TRUST_FOOTER.map((part) => (
                   <li key={part}>
                     {part === "Privacy" ? (
@@ -294,7 +343,7 @@ export function LookB() {
                         {part}
                       </a>
                     ) : (
-                      <span className="inline-flex min-h-12 items-center text-base leading-snug">{part}</span>
+                      <span className="inline-flex min-h-12 items-center text-lg font-semibold text-forest/70">{part}</span>
                     )}
                   </li>
                 ))}

@@ -36,6 +36,8 @@ body {
     radial-gradient(720px 520px at -16% 18%, rgba(36, 92, 64, 0.16), transparent 54%),
     radial-gradient(640px 440px at 112% 88%, rgba(141, 106, 50, 0.14), transparent 50%),
     linear-gradient(180deg, #f7f3ea 0%, #e6f0dc 48%, #d5e4cb 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 body::before {
@@ -118,8 +120,8 @@ body > * {
 
 .display-heading {
   max-width: 100%;
-  font-size: clamp(2.05rem, 8.2vw, 4.6rem);
-  line-height: 0.94;
+  font-size: clamp(2.05rem, 7.4vw, 3.4rem);
+  line-height: 1;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -127,6 +129,8 @@ body > * {
 .hero-stage {
   position: absolute;
   inset: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent);
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -634,5 +638,18 @@ body > * {
   .phone-sound,
   .phone-play {
     border: 1px solid ButtonText;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dock {
+    right: auto;
+    left: 50%;
+    width: min(46rem, calc(100% - 2rem));
+    transform: translateX(-50%);
+    bottom: 0.75rem;
+    border: 1px solid rgba(27, 67, 50, 0.14);
+    border-radius: 1.25rem;
+    padding: 0.45rem;
   }
 }
