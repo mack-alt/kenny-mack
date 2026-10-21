@@ -116,6 +116,10 @@ export function FamilyPhoto({
   );
 }
 
+/** Pill chips, same treatment as the founder card's top language control. */
+export const NAV_CHIP_CLASS =
+  "mx-auto max-w-md !rounded-full !border-zinc-900/5 !bg-white/70 !shadow-none backdrop-blur [&>button]:!rounded-full";
+
 export function LanguageChips({ className = "" }: { className?: string }) {
   const { lang, t } = useLang();
 

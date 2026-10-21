@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { DEMO_CAPTION, DEMO_POSTER_SRC, DEMO_VIDEO_SRC, DEMO_VIDEO_VI_SRC } from "@/lib/content";
+import { DEMO_POSTER_SRC, DEMO_VIDEO_SRC, DEMO_VIDEO_VI_SRC } from "@/lib/content";
+import { useLang } from "@/lib/use-lang";
 
 const REDUCE_QUERY = "(prefers-reduced-motion: reduce)";
 
@@ -34,15 +35,25 @@ function motionServerSnapshot(): MotionMode {
 export function DemoReel({ className = "" }: { className?: string }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const resumeRef = useRef<{ time: number; play: boolean } | null>(null);
   const allowPlayRef = useRef(false);
   const mode = useSyncExternalStore(subscribeMotion, motionSnapshot, motionServerSnapshot);
   const [muted, setMuted] = useState(true);
   const [paused, setPaused] = useState(true);
   const [blocked, setBlocked] = useState(false);
   const [started, setStarted] = useState(false);
+  const { lang, t } = useLang();
   const [videoLang, setVideoLang] = useState<VideoLang>("en");
-  const resumeRef = useRef<{ time: number; play: boolean } | null>(null);
+  const seenLang = useRef(lang);
   const reduce = mode === "reduce";
+
+  useEffect(() => {
+    if (seenLang.current === lang) return;
+    seenLang.current = lang;
+    const video = videoRef.current;
+    if (video) resumeRef.current = { time: video.currentTime, play: !video.paused && !video.ended };
+    setVideoLang(lang === "vi" ? "vi" : "en");
+  }, [lang]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -180,7 +191,7 @@ export function DemoReel({ className = "" }: { className?: string }) {
             poster={DEMO_POSTER_SRC}
             width={720}
             height={1280}
-            aria-label={DEMO_CAPTION}
+            aria-label={t.demoCaption}
             src={videoSrc}
             onLoadedMetadata={onLoadedMetadata}
           />
@@ -196,11 +207,11 @@ export function DemoReel({ className = "" }: { className?: string }) {
             className={coverWithPoster ? "phone-video phone-poster" : "phone-video phone-poster phone-poster-gone"}
           />
           <button type="button" className="phone-sound" aria-pressed={!muted} onClick={toggleSound}>
-            {muted ? "Tap for sound" : "Mute"}
+            {muted ? t.soundOn : t.soundOff}
           </button>
           {showPlay ? (
             <button type="button" className="phone-play" onClick={togglePlay}>
-              {paused ? "Play" : "Pause"}
+              {paused ? t.play : t.pause}
             </button>
           ) : null}
         </div>
@@ -209,7 +220,7 @@ export function DemoReel({ className = "" }: { className?: string }) {
       {VIDEO_OPTIONS.length > 1 ? (
         <div
           role="group"
-          aria-label="Video language"
+          aria-label={t.videoLanguage}
           className="mt-2 grid grid-cols-2 gap-1 rounded-2xl border border-forest/10 bg-paper p-1 shadow-[0_10px_24px_-20px_rgba(27,67,50,0.8)]"
         >
           {VIDEO_OPTIONS.map((option) => {

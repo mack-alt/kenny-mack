@@ -3,7 +3,10 @@ import { LegalHeading, legalLink } from "@/components/legal-page";
 import { LegalContact } from "@/components/legal-contact";
 import { LEGAL_NAME, SMS_NUMBER_DISPLAY, SMS_PROGRAM } from "@/lib/legal";
 
-/** The SMS program terms. Shared word for word by /terms/ and /sms-terms/. */
+/**
+ * The SMS program terms. The live Terms and SMS Terms pages render the
+ * translated copy in `lib/legal-copy.ts`.
+ */
 export function SmsSection({ headingId = "sms" }: { headingId?: string }) {
   return (
     <>

@@ -7,20 +7,26 @@ import {
 } from "@/lib/legal";
 import { legalLink } from "@/components/legal-page";
 
-/** Business contact block. Used only on the Privacy and Terms pages. */
-export function LegalContact() {
+/** Business contact block. Used only on the legal pages. The home address stays off the card. */
+export function LegalContact({
+  emailLabel = "Email:",
+  phoneLabel = "Phone (call or text):",
+}: {
+  emailLabel?: string;
+  phoneLabel?: string;
+}) {
   return (
     <address className="not-italic">
       <span className="block font-semibold">{LEGAL_NAME}</span>
       <span className="block">{LEGAL_ADDRESS}</span>
       <span className="block">
-        Email:{" "}
+        {emailLabel}{" "}
         <a className={legalLink} href={`mailto:${LEGAL_EMAIL}`}>
           {LEGAL_EMAIL}
         </a>
       </span>
       <span className="block">
-        Phone (call or text):{" "}
+        {phoneLabel}{" "}
         <a className={legalLink} href={`tel:${LEGAL_PHONE_TEL}`}>
           {LEGAL_PHONE_DISPLAY}
         </a>

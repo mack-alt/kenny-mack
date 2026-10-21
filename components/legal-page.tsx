@@ -7,22 +7,39 @@ export const legalLink =
 
 export function LegalPage({
   title,
+  kicker = "Blades of Grass",
+  effectiveLabel = "Effective date",
+  effective = LEGAL_EFFECTIVE,
+  updatedLabel = "Last updated",
+  updated = LEGAL_UPDATED,
+  backLabel = "Back to the card",
+  before,
   children,
+  footer,
 }: {
   title: string;
+  kicker?: string;
+  effectiveLabel?: string;
+  effective?: string;
+  updatedLabel?: string;
+  updated?: string;
+  backLabel?: string;
+  before?: ReactNode;
   children: ReactNode;
+  footer?: ReactNode;
 }) {
   return (
     <main className="min-h-dvh px-4 py-6 text-ink sm:px-6 sm:py-12">
+      {before}
       <article className="mx-auto w-full max-w-2xl rounded-[1.5rem] border border-forest/10 bg-paper px-5 py-8 shadow-[0_24px_60px_-36px_rgba(27,67,50,0.55)] sm:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sage">Blades of Grass</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sage">{kicker}</p>
         <h1 className="mt-3 max-w-full text-balance font-serif text-[2rem] font-medium leading-tight text-forest sm:text-4xl">
           {title}
         </h1>
         <p className="mt-3 text-base leading-relaxed text-bark">
-          Effective date: {LEGAL_EFFECTIVE}
+          {effectiveLabel}: {effective}
           <br />
-          Last updated: {LEGAL_UPDATED}
+          {updatedLabel}: {updated}
         </p>
         <div className="mt-6 space-y-4 text-lg leading-relaxed">{children}</div>
         <p className="mt-8">
@@ -30,11 +47,11 @@ export function LegalPage({
             href="/"
             className="inline-flex min-h-12 items-center text-base font-semibold text-forest underline decoration-straw decoration-2 underline-offset-4"
           >
-            Back to the card
+            {backLabel}
           </Link>
         </p>
       </article>
-      <SiteFooterLinks className="mx-auto mt-6 w-full max-w-2xl px-1" />
+      {footer ?? <SiteFooterLinks className="mx-auto mt-6 w-full max-w-2xl px-1" />}
     </main>
   );
 }
@@ -55,6 +72,11 @@ export function SiteFooterLinks({ className = "" }: { className?: string }) {
     <footer className={className} aria-label="Site">
       <ul className="flex flex-wrap gap-x-5">
         <li>
+          <Link className={item} href="/trust">
+            Trust
+          </Link>
+        </li>
+        <li>
           <Link className={item} href="/privacy">
             Privacy
           </Link>
@@ -67,6 +89,11 @@ export function SiteFooterLinks({ className = "" }: { className?: string }) {
         <li>
           <Link className={item} href="/sms-terms">
             SMS Terms
+          </Link>
+        </li>
+        <li>
+          <Link className={item} href="/service-agreement">
+            Service Agreement
           </Link>
         </li>
       </ul>
