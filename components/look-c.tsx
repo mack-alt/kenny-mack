@@ -31,6 +31,7 @@ import {
 import { BOOK_URL, EMAIL, FOUNDING_PRICE, FOUNDING_RENEWAL, PHONE_DISPLAY, PHONE_TEL, VCARD_HREF } from "@/lib/content";
 import { useLang } from "@/lib/use-lang";
 import { ContactQr, EnglishNote, GrassMark, LanguageChips, SaveContact } from "@/components/card-ui";
+import { DemoReel } from "@/components/demo-reel";
 import { Motion } from "@/components/motion";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
@@ -63,6 +64,29 @@ function Photo({ src, alt, className = "", eager = false }: { src: string; alt: 
         className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
       />
     </figure>
+  );
+}
+
+function AnsweredCall() {
+  return (
+    <div className="mx-auto w-full max-w-[22rem]">
+      <div className="rounded-[2rem] bg-zinc-950 p-2.5 shadow-[0_30px_60px_-34px_rgba(24,24,27,0.6)] ring-1 ring-white/15">
+        <div className="rounded-[1.55rem] bg-gradient-to-b from-[#fff8ef] to-[#f3ecdf] px-3.5 pt-4 pb-3.5">
+          <p className="text-center text-[0.68rem] font-semibold tracking-[0.18em] text-zinc-400 uppercase">Front Desk</p>
+          <div className="mt-3 rounded-[1.25rem] bg-white px-4 py-3.5 shadow-[0_10px_24px_-18px_rgba(24,24,27,0.45)]">
+            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-forest uppercase">Incoming call</p>
+            <p className="mt-1 text-[1.15rem] leading-tight font-semibold tracking-[-0.02em] text-zinc-900">Answered as [Your Salon]</p>
+          </div>
+          <div className="mt-2.5 rounded-[1.25rem] bg-white px-4 py-3.5 shadow-[0_10px_24px_-18px_rgba(24,24,27,0.45)]">
+            <p className="text-[1.05rem] leading-snug font-semibold tracking-[-0.02em] text-zinc-900">Booked: Tue 2:00 PM, color</p>
+          </div>
+          <div className="mt-2.5 rounded-[1.25rem] bg-forest px-4 py-3.5 text-white shadow-[0_16px_28px_-18px_rgba(27,67,50,0.8)]">
+            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-emerald-100 uppercase">Summary</p>
+            <p className="mt-1 text-[0.98rem] leading-snug">Maya · new color client · Tuesday at 2:00.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -151,7 +175,7 @@ export function LookC() {
             <GrassMark className="h-8 w-8 shrink-0 text-forest" />
             <div className="min-w-0 leading-tight" translate="no">
               <p className="text-[0.95rem] font-semibold tracking-[-0.01em] text-zinc-900">Kenny Mack</p>
-              <p className="text-[0.75rem] text-zinc-500">Blades of Grass Marketing</p>
+              <p className="text-[0.72rem] leading-snug text-zinc-500 sm:text-[0.75rem]">Blades of Grass Marketing and Solutions</p>
             </div>
           </div>
           <a href={`tel:${PHONE_TEL}`} className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-zinc-900 px-4 text-[0.9rem] font-semibold text-white transition hover:bg-forest">
@@ -167,8 +191,14 @@ export function LookC() {
 
       <main id="content" className="relative">
         {/* Clarify: question, then the direct answer first. */}
-        <section className={`${wrap} pt-10 pb-16 sm:pt-12 sm:pb-24`} aria-labelledby="hero-q">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        <section className={`${wrap} pt-8 pb-16 sm:pt-10 sm:pb-24`} aria-labelledby="hero-q">
+          <div className="flex flex-col items-center gap-5 lg:flex-row lg:items-center lg:justify-start lg:gap-10">
+            <DemoReel className="lc-reel" />
+            <a href={`sms:${PHONE_TEL}`} className={`${btnPrimary} w-full max-w-xs lg:w-auto`}>
+              Text Kenny
+            </a>
+          </div>
+          <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
             <div lang="en" translate="no" className="min-w-0">
               <p className={eyebrow}>{CL_EYEBROW}</p>
               <h1 id="hero-q" className="mt-4 text-balance text-[2.5rem] leading-[1.04] font-semibold tracking-[-0.045em] text-zinc-900 sm:text-[3.25rem] lg:text-[3.25rem]">
@@ -183,14 +213,14 @@ export function LookC() {
                 <a href={`tel:${PHONE_TEL}`} className={btnGhost}>Call Kenny · {PHONE_DISPLAY}</a>
               </div>
             </div>
-            <Photo src="hair-salon-interior.webp" alt="Empty modern hair salon with black styling chairs and round mirrors" className="aspect-[4/3] lg:aspect-square" eager />
+            <Photo src="salon-receptionist.webp" alt="Smiling receptionist at a salon front desk" className="aspect-[4/3] lg:aspect-square" eager />
           </div>
         </section>
 
         {/* Label */}
         <section className={`${wrap} ${section} border-t border-zinc-900/5`} aria-labelledby="label-h">
           <div className="reveal grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <Photo src="nail-manicure-hands.webp" alt="Close-up of a nail technician's hands working on a client's nails" className="aspect-[4/3] lg:order-2" />
+            <Photo src="salon-color-chair.webp" alt="Stylist applying hair color while a client sits in the salon chair" className="aspect-[4/3] lg:order-2" />
             <div lang="en" translate="no" className="min-w-0">
               <p className={eyebrow}>The problem</p>
               <h2 id="label-h" className={h2}>{CL_LABEL_H}</h2>
@@ -214,14 +244,13 @@ export function LookC() {
           </div>
         </section>
 
-        {/* Sell the vacation */}
-        <section className="bg-gradient-to-b from-[#f1efe9] to-[#fafaf8]" aria-labelledby="vac-h">
+        {/* Sell the outcome: the owner they pictured on opening day. */}
+        <section className="bg-gradient-to-b from-[#f1efe9] to-[#fafaf8]" aria-labelledby="owner-h">
           <div className={`${wrap} ${section}`}>
-            <div className="reveal grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <Photo src="nail-polish-wall.webp" alt="Rows of gel polish bottles on gold wall shelves in a nail salon" className="aspect-[4/3]" />
+            <div className="reveal grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
               <div lang="en" translate="no" className="min-w-0">
-                <p className={eyebrow}>The calm version</p>
-                <h2 id="vac-h" className={h2}>{CL_VACATION_H}</h2>
+                <p className={eyebrow}>Blades of Grass Marketing and Solutions</p>
+                <h2 id="owner-h" className={h2}>{CL_VACATION_H}</h2>
                 <p className={lead}>{CL_VACATION}</p>
                 <h3 className="mt-10 text-lg font-semibold tracking-[-0.015em] text-zinc-900">{FD_HOW_Q}</h3>
                 <ol className="mt-4 space-y-3">
@@ -233,7 +262,13 @@ export function LookC() {
                   ))}
                 </ol>
               </div>
+              <AnsweredCall />
             </div>
+            <Photo
+              src="salon-vibrant-chair.webp"
+              alt="Hairstylist and client smiling together during an appointment"
+              className="reveal mt-10 aspect-[4/3] lg:aspect-[16/10]"
+            />
           </div>
         </section>
 
@@ -255,7 +290,7 @@ export function LookC() {
               <p className="mt-6 text-sm leading-relaxed text-zinc-400">{FOUNDING_RENEWAL}</p>
               <div className="mt-8"><Book className={`${btnPrimary} !bg-white !text-zinc-900 hover:!bg-emerald-50 w-full sm:w-auto`} /></div>
             </div>
-            <Photo src="lash-tweezers-tray.webp" alt="Lash tweezers resting on a tray of eyelash extensions" className="aspect-[4/3] !rounded-[1.6rem] lg:aspect-auto" />
+            <Photo src="salon-owner-book.webp" alt="Salon owner checking appointments on a tablet beside her chair" className="aspect-[4/3] !rounded-[1.6rem] lg:aspect-auto" />
           </div>
           <PriceCompare />
         </section>

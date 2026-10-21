@@ -669,3 +669,69 @@ body > * {
 .look-c .dock a:hover { background: rgba(24, 24, 27, 0.09); }
 .look-c .dock a:first-child { background: #1b4332; color: #fff; }
 .look-c .dock a:first-child:hover { background: #143628; }
+
+/* Look C hero reel: same explainer, sized and framed for the neutral card. */
+.look-c .lc-reel.hero-phone {
+  width: min(68vw, 15rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+  .look-c .lc-reel.hero-phone {
+    width: 17.5rem;
+    margin-inline: 0;
+  }
+}
+
+.look-c .lc-reel .phone-bezel {
+  gap: 0.45rem;
+  padding: 0.5rem 0.42rem 0.45rem;
+  border-radius: 2rem;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.16), transparent 32%),
+    linear-gradient(180deg, #3f3f46 0%, #18181b 46%, #09090b 100%);
+  box-shadow:
+    0 30px 60px -36px rgba(24, 24, 27, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.look-c .lc-reel .phone-speaker,
+.look-c .lc-reel .phone-home {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.look-c .lc-reel .phone-screen {
+  border-radius: 1.45rem;
+  background: #18181b;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.look-c .lc-reel .phone-sound,
+.look-c .lc-reel .phone-play {
+  background: rgba(255, 255, 255, 0.94);
+  color: #18181b;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.look-c .lc-reel [role="group"] {
+  border-color: rgba(24, 24, 27, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+}
+
+.look-c .lc-reel [role="group"] button {
+  border-radius: 999px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.look-c .lc-reel [role="group"] button[aria-pressed="true"] {
+  background: #1b4332;
+  color: #fff;
+}
+
+.look-c .lc-reel [role="group"] button[aria-pressed="false"] {
+  color: #18181b;
+  background: transparent;
+}

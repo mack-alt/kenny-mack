@@ -109,7 +109,7 @@ export const TRUST = [
 
 export const TRUST_FOOTER = ["Privacy", "Terms", "SMS Terms", "Service Agreement", "Contact"] as const;
 
-/* ---- Front Desk sales copy (AEO format). Calls only. ---- */
+/* ---- Front Desk sales copy (AEO format). ---- */
 export const FD_QUESTION = "What does Front Desk do for a salon?";
 export const FD_ANSWER =
   "Front Desk answers your salon's phone in your shop's name when you can't pick up. It greets the caller, answers common questions about your services and hours, and helps book the next appointment, so you can keep your hands on the client in your chair.";
@@ -123,11 +123,11 @@ export const FD_STEPS = [
 ] as const;
 export const FD_PRICE_Q = "What does it cost?";
 export const FD_PRICE_POINTS = [
+  "Calls answered in your salon's name, help booking the next appointment, and a summary of who called and what they needed.",
   "Founding price for the first 10 salons only.",
   "Your $297 rate is locked for your first 12 months.",
-  "Month to month. No long contract.",
-  "Calls only. Texting is not part of this offer.",
-  "First month: if it isn't right for you, ask for a refund or a $297 credit. No conditions.",
+  "Month to month.",
+  "First month: if it isn't right for you, ask for a refund or a $297 credit.",
 ] as const;
 export const FD_FAQ = [
   {
@@ -139,22 +139,18 @@ export const FD_FAQ = [
     a: "Yes. Front Desk answers in your shop's name, using your services, hours, and booking details.",
   },
   {
-    q: "Does it send texts?",
-    a: "No. This offer covers phone calls only.",
-  },
-  {
     q: "What if it doesn't work for my salon?",
-    a: "Tell us in your first month and you get your money back or a $297 credit. No conditions.",
+    a: "Tell us in your first month and you get your money back or a $297 credit.",
   },
   {
     q: "Do I need to learn new technology?",
-    a: "No. We handle the setup. You tell us how your shop works.",
+    a: "We handle the setup. You tell us how your shop works.",
   },
 ] as const;
 export const FD_WHO =
   "Kenny Mack, founder of Blades of Grass Marketing. Call, email, or book a demo and you talk to Kenny directly.";
 
-/* ---- CLOSER sequence (Clarify, Label, Overview, Sell, Explain, Reinforce). Calls only. ---- */
+/* ---- CLOSER sequence (Clarify, Label, Overview, Sell, Explain, Reinforce). ---- */
 export const CL_EYEBROW = "Front Desk for salons";
 export const CL_QUESTION = "Missing bookings while you're with a client?";
 export const CL_LABEL_H = "The phone rings. Your hands are full.";
@@ -166,9 +162,9 @@ export const CL_PAST = [
   { t: "Calling back later", d: "By the time you're free, they may have already booked somewhere else." },
   { t: "Hiring a front desk", d: "A receptionist is a real monthly cost, and still can't cover every break, every lunch, and every late call." },
 ] as const;
-export const CL_VACATION_H = "Picture a calmer salon";
+export const CL_VACATION_H = "Be the owner you pictured on opening day.";
 export const CL_VACATION =
-  "You stay with the client in your chair. Every call gets answered in your salon's name, the caller gets help booking, and you get a summary of who called and what they needed.";
+  "Chairs full. Calls answered in your salon's name. New clients booked while you finish the color. When you look up, there's a summary waiting, and nothing slipped through. That's the shop you set out to build.";
 export const CL_CONCERNS_H = "Questions salon owners ask";
 export const CL_NEXT_H = "What happens next";
 export const CL_NEXT = [
