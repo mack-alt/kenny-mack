@@ -653,3 +653,19 @@ body > * {
     padding: 0.45rem;
   }
 }
+
+/* Look C: neutral glass dock */
+.look-c .dock {
+  background: rgba(250, 250, 248, 0.85);
+  backdrop-filter: blur(18px);
+  border-color: rgba(24, 24, 27, 0.06);
+}
+.look-c .dock a {
+  background: rgba(24, 24, 27, 0.05);
+  color: #18181b;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  transition: background-color 0.2s ease;
+}
+.look-c .dock a:hover { background: rgba(24, 24, 27, 0.09); }
+.look-c .dock a:first-child { background: #1b4332; color: #fff; }
+.look-c .dock a:first-child:hover { background: #143628; }

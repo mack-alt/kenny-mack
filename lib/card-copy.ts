@@ -132,7 +132,7 @@ export const FD_PRICE_POINTS = [
 export const FD_FAQ = [
   {
     q: "Is this AI?",
-    a: "Yes, we use AI, and we're way more than AI. Kenny sets up your Front Desk by hand, learns how your shop works, and keeps tuning it with you.",
+    a: "Yes, and we're way more than AI. Kenny sets up your Front Desk by hand, learns how your shop works, and keeps tuning it with you.",
   },
   {
     q: "Will callers know it's my shop?",
@@ -153,3 +153,26 @@ export const FD_FAQ = [
 ] as const;
 export const FD_WHO =
   "Kenny Mack, founder of Blades of Grass Marketing. Call, email, or book a demo and you talk to Kenny directly.";
+
+/* ---- CLOSER sequence (Clarify, Label, Overview, Sell, Explain, Reinforce). Calls only. ---- */
+export const CL_EYEBROW = "Front Desk for salons";
+export const CL_QUESTION = "Missing bookings while you're with a client?";
+export const CL_LABEL_H = "The phone rings. Your hands are full.";
+export const CL_LABEL =
+  "You're mid-color, mid-fill, or mid-lash set. The phone rings with a client in your chair, you can't pick up, and that caller books with the next salon on their list.";
+export const CL_PAST_H = "What you've probably tried";
+export const CL_PAST = [
+  { t: "Voicemail", d: "Many callers won't leave a message. They just call the next salon." },
+  { t: "Calling back later", d: "By the time you're free, they may have already booked somewhere else." },
+  { t: "Hiring a front desk", d: "A receptionist is a real monthly cost, and still can't cover every break, every lunch, and every late call." },
+] as const;
+export const CL_VACATION_H = "Picture a calmer salon";
+export const CL_VACATION =
+  "You stay with the client in your chair. Every call gets answered in your salon's name, the caller gets help booking, and you get a summary of who called and what they needed.";
+export const CL_CONCERNS_H = "Questions salon owners ask";
+export const CL_NEXT_H = "What happens next";
+export const CL_NEXT = [
+  { t: "15-minute demo", d: "Book a time and talk with Kenny directly about how your shop runs." },
+  { t: "Setup handled for you", d: "We set up Front Desk with your services, hours, prices, and how you like to book." },
+  { t: "Month to month", d: "Your $297 rate stays locked for 12 months. Cancel anytime." },
+] as const;

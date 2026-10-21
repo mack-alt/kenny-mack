@@ -1,10 +1,10 @@
-import { LookB } from "@/components/look-b";
+import { LookC } from "@/components/look-c";
 
 export default function Home() {
   return (
     <>
       <main>
-        <LookB />
+        <LookC />
       </main>
       {/* Exact LeadConnector loader. It is synchronous on purpose so the tag matches the carrier snippet. */}
       {/* eslint-disable-next-line @next/next/no-sync-scripts */}
