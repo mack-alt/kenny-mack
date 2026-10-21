@@ -24,23 +24,22 @@ export const DEMO_CAPTION = "From missed call to booked.";
 
 /** English facts. The story in `lib/card-copy.ts` stays as written. */
 export const ROLE_LINE = "Founder, Blades of Grass Marketing";
-export const FOUNDING_LABEL = "Founding shop · first ten";
-export const FOUNDING_PRICE = "$297 a month plus tax, locked in for your first year.";
+export const FOUNDING_LABEL = "Front Desk";
+export const FOUNDING_PRICE = "$297/month plus tax, month-to-month";
 export const FOUNDING_DETAIL =
   "The full front desk for your shop: your calls get answered, so customers aren't left waiting while your hands are busy. Calls are included, it's month to month, and billing starts when your line goes live. Free with it: a directory listing and a one-page shop website.";
 export const FOUNDING_ANNUAL_LABEL = "Annual option";
 export const FOUNDING_ANNUAL =
   "After your first month, you can choose $2,500 plus tax for the next full year, which saves $1,064 compared with paying monthly.";
-export const FOUNDING_GUARANTEE_LABEL = "First-month refund";
-export const FOUNDING_GUARANTEE =
-  "Try it for your first month. If it isn't working for you, tell us and you get your money back or a credit toward another service, no hard feelings. Until then, we keep tuning it until it's right for your shop.";
-/** Renewal wording, verbatim from the final terms. */
+export const FOUNDING_REFUND_LABEL = "First-month refund";
+export const FOUNDING_REFUND = "Not happy in your first month for any reason? Full refund.";
+/** At least 30 days before a monthly rate change. */
 export const FOUNDING_RENEWAL =
-  "We'll give you at least 30 days' notice of your renewal rate before your founding monthly rate or prepaid annual term ends.";
+  "If your monthly rate is going to change, we'll give you at least 30 days' notice.";
 
 /**
- * Interface chrome only. The card’s story and offers stay in English
- * (`lib/card-copy.ts`) on every language.
+ * Interface chrome. The founder card story lives in `lib/salon-copy.ts`
+ * and follows the same language.
  */
 export type Copy = {
   language: string;
@@ -52,6 +51,12 @@ export type Copy = {
   saveContact: string;
   qrAlt: string;
   dockLabel: string;
+  demoCaption: string;
+  soundOn: string;
+  soundOff: string;
+  play: string;
+  pause: string;
+  videoLanguage: string;
 };
 
 export const copy: Record<Lang, Copy> = {
@@ -65,28 +70,46 @@ export const copy: Record<Lang, Copy> = {
     saveContact: "Save contact",
     qrAlt: "QR code that opens this card for Kenny Mack",
     dockLabel: "Contact",
+    demoCaption: DEMO_CAPTION,
+    soundOn: "Tap for sound",
+    soundOff: "Mute",
+    play: "Play",
+    pause: "Pause",
+    videoLanguage: "Video language",
   },
   vi: {
     language: "Ngôn ngữ",
     callText: "Gọi",
     directory: "Danh bạ",
-    storyNote: "Phần dưới đây là lời Kenny viết, bằng tiếng Anh.",
+    storyNote: null,
     photoAlt: "Kenny Mack cùng các con, Prana và Sergen, gần bờ sông Seattle",
     skip: "Bỏ qua, đến nội dung",
     saveContact: "Lưu liên hệ",
     qrAlt: "Mã QR mở danh thiếp này của Kenny Mack",
     dockLabel: "Liên hệ",
+    demoCaption: "Từ cuộc gọi lỡ đến lịch đã đặt.",
+    soundOn: "Bật tiếng",
+    soundOff: "Tắt tiếng",
+    play: "Phát",
+    pause: "Tạm dừng",
+    videoLanguage: "Ngôn ngữ video",
   },
   es: {
     language: "Idioma",
     callText: "Llamar",
     directory: "Directorio",
-    storyNote: "El texto que sigue está en palabras de Kenny, en inglés.",
+    storyNote: null,
     photoAlt: "Kenny Mack con sus hijos, Prana y Sergen, cerca del paseo marítimo de Seattle",
     skip: "Saltar al contenido",
     saveContact: "Guardar contacto",
     qrAlt: "Código QR que abre esta tarjeta de Kenny Mack",
     dockLabel: "Contacto",
+    demoCaption: "De una llamada perdida a una hora reservada.",
+    soundOn: "Activar sonido",
+    soundOff: "Silenciar",
+    play: "Reproducir",
+    pause: "Pausa",
+    videoLanguage: "Idioma del video",
   },
 };
 

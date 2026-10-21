@@ -113,7 +113,7 @@ export const TRUST_FOOTER = ["Privacy", "Terms", "SMS Terms", "Service Agreement
 export const FD_QUESTION = "What does Front Desk do for a salon?";
 export const FD_ANSWER =
   "Front Desk answers your salon's phone in your shop's name when you can't pick up. It greets the caller, answers common questions about your services and hours, and helps book the next appointment, so you can keep your hands on the client in your chair.";
-export const FD_PRICE_LINE = "First 10 salons: $297 a month, locked for 12 months. Month to month.";
+export const FD_PRICE_LINE = "Not happy in your first month for any reason? Full refund.";
 export const FD_CTA = "Book a 15-minute demo";
 export const FD_HOW_Q = "How does it work?";
 export const FD_STEPS = [
@@ -124,23 +124,19 @@ export const FD_STEPS = [
 export const FD_PRICE_Q = "What does it cost?";
 export const FD_PRICE_POINTS = [
   "Calls answered in your salon's name, help booking the next appointment, and a summary of who called and what they needed.",
-  "Founding price for the first 10 salons only.",
-  "Your $297 rate is locked for your first 12 months.",
-  "Month to month.",
-  "First month: if it isn't right for you, ask for a refund or a $297 credit.",
 ] as const;
 export const FD_FAQ = [
   {
     q: "Is this AI?",
-    a: "Yes, and we're way more than AI. Kenny sets up your Front Desk by hand, learns how your shop works, and keeps tuning it with you.",
+    a: "Yes, we use AI, and we're way more than AI. It's a virtual front desk set up for your salon. Call the demo and judge it yourself.",
   },
   {
     q: "Will callers know it's my shop?",
-    a: "Yes. Front Desk answers in your shop's name, using your services, hours, and booking details.",
+    a: "Calls are answered in your salon's name.",
   },
   {
     q: "What if it doesn't work for my salon?",
-    a: "Tell us in your first month and you get your money back or a $297 credit.",
+    a: "Tell us in your first month and you get a full refund.",
   },
   {
     q: "Do I need to learn new technology?",
@@ -170,5 +166,5 @@ export const CL_NEXT_H = "What happens next";
 export const CL_NEXT = [
   { t: "15-minute demo", d: "Book a time and talk with Kenny directly about how your shop runs." },
   { t: "Setup handled for you", d: "We set up Front Desk with your services, hours, prices, and how you like to book." },
-  { t: "Month to month", d: "Your $297 rate stays locked for 12 months. Cancel anytime." },
+  { t: "Month to month", d: "Cancel anytime." },
 ] as const;

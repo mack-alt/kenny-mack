@@ -2,37 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  CL_CONCERNS_H,
-  CL_EYEBROW,
-  CL_LABEL,
-  CL_LABEL_H,
-  CL_NEXT,
-  CL_NEXT_H,
-  CL_PAST,
-  CL_PAST_H,
-  CL_QUESTION,
-  CL_VACATION,
-  CL_VACATION_H,
-  CTA_TALK,
-  FD_ANSWER,
-  FD_CTA,
-  FD_FAQ,
-  FD_HOW_Q,
-  FD_PRICE_LINE,
-  FD_PRICE_POINTS,
-  FD_PRICE_Q,
-  FD_STEPS,
-  FD_WHO,
-  TRUST,
-  TRUST_FOOTER,
-  TRUST_HEADING,
-} from "@/lib/card-copy";
-import { BOOK_URL, EMAIL, FOUNDING_PRICE, FOUNDING_RENEWAL, PHONE_DISPLAY, PHONE_TEL, VCARD_HREF } from "@/lib/content";
-import { useLang } from "@/lib/use-lang";
-import { ContactQr, EnglishNote, GrassMark, LanguageChips, SaveContact } from "@/components/card-ui";
+import { NAV_CHIP_CLASS, ContactQr, GrassMark, LanguageChips, SaveContact } from "@/components/card-ui";
 import { DemoReel } from "@/components/demo-reel";
 import { Motion } from "@/components/motion";
+import { BOOK_URL, EMAIL, PHONE_DISPLAY, PHONE_TEL, VCARD_HREF } from "@/lib/content";
+import { MONTHLY_PRICE, salonCopy, type SalonCopy } from "@/lib/salon-copy";
+import { useLang } from "@/lib/use-lang";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 const section = "py-16 sm:py-24";
@@ -67,22 +42,22 @@ function Photo({ src, alt, className = "", eager = false }: { src: string; alt: 
   );
 }
 
-function AnsweredCall() {
+function AnsweredCall({ copy }: { copy: SalonCopy }) {
   return (
     <div className="mx-auto w-full max-w-[22rem]">
       <div className="rounded-[2rem] bg-zinc-950 p-2.5 shadow-[0_30px_60px_-34px_rgba(24,24,27,0.6)] ring-1 ring-white/15">
         <div className="rounded-[1.55rem] bg-gradient-to-b from-[#fff8ef] to-[#f3ecdf] px-3.5 pt-4 pb-3.5">
-          <p className="text-center text-[0.68rem] font-semibold tracking-[0.18em] text-zinc-400 uppercase">Front Desk</p>
+          <p className="text-center text-[0.68rem] font-semibold tracking-[0.18em] text-zinc-400 uppercase">{copy.phoneKicker}</p>
           <div className="mt-3 rounded-[1.25rem] bg-white px-4 py-3.5 shadow-[0_10px_24px_-18px_rgba(24,24,27,0.45)]">
-            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-forest uppercase">Incoming call</p>
-            <p className="mt-1 text-[1.15rem] leading-tight font-semibold tracking-[-0.02em] text-zinc-900">Answered as [Your Salon]</p>
+            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-forest uppercase">{copy.phoneIncoming}</p>
+            <p className="mt-1 text-[1.15rem] leading-tight font-semibold tracking-[-0.02em] text-zinc-900">{copy.phoneAnswered}</p>
           </div>
           <div className="mt-2.5 rounded-[1.25rem] bg-white px-4 py-3.5 shadow-[0_10px_24px_-18px_rgba(24,24,27,0.45)]">
-            <p className="text-[1.05rem] leading-snug font-semibold tracking-[-0.02em] text-zinc-900">Booked: Tue 2:00 PM, color</p>
+            <p className="text-[1.05rem] leading-snug font-semibold tracking-[-0.02em] text-zinc-900">{copy.phoneBooked}</p>
           </div>
           <div className="mt-2.5 rounded-[1.25rem] bg-forest px-4 py-3.5 text-white shadow-[0_16px_28px_-18px_rgba(27,67,50,0.8)]">
-            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-emerald-100 uppercase">Summary</p>
-            <p className="mt-1 text-[0.98rem] leading-snug">Maya · new color client · Tuesday at 2:00.</p>
+            <p className="text-[0.7rem] font-semibold tracking-[0.14em] text-emerald-100 uppercase">{copy.phoneSummaryLabel}</p>
+            <p className="mt-1 text-[0.98rem] leading-snug">{copy.phoneSummary}</p>
           </div>
         </div>
       </div>
@@ -90,10 +65,10 @@ function AnsweredCall() {
   );
 }
 
-function Book({ className = btnPrimary }: { className?: string }) {
+function Book({ label, className = btnPrimary }: { label: string; className?: string }) {
   return (
     <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" className={className}>
-      {FD_CTA}
+      {label}
     </a>
   );
 }
@@ -104,29 +79,29 @@ function Num({ n }: { n: number }) {
   );
 }
 
-function PriceCompare() {
-  const [avg, setAvg] = useState("75");
-  const value = Number(avg);
-  const valid = Number.isFinite(value) && value > 0;
-  const needed = valid ? Math.ceil(297 / value) : null;
+function PriceCompare({ copy }: { copy: SalonCopy }) {
+  const [avg, setAvg] = useState("");
+  const trimmed = avg.trim();
+  const value = Number(trimmed);
+  const valid = trimmed !== "" && Number.isFinite(value) && value > 0;
+  const needed = valid ? Math.ceil(MONTHLY_PRICE / value) : null;
   const card = `${glass} ${hoverCard} flex flex-col p-6`;
   return (
-    <div id="price-compare" className="reveal mt-12" lang="en" translate="no">
+    <div id="price-compare" className="reveal mt-12">
       <h3 className="text-balance text-[1.6rem] leading-[1.15] font-semibold tracking-[-0.03em] text-zinc-900 sm:text-[2rem]">
-        What does $297 a month really cost?
+        {copy.compareTitle}
       </h3>
       <ul className="mt-6 grid gap-4 md:grid-cols-3">
         <li className={card}>
-          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">About $10 a day</p>
-          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">Roughly the cost of a couple of coffees from your local café.</p>
-          <p className="mt-4 inline-flex w-fit rounded-full bg-zinc-900/5 px-3 py-1 text-sm text-zinc-500">$297 ÷ 30 days ≈ $9.90</p>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.dayTitle}</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.dayBody}</p>
         </li>
         <li className={card}>
-          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">A couple of appointments a month</p>
-          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">If one missed call is a $60–$150 service, a few saved bookings can cover it.</p>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.apptTitle}</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.apptBody}</p>
           <div className="mt-auto pt-5">
-            <label htmlFor="avg-service" className="text-sm font-medium text-zinc-700">Your average service</label>
-            <div className="mt-1.5 flex items-center rounded-2xl border border-zinc-900/10 bg-white px-3.5 transition focus-within:border-forest focus-within:ring-2 focus-within:ring-forest/15">
+            <label htmlFor="avg-service" className="sr-only">{copy.calcLabel}</label>
+            <div className="flex items-center rounded-2xl border border-zinc-900/10 bg-white px-3.5 transition focus-within:border-forest focus-within:ring-2 focus-within:ring-forest/15">
               <span className="text-lg text-zinc-500">$</span>
               <input
                 id="avg-service"
@@ -135,22 +110,25 @@ function PriceCompare() {
                 min={1}
                 step={1}
                 value={avg}
+                placeholder={copy.calcPlaceholder}
                 onChange={(e) => setAvg(e.target.value)}
-                className="min-h-12 w-full min-w-0 bg-transparent px-1.5 text-lg font-semibold text-zinc-900 outline-none"
+                className="min-h-12 w-full min-w-0 bg-transparent px-1.5 text-lg font-semibold text-zinc-900 outline-none placeholder:text-base placeholder:font-medium placeholder:text-zinc-400"
               />
             </div>
-            <p className="mt-3 rounded-2xl bg-forest/[0.07] px-4 py-3 text-[1rem] leading-snug text-forest" aria-live="polite">
-              {needed ? (
-                <><span className="text-xl font-semibold">{needed}</span> booking{needed === 1 ? "" : "s"} a month cover $297.</>
-              ) : (
-                "Enter a service price to see how many bookings cover $297."
-              )}
-            </p>
+            {needed ? (
+              <p className="mt-3 rounded-2xl bg-forest/[0.07] px-4 py-3 text-[1rem] leading-snug text-forest" aria-live="polite">
+                <span className="text-xl font-semibold">{needed}</span> {copy.bookingsCover(needed)}
+              </p>
+            ) : null}
           </div>
         </li>
         <li className={card}>
-          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">Less than a part-time front desk</p>
-          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">A receptionist is a real monthly cost and still can&apos;t cover every break, lunch, and late call.</p>
+          <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.deskTitle}</p>
+          <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.deskIntro}</p>
+          <p className="mt-4 text-sm font-semibold tracking-[0.12em] text-forest uppercase">{copy.deskMoneyLabel}</p>
+          <p className="mt-1 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.deskMoney}</p>
+          <p className="mt-4 text-sm font-semibold tracking-[0.12em] text-forest uppercase">{copy.deskOtherLabel}</p>
+          <p className="mt-1 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.deskOther}</p>
         </li>
       </ul>
     </div>
@@ -158,12 +136,21 @@ function PriceCompare() {
 }
 
 export function LookC() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
+  const copy = salonCopy[lang];
+  const footerLinks = [
+    { href: "/trust", label: copy.links.trust },
+    { href: "/privacy", label: copy.links.privacy },
+    { href: "/terms", label: copy.links.terms },
+    { href: "/sms-terms", label: copy.links.sms },
+    { href: "/service-agreement", label: copy.links.agreement },
+  ];
 
   return (
     <div
       className="look-c relative min-h-dvh overflow-x-clip bg-[#fafaf8] pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-zinc-900"
       style={{ fontFamily: "var(--font-inter), ui-sans-serif, system-ui, sans-serif" }}
+      lang={lang}
     >
       <Motion />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[44rem] bg-[radial-gradient(60rem_28rem_at_80%_-10%,rgba(27,67,50,0.10),transparent_60%),radial-gradient(40rem_24rem_at_0%_10%,rgba(214,196,170,0.25),transparent_60%)]" />
@@ -185,56 +172,49 @@ export function LookC() {
       </header>
 
       <div className={`${wrap} relative pt-5`}>
-        <LanguageChips className="mx-auto max-w-md !rounded-full !border-zinc-900/5 !bg-white/70 !shadow-none backdrop-blur [&>button]:!rounded-full" />
-        {t.storyNote ? <div className="mx-auto mt-3 max-w-md"><EnglishNote note={t.storyNote} /></div> : null}
+        <LanguageChips className={NAV_CHIP_CLASS} />
       </div>
 
       <main id="content" className="relative">
-        {/* Clarify: question, then the direct answer first. */}
-        <section className={`${wrap} pt-8 pb-16 sm:pt-10 sm:pb-24`} aria-labelledby="hero-q">
+        <section id="hero" className={`${wrap} pt-8 pb-16 sm:pt-10 sm:pb-24`} aria-labelledby="hero-q">
           <div className="flex flex-col items-center gap-5 lg:flex-row lg:items-center lg:justify-start lg:gap-10">
             <DemoReel className="lc-reel" />
             <a href={`sms:${PHONE_TEL}`} className={`${btnPrimary} w-full max-w-xs lg:w-auto`}>
-              Text Kenny
+              {copy.textKenny}
             </a>
           </div>
           <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-            <div lang="en" translate="no" className="min-w-0">
-              <p className={eyebrow}>{CL_EYEBROW}</p>
+            <div className="min-w-0">
+              <p className={eyebrow}>{copy.eyebrow}</p>
               <h1 id="hero-q" className="mt-4 text-balance text-[2.5rem] leading-[1.04] font-semibold tracking-[-0.045em] text-zinc-900 sm:text-[3.25rem] lg:text-[3.25rem]">
-                {CL_QUESTION}
+                {copy.heroQuestion}
               </h1>
-              <p className={lead}>{FD_ANSWER}</p>
-              <p className="mt-6 inline-flex max-w-full rounded-2xl border border-forest/15 bg-forest/[0.06] px-4 py-2.5 text-[0.98rem] leading-snug font-medium text-forest">
-                {FD_PRICE_LINE}
-              </p>
+              <p className={lead}>{copy.heroAnswer}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Book />
-                <a href={`tel:${PHONE_TEL}`} className={btnGhost}>Call Kenny · {PHONE_DISPLAY}</a>
+                <Book label={copy.bookCta} />
+                <a href={`tel:${PHONE_TEL}`} className={btnGhost}>{copy.callKenny} · {PHONE_DISPLAY}</a>
               </div>
             </div>
-            <Photo src="salon-receptionist.webp" alt="Smiling receptionist at a salon front desk" className="aspect-[4/3] lg:aspect-square" eager />
+            <Photo src="salon-receptionist.webp" alt={copy.photoReception} className="aspect-[4/3] lg:aspect-square" eager />
           </div>
         </section>
 
-        {/* Label */}
-        <section className={`${wrap} ${section} border-t border-zinc-900/5`} aria-labelledby="label-h">
+        <section id="problem" className={`${wrap} ${section} border-t border-zinc-900/5`} aria-labelledby="label-h">
           <div className="reveal grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <Photo src="salon-color-chair.webp" alt="Stylist applying hair color while a client sits in the salon chair" className="aspect-[4/3] lg:order-2" />
-            <div lang="en" translate="no" className="min-w-0">
-              <p className={eyebrow}>The problem</p>
-              <h2 id="label-h" className={h2}>{CL_LABEL_H}</h2>
-              <p className={lead}>{CL_LABEL}</p>
+            <Photo src="salon-color-chair.webp" alt={copy.photoColor} className="aspect-[4/3] lg:order-2" />
+            <div className="min-w-0">
+              <p className={eyebrow}>{copy.problemEyebrow}</p>
+              <h2 id="label-h" className={h2}>{copy.problemTitle}</h2>
+              <p className={lead}>{copy.problemBody}</p>
             </div>
           </div>
         </section>
 
-        {/* Overview past pain */}
-        <section className={`${wrap} ${section} pt-0 sm:pt-0`} aria-labelledby="past-h">
-          <div className="reveal" lang="en" translate="no">
-            <h2 id="past-h" className={h2}>{CL_PAST_H}</h2>
+        <section id="past" className={`${wrap} ${section} pt-0 sm:pt-0`} aria-labelledby="past-h">
+          <div className="reveal">
+            <h2 id="past-h" className={h2}>{copy.pastTitle}</h2>
             <ul className="mt-8 grid gap-4 md:grid-cols-3">
-              {CL_PAST.map((item) => (
+              {copy.past.map((item) => (
                 <li key={item.t} className={`${glass} ${hoverCard} p-6`}>
                   <p className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{item.t}</p>
                   <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{item.d}</p>
@@ -244,17 +224,16 @@ export function LookC() {
           </div>
         </section>
 
-        {/* Sell the outcome: the owner they pictured on opening day. */}
-        <section className="bg-gradient-to-b from-[#f1efe9] to-[#fafaf8]" aria-labelledby="owner-h">
+        <section id="owner" className="bg-gradient-to-b from-[#f1efe9] to-[#fafaf8]" aria-labelledby="owner-h">
           <div className={`${wrap} ${section}`}>
             <div className="reveal grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-              <div lang="en" translate="no" className="min-w-0">
-                <p className={eyebrow}>Blades of Grass Marketing and Solutions</p>
-                <h2 id="owner-h" className={h2}>{CL_VACATION_H}</h2>
-                <p className={lead}>{CL_VACATION}</p>
-                <h3 className="mt-10 text-lg font-semibold tracking-[-0.015em] text-zinc-900">{FD_HOW_Q}</h3>
+              <div className="min-w-0">
+                <p className={eyebrow}>{copy.ownerEyebrow}</p>
+                <h2 id="owner-h" className={h2}>{copy.ownerTitle}</h2>
+                <p className={lead}>{copy.ownerBody}</p>
+                <h3 className="mt-10 text-lg font-semibold tracking-[-0.015em] text-zinc-900">{copy.howTitle}</h3>
                 <ol className="mt-4 space-y-3">
-                  {FD_STEPS.map((step, i) => (
+                  {copy.steps.map((step, i) => (
                     <li key={step} className="flex gap-4 text-[1rem] leading-relaxed text-zinc-700">
                       <Num n={i + 1} />
                       <span className="min-w-0 pt-0.5 text-pretty">{step}</span>
@@ -262,66 +241,71 @@ export function LookC() {
                   ))}
                 </ol>
               </div>
-              <AnsweredCall />
+              <AnsweredCall copy={copy} />
             </div>
             <Photo
               src="salon-vibrant-chair.webp"
-              alt="Hairstylist and client smiling together during an appointment"
+              alt={copy.photoTogether}
               className="reveal mt-10 aspect-[4/3] lg:aspect-[16/10]"
             />
           </div>
         </section>
 
-        {/* Price */}
-        <section className={`${wrap} ${section}`} aria-labelledby="price-h">
-          <div lang="en" translate="no" className="reveal grid items-stretch gap-6 overflow-hidden rounded-[2rem] bg-zinc-900 p-3 text-white lg:grid-cols-[1.15fr_0.85fr]">
+        <section id="pricing" className={`${wrap} ${section}`} aria-labelledby="price-h">
+          <div className="reveal grid items-stretch gap-6 overflow-hidden rounded-[2rem] bg-zinc-900 p-3 text-white lg:grid-cols-[1.15fr_0.85fr]">
             <div className="min-w-0 p-5 sm:p-8">
-              <p className="text-[0.8rem] font-semibold tracking-[0.14em] text-emerald-200/80 uppercase">Founding offer</p>
-              <h2 id="price-h" className="mt-3 text-[2rem] leading-[1.1] font-semibold tracking-[-0.035em] sm:text-[2.5rem]">{FD_PRICE_Q}</h2>
-              <p className="mt-4 text-pretty text-xl leading-snug font-medium text-white sm:text-2xl">{FOUNDING_PRICE}</p>
+              <p className="text-[0.8rem] font-semibold tracking-[0.14em] text-emerald-200/80 uppercase">{copy.priceEyebrow}</p>
+              <h2 id="price-h" className="mt-3 text-[2rem] leading-[1.1] font-semibold tracking-[-0.035em] sm:text-[2.5rem]">{copy.priceTitle}</h2>
+              <p className="mt-4 text-pretty text-xl leading-snug font-medium text-white sm:text-2xl">{copy.priceLine}</p>
+              <p className="mt-4 inline-flex max-w-full rounded-2xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-2.5 text-[0.98rem] leading-snug font-medium text-emerald-50">
+                {copy.refundBadge}
+              </p>
               <ul className="mt-6 space-y-3">
-                {FD_PRICE_POINTS.map((pt) => (
+                {copy.pricePoints.map((pt) => (
                   <li key={pt} className="flex gap-3 text-[1rem] leading-relaxed text-zinc-300">
                     <svg viewBox="0 0 20 20" className="mt-1 h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true"><path d="M5 10.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     <span className="min-w-0 text-pretty">{pt}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm leading-relaxed text-zinc-400">{FOUNDING_RENEWAL}</p>
-              <div className="mt-8"><Book className={`${btnPrimary} !bg-white !text-zinc-900 hover:!bg-emerald-50 w-full sm:w-auto`} /></div>
+              <p className="mt-6 text-sm leading-relaxed text-zinc-400">{copy.renewal}</p>
+              <div className="mt-8"><Book label={copy.bookCta} className={`${btnPrimary} !bg-white !text-zinc-900 hover:!bg-emerald-50 w-full sm:w-auto`} /></div>
             </div>
-            <Photo src="salon-owner-book.webp" alt="Salon owner checking appointments on a tablet beside her chair" className="aspect-[4/3] !rounded-[1.6rem] lg:aspect-auto" />
+            <Photo src="salon-owner-book.webp" alt={copy.photoOwner} className="aspect-[4/3] !rounded-[1.6rem] lg:aspect-auto" />
           </div>
-          <PriceCompare />
+          <PriceCompare copy={copy} />
         </section>
 
-        {/* Explain away concerns */}
-        <section className={`${wrap} ${section} pt-4 sm:pt-8`} aria-labelledby="faq-h">
+        <section id="faq" className={`${wrap} ${section} pt-4 sm:pt-8`} aria-labelledby="faq-h">
           <div className="reveal grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
-              <p className={eyebrow}>Straight answers</p>
-              <h2 id="faq-h" className={h2}>{CL_CONCERNS_H}</h2>
+              <p className={eyebrow}>{copy.faqEyebrow}</p>
+              <h2 id="faq-h" className={h2}>{copy.faqTitle}</h2>
             </div>
-            <dl lang="en" translate="no" className="divide-y divide-zinc-900/8 border-y border-zinc-900/8">
-              {FD_FAQ.map((item) => (
-                <div key={item.q} className="py-5">
-                  <dt className="text-lg font-semibold tracking-[-0.015em] text-zinc-900">{item.q}</dt>
-                  <dd className="mt-1.5 text-pretty text-[1rem] leading-relaxed text-zinc-600">{item.a}</dd>
-                </div>
+            <div className="divide-y divide-zinc-900/8 border-y border-zinc-900/8">
+              {copy.faq.map((item) => (
+                <details key={item.q} className="group">
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 text-lg font-semibold tracking-[-0.015em] text-zinc-900 [&::-webkit-details-marker]:hidden">
+                    <span className="min-w-0 text-pretty">{item.q}</span>
+                    <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0 text-zinc-400 transition duration-200 group-open:rotate-180" aria-hidden="true">
+                      <path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </summary>
+                  <p className="pb-5 text-pretty text-[1rem] leading-relaxed text-zinc-600">{item.a}</p>
+                </details>
               ))}
-            </dl>
+            </div>
           </div>
         </section>
 
-        {/* Reinforce: CTA, then what happens next */}
-        <section className={`${wrap} pb-16 sm:pb-24`} aria-labelledby="next-h">
-          <div className={`${glass} reveal p-6 sm:p-10`} lang="en" translate="no">
+        <section id="next" className={`${wrap} pb-16 sm:pb-24`} aria-labelledby="next-h">
+          <div className={`${glass} reveal p-6 sm:p-10`}>
             <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <h2 id="next-h" className="text-[1.75rem] leading-[1.1] font-semibold tracking-[-0.035em] text-zinc-900 sm:text-[2.25rem]">{CL_NEXT_H}</h2>
-              <Book />
+              <h2 id="next-h" className="text-[1.75rem] leading-[1.1] font-semibold tracking-[-0.035em] text-zinc-900 sm:text-[2.25rem]">{copy.nextTitle}</h2>
+              <Book label={copy.bookCta} />
             </div>
             <ol className="mt-8 grid gap-6 md:grid-cols-3">
-              {CL_NEXT.map((item, i) => (
+              {copy.next.map((item, i) => (
                 <li key={item.t} className="flex gap-4">
                   <Num n={i + 1} />
                   <div className="min-w-0">
@@ -334,11 +318,10 @@ export function LookC() {
           </div>
         </section>
 
-        {/* Who */}
-        <section className={`${wrap} pb-16 sm:pb-24`} aria-labelledby="who-h">
+        <section id="who" className={`${wrap} pb-16 sm:pb-24`} aria-labelledby="who-h">
           <article className={`${glass} mx-auto max-w-xl p-6 sm:p-8`}>
-            <h2 id="who-h" className="text-[1.6rem] font-semibold tracking-[-0.03em] text-zinc-900" translate="no">Who is behind this?</h2>
-            <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600" lang="en">{FD_WHO}</p>
+            <h2 id="who-h" className="text-[1.6rem] font-semibold tracking-[-0.03em] text-zinc-900">{copy.whoTitle}</h2>
+            <p className="mt-2 text-pretty text-[1rem] leading-relaxed text-zinc-600">{copy.whoBody}</p>
             <div className="mt-5 flex items-center gap-4">
               <div className="w-[6.5rem] shrink-0"><ContactQr alt={t.qrAlt} /></div>
               <div className="grid min-w-0 flex-1 gap-2.5">
@@ -350,22 +333,21 @@ export function LookC() {
           </article>
         </section>
 
-        <footer className="border-t border-zinc-900/5" aria-labelledby="trust-h">
+        <footer id="trust-footer" className="border-t border-zinc-900/5" aria-labelledby="trust-h">
           <div className={`${wrap} py-12`}>
-            <h2 id="trust-h" className="text-sm font-semibold tracking-[0.14em] text-zinc-900 uppercase">{TRUST_HEADING}</h2>
-            <div lang="en" translate="no" className="mt-4 max-w-3xl space-y-2 text-[0.95rem] leading-relaxed text-zinc-500">
-              {TRUST.map((p) => <p key={p}>{p}</p>)}
+            <h2 id="trust-h" className="text-sm font-semibold tracking-[0.14em] text-zinc-900 uppercase">{copy.trustTitle}</h2>
+            <div className="mt-4 max-w-3xl space-y-2 text-[0.95rem] leading-relaxed text-zinc-500">
+              {copy.trust.map((p) => <p key={p}>{p}</p>)}
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-[0.95rem]">
-              {TRUST_FOOTER.map((part) => (
-                <li key={part} className="inline-flex min-h-11 items-center">
-                  {part === "Privacy" ? <Link className={link} href="/privacy">{part}</Link>
-                    : part === "Terms" ? <Link className={link} href="/terms">{part}</Link>
-                    : part === "SMS Terms" ? <Link className={link} href="/sms-terms">{part}</Link>
-                    : part === "Contact" ? <a className={link} href={`mailto:${EMAIL}`}>{part}</a>
-                    : <span className="text-zinc-500">{part}</span>}
+              {footerLinks.map((item) => (
+                <li key={item.href} className="inline-flex min-h-11 items-center">
+                  <Link className={link} href={item.href}>{item.label}</Link>
                 </li>
               ))}
+              <li className="inline-flex min-h-11 items-center">
+                <a className={link} href={`mailto:${EMAIL}`}>{copy.links.contact}</a>
+              </li>
             </ul>
             <p className="mt-6 text-sm text-zinc-400" translate="no">Blades of Grass Marketing</p>
           </div>
@@ -375,7 +357,7 @@ export function LookC() {
       <nav className="dock" aria-label={t.dockLabel}>
         <a href={`tel:${PHONE_TEL}`}>{t.callText}</a>
         <a href={VCARD_HREF}>{t.saveContact}</a>
-        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer">{CTA_TALK}</a>
+        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer">{copy.talkKenny}</a>
       </nav>
     </div>
   );

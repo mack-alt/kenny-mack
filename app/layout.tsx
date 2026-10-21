@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mack-alt.github.io/kenny-mack"),
   title: "Front Desk for salons · Blades of Grass Marketing",
   description:
-    "Front Desk answers your salon's missed calls in your shop's name and helps book the next appointment. First 10 salons: $297/mo, locked 12 months.",
+    "Front Desk answers your salon's calls in your shop's name and helps book the next appointment. $297/month plus tax, month-to-month.",
   applicationName: "Kenny Mack · Blades of Grass",
 };
 
